@@ -32,7 +32,119 @@
     KEEP.language_code_block = {"copy":"复制代码","copied":"已复制","fold":"折叠代码块","folded":"已折叠"}
     KEEP.language_copy_copyright = {"copy":"复制版权信息","copied":"已复制","title":"原文标题","author":"原文作者","link":"原文链接"}
   </script>
-<meta name="generator" content="Hexo 7.1.1"></head>
+<meta name="generator" content="Hexo 7.1.1"><style>mjx-container[jax="SVG"] {
+  direction: ltr;
+}
+
+mjx-container[jax="SVG"] > svg {
+  overflow: visible;
+}
+
+mjx-container[jax="SVG"][display="true"] {
+  display: block;
+  text-align: center;
+  margin: 1em 0;
+}
+
+mjx-container[jax="SVG"][justify="left"] {
+  text-align: left;
+}
+
+mjx-container[jax="SVG"][justify="right"] {
+  text-align: right;
+}
+
+g[data-mml-node="merror"] > g {
+  fill: red;
+  stroke: red;
+}
+
+g[data-mml-node="merror"] > rect[data-background] {
+  fill: yellow;
+  stroke: none;
+}
+
+g[data-mml-node="mtable"] > line[data-line] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > rect[data-frame] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > .mjx-dashed {
+  stroke-dasharray: 140;
+}
+
+g[data-mml-node="mtable"] > .mjx-dotted {
+  stroke-linecap: round;
+  stroke-dasharray: 0,140;
+}
+
+g[data-mml-node="mtable"] > svg {
+  overflow: visible;
+}
+
+[jax="SVG"] mjx-tool {
+  display: inline-block;
+  position: relative;
+  width: 0;
+  height: 0;
+}
+
+[jax="SVG"] mjx-tool > mjx-tip {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+mjx-tool > mjx-tip {
+  display: inline-block;
+  padding: .2em;
+  border: 1px solid #888;
+  font-size: 70%;
+  background-color: #F8F8F8;
+  color: black;
+  box-shadow: 2px 2px 5px #AAAAAA;
+}
+
+g[data-mml-node="maction"][data-toggle] {
+  cursor: pointer;
+}
+
+mjx-status {
+  display: block;
+  position: fixed;
+  left: 1em;
+  bottom: 1em;
+  min-width: 25%;
+  padding: .2em .4em;
+  border: 1px solid #888;
+  font-size: 90%;
+  background-color: #F8F8F8;
+  color: black;
+}
+
+foreignObject[data-mjx-xml] {
+  font-family: initial;
+  line-height: normal;
+  overflow: visible;
+}
+
+.MathJax path {
+  stroke-width: 3;
+}
+
+mjx-container[display="true"] {
+  overflow: auto hidden;
+}
+
+mjx-container[display="true"] + br {
+  display: none;
+}
+</style></head>
 
 
 <body>
@@ -271,7 +383,7 @@
                 <div class="post-content keep-markdown-body">
                     
 
-                    <h1 id="长度最小的子数组"><a href="#长度最小的子数组" class="headerlink" title="长度最小的子数组"></a>长度最小的子数组</h1><p><a class="link"   target="_blank" rel="noopener" href="https://leetcode.cn/problems/minimum-size-subarray-sum/description/" >209. 长度最小的子数组 - 力扣（LeetCode）<i class="fas fa-external-link-alt"></i></a></p>
+                    <h1 id="长度最小的子数组"><a href="#长度最小的子数组" class="headerlink" title="长度最小的子数组"></a>长度最小的子数组</h1><p><a class="link" target="_blank" rel="noopener" href="https://leetcode.cn/problems/minimum-size-subarray-sum/description/">209. 长度最小的子数组 - 力扣（LeetCode）<i class="fas fa-external-link-alt"></i></a></p>
 <p>给定一个含有 <code>n</code> 个正整数的数组和一个正整数 <code>target</code> <strong>。</strong></p>
 <p>找出该数组中满足其总和大于等于 <code>target</code> 的长度最小的 <strong>连续子数组</strong> <code>[numsl, numsl+1, ..., numsr-1, numsr]</code> ，并返回其长度<strong>。</strong>如果不存在符合条件的子数组，返回 <code>0</code> 。</p>
 <p><strong>示例 1：</strong></p>
@@ -300,7 +412,7 @@
 <li>在实现的过程中，需要注意区间的变化，同时也要注意找到的第一个满足条件的子数组的边界(<code>e==nums.length</code>)可能导致无法进入对子数组进行增减元素的循环，需要另外再建立一个循环来对子数组左端尝试减少元素，并时刻更新最小长度</li>
 </ol>
 <p>实现代码如下：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">minSubArrayLen</span><span class="params">(<span class="type">int</span> target, <span class="type">int</span>[] nums)</span> &#123;</span><br><span class="line">       <span class="type">int</span> <span class="variable">sum</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line">       <span class="type">int</span> <span class="variable">min</span> <span class="operator">=</span> nums.length;</span><br><span class="line">       <span class="type">int</span> <span class="variable">s</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line">       <span class="type">int</span> <span class="variable">e</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line">       <span class="comment">// 判断是否存在符合条件的子数组</span></span><br><span class="line">       <span class="keyword">while</span> (e &lt; nums.length &amp;&amp; sum &lt; target) &#123;</span><br><span class="line">          sum += nums[e++];</span><br><span class="line">       &#125;</span><br><span class="line">       <span class="keyword">if</span> (e == nums.length) &#123;       <span class="comment">// 当子数组和父数组相等时</span></span><br><span class="line">          <span class="keyword">if</span> (sum &lt; target)</span><br><span class="line">             <span class="keyword">return</span> <span class="number">0</span>;     <span class="comment">// 数组和依然小于目标值 则不存在符合条件的子数组</span></span><br><span class="line">       &#125;</span><br><span class="line">       <span class="comment">// 找到满足条件的第一个子数组 [s, e)</span></span><br><span class="line">       min = Math.min(min, e-s);</span><br><span class="line">       <span class="comment">// 继续寻找其他子数组 并寻找长度最小的子数组</span></span><br><span class="line">       <span class="keyword">while</span> (e &lt; nums.length) &#123;</span><br><span class="line">          <span class="comment">// 将指针e指向的数组元素加入到子数组中</span></span><br><span class="line">          sum = sum + nums[e];   <span class="comment">// 此时 sum &gt; target 肯定成立 且子数组变为[s, e]</span></span><br><span class="line">          <span class="comment">// 对子数组从左往右进行缩短</span></span><br><span class="line">          <span class="keyword">while</span> (s &lt; e &amp;&amp; sum &gt;= target) &#123;</span><br><span class="line">             sum -= nums[s];       <span class="comment">// 将s指向的元素移出子数组</span></span><br><span class="line">             s ++;</span><br><span class="line">          &#125;</span><br><span class="line">          <span class="comment">// 进行回退 保证此时sum刚好满足 sum&gt;=target</span></span><br><span class="line">          s -= <span class="number">1</span>;</span><br><span class="line">          sum += nums[s];</span><br><span class="line">          <span class="comment">// 此时子数组[s, e]刚好满足条件</span></span><br><span class="line">          min = Math.min(min, e-s+<span class="number">1</span>);</span><br><span class="line">          e++;</span><br><span class="line">       &#125;</span><br><span class="line">       <span class="comment">// 此时子数组为[s, e)</span></span><br><span class="line">       <span class="comment">// 对子数组进行进一步缩减 避免因为指针e指向数组末尾导致无法对指针s进行移动的情况</span></span><br><span class="line">       <span class="keyword">while</span> (s &lt; e &amp;&amp; sum &gt;= target) &#123;</span><br><span class="line">          sum -= nums[s];</span><br><span class="line">          s ++;</span><br><span class="line">       &#125;</span><br><span class="line">       <span class="comment">// 回退 保证子数组[s, e)满足条件</span></span><br><span class="line">       s-=<span class="number">1</span>;</span><br><span class="line">       sum += nums[s];</span><br><span class="line">       min = Math.min(min, e-s);</span><br><span class="line"></span><br><span class="line">       <span class="keyword">return</span> min;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> {</span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">minSubArrayLen</span><span class="params">(<span class="type">int</span> target, <span class="type">int</span>[] nums)</span> {</span><br><span class="line">       <span class="type">int</span> <span class="variable">sum</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line">       <span class="type">int</span> <span class="variable">min</span> <span class="operator">=</span> nums.length;</span><br><span class="line">       <span class="type">int</span> <span class="variable">s</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line">       <span class="type">int</span> <span class="variable">e</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line">       <span class="comment">// 判断是否存在符合条件的子数组</span></span><br><span class="line">       <span class="keyword">while</span> (e &lt; nums.length &amp;&amp; sum &lt; target) {</span><br><span class="line">          sum += nums[e++];</span><br><span class="line">       }</span><br><span class="line">       <span class="keyword">if</span> (e == nums.length) {       <span class="comment">// 当子数组和父数组相等时</span></span><br><span class="line">          <span class="keyword">if</span> (sum &lt; target)</span><br><span class="line">             <span class="keyword">return</span> <span class="number">0</span>;     <span class="comment">// 数组和依然小于目标值 则不存在符合条件的子数组</span></span><br><span class="line">       }</span><br><span class="line">       <span class="comment">// 找到满足条件的第一个子数组 [s, e)</span></span><br><span class="line">       min = Math.min(min, e-s);</span><br><span class="line">       <span class="comment">// 继续寻找其他子数组 并寻找长度最小的子数组</span></span><br><span class="line">       <span class="keyword">while</span> (e &lt; nums.length) {</span><br><span class="line">          <span class="comment">// 将指针e指向的数组元素加入到子数组中</span></span><br><span class="line">          sum = sum + nums[e];   <span class="comment">// 此时 sum &gt; target 肯定成立 且子数组变为[s, e]</span></span><br><span class="line">          <span class="comment">// 对子数组从左往右进行缩短</span></span><br><span class="line">          <span class="keyword">while</span> (s &lt; e &amp;&amp; sum &gt;= target) {</span><br><span class="line">             sum -= nums[s];       <span class="comment">// 将s指向的元素移出子数组</span></span><br><span class="line">             s ++;</span><br><span class="line">          }</span><br><span class="line">          <span class="comment">// 进行回退 保证此时sum刚好满足 sum&gt;=target</span></span><br><span class="line">          s -= <span class="number">1</span>;</span><br><span class="line">          sum += nums[s];</span><br><span class="line">          <span class="comment">// 此时子数组[s, e]刚好满足条件</span></span><br><span class="line">          min = Math.min(min, e-s+<span class="number">1</span>);</span><br><span class="line">          e++;</span><br><span class="line">       }</span><br><span class="line">       <span class="comment">// 此时子数组为[s, e)</span></span><br><span class="line">       <span class="comment">// 对子数组进行进一步缩减 避免因为指针e指向数组末尾导致无法对指针s进行移动的情况</span></span><br><span class="line">       <span class="keyword">while</span> (s &lt; e &amp;&amp; sum &gt;= target) {</span><br><span class="line">          sum -= nums[s];</span><br><span class="line">          s ++;</span><br><span class="line">       }</span><br><span class="line">       <span class="comment">// 回退 保证子数组[s, e)满足条件</span></span><br><span class="line">       s-=<span class="number">1</span>;</span><br><span class="line">       sum += nums[s];</span><br><span class="line">       min = Math.min(min, e-s);</span><br><span class="line"></span><br><span class="line">       <span class="keyword">return</span> min;</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></table></figure>
 
 <p>提交结果如下：</p>
 <figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">解答成功:</span><br><span class="line">    执行耗时:1 ms,击败了99.87% 的Java用户</span><br><span class="line">    内存消耗:52.8 MB,击败了10.25% 的Java用户</span><br></pre></td></tr></table></figure>
@@ -315,7 +427,7 @@
 <li>即创建两个指针；分别指向子数组的起始位置和子数组的末尾位置，初始均为0，每次子数组末尾指针添加元素后，则尝试在起始位置减少元素，并时刻更新子数组最短长度。</li>
 </ol>
 <p>实现代码如下：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">minSubArrayLen</span><span class="params">(<span class="type">int</span> target, <span class="type">int</span>[] nums)</span> &#123;</span><br><span class="line">        <span class="type">int</span> <span class="variable">sum</span> <span class="operator">=</span> <span class="number">0</span>;                <span class="comment">// 统计子数组元素和</span></span><br><span class="line">        <span class="type">int</span> <span class="variable">min</span> <span class="operator">=</span> nums.length+<span class="number">1</span>;    <span class="comment">// 子数组最大长度为nums.length</span></span><br><span class="line">        <span class="type">int</span> <span class="variable">s</span> <span class="operator">=</span> <span class="number">0</span>;        <span class="comment">// 指向子数组起始位置</span></span><br><span class="line">        <span class="type">int</span> <span class="variable">e</span> <span class="operator">=</span> <span class="number">0</span>;        <span class="comment">// 指向子数组末尾位置</span></span><br><span class="line">        <span class="keyword">while</span> (e &lt; nums.length) &#123;</span><br><span class="line">            sum += nums[e];        <span class="comment">// 末尾指针添加元素到子数组中</span></span><br><span class="line">            <span class="keyword">while</span> (sum &gt;= target) &#123;</span><br><span class="line">                min = Math.min(min, e - s + <span class="number">1</span>);        <span class="comment">// 此时区间为[s,e] 更新最小长度</span></span><br><span class="line">                <span class="comment">// 此时含有s指针指向元素的子数组已经计算过长度 则</span></span><br><span class="line">                sum -= nums[s];        <span class="comment">// 将起始指针指向元素踢出子数组</span></span><br><span class="line">                s ++;        <span class="comment">// 更新区间起始位置</span></span><br><span class="line">            &#125;</span><br><span class="line">            e++;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (min == nums.length + <span class="number">1</span>) <span class="keyword">return</span> <span class="number">0</span>;    <span class="comment">// 若不存在则返回 0</span></span><br><span class="line">        <span class="keyword">return</span> min;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> {</span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">minSubArrayLen</span><span class="params">(<span class="type">int</span> target, <span class="type">int</span>[] nums)</span> {</span><br><span class="line">        <span class="type">int</span> <span class="variable">sum</span> <span class="operator">=</span> <span class="number">0</span>;                <span class="comment">// 统计子数组元素和</span></span><br><span class="line">        <span class="type">int</span> <span class="variable">min</span> <span class="operator">=</span> nums.length+<span class="number">1</span>;    <span class="comment">// 子数组最大长度为nums.length</span></span><br><span class="line">        <span class="type">int</span> <span class="variable">s</span> <span class="operator">=</span> <span class="number">0</span>;        <span class="comment">// 指向子数组起始位置</span></span><br><span class="line">        <span class="type">int</span> <span class="variable">e</span> <span class="operator">=</span> <span class="number">0</span>;        <span class="comment">// 指向子数组末尾位置</span></span><br><span class="line">        <span class="keyword">while</span> (e &lt; nums.length) {</span><br><span class="line">            sum += nums[e];        <span class="comment">// 末尾指针添加元素到子数组中</span></span><br><span class="line">            <span class="keyword">while</span> (sum &gt;= target) {</span><br><span class="line">                min = Math.min(min, e - s + <span class="number">1</span>);        <span class="comment">// 此时区间为[s,e] 更新最小长度</span></span><br><span class="line">                <span class="comment">// 此时含有s指针指向元素的子数组已经计算过长度 则</span></span><br><span class="line">                sum -= nums[s];        <span class="comment">// 将起始指针指向元素踢出子数组</span></span><br><span class="line">                s ++;        <span class="comment">// 更新区间起始位置</span></span><br><span class="line">            }</span><br><span class="line">            e++;</span><br><span class="line">        }</span><br><span class="line">        <span class="keyword">if</span> (min == nums.length + <span class="number">1</span>) <span class="keyword">return</span> <span class="number">0</span>;    <span class="comment">// 若不存在则返回 0</span></span><br><span class="line">        <span class="keyword">return</span> min;</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></table></figure>
 
 <p>提交结果如下：</p>
 <figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">解答成功:</span><br><span class="line">    执行耗时:1 ms,击败了99.87% 的Java用户</span><br><span class="line">    内存消耗:53 MB,击败了6.09% 的Java用户</span><br></pre></td></tr></table></figure>

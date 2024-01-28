@@ -32,7 +32,119 @@
     KEEP.language_code_block = {"copy":"复制代码","copied":"已复制","fold":"折叠代码块","folded":"已折叠"}
     KEEP.language_copy_copyright = {"copy":"复制版权信息","copied":"已复制","title":"原文标题","author":"原文作者","link":"原文链接"}
   </script>
-<meta name="generator" content="Hexo 7.1.1"></head>
+<meta name="generator" content="Hexo 7.1.1"><style>mjx-container[jax="SVG"] {
+  direction: ltr;
+}
+
+mjx-container[jax="SVG"] > svg {
+  overflow: visible;
+}
+
+mjx-container[jax="SVG"][display="true"] {
+  display: block;
+  text-align: center;
+  margin: 1em 0;
+}
+
+mjx-container[jax="SVG"][justify="left"] {
+  text-align: left;
+}
+
+mjx-container[jax="SVG"][justify="right"] {
+  text-align: right;
+}
+
+g[data-mml-node="merror"] > g {
+  fill: red;
+  stroke: red;
+}
+
+g[data-mml-node="merror"] > rect[data-background] {
+  fill: yellow;
+  stroke: none;
+}
+
+g[data-mml-node="mtable"] > line[data-line] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > rect[data-frame] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > .mjx-dashed {
+  stroke-dasharray: 140;
+}
+
+g[data-mml-node="mtable"] > .mjx-dotted {
+  stroke-linecap: round;
+  stroke-dasharray: 0,140;
+}
+
+g[data-mml-node="mtable"] > svg {
+  overflow: visible;
+}
+
+[jax="SVG"] mjx-tool {
+  display: inline-block;
+  position: relative;
+  width: 0;
+  height: 0;
+}
+
+[jax="SVG"] mjx-tool > mjx-tip {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+mjx-tool > mjx-tip {
+  display: inline-block;
+  padding: .2em;
+  border: 1px solid #888;
+  font-size: 70%;
+  background-color: #F8F8F8;
+  color: black;
+  box-shadow: 2px 2px 5px #AAAAAA;
+}
+
+g[data-mml-node="maction"][data-toggle] {
+  cursor: pointer;
+}
+
+mjx-status {
+  display: block;
+  position: fixed;
+  left: 1em;
+  bottom: 1em;
+  min-width: 25%;
+  padding: .2em .4em;
+  border: 1px solid #888;
+  font-size: 90%;
+  background-color: #F8F8F8;
+  color: black;
+}
+
+foreignObject[data-mjx-xml] {
+  font-family: initial;
+  line-height: normal;
+  overflow: visible;
+}
+
+.MathJax path {
+  stroke-width: 3;
+}
+
+mjx-container[display="true"] {
+  overflow: auto hidden;
+}
+
+mjx-container[display="true"] + br {
+  display: none;
+}
+</style></head>
 
 
 <body>
@@ -265,7 +377,7 @@
                 <div class="post-content keep-markdown-body">
                     
 
-                    <h1 id="在排序数组中查找元素的第一个和最后一个位置"><a href="#在排序数组中查找元素的第一个和最后一个位置" class="headerlink" title="在排序数组中查找元素的第一个和最后一个位置"></a>在排序数组中查找元素的第一个和最后一个位置</h1><p><a class="link"   target="_blank" rel="noopener" href="https://leetcode.cn/problems/find-first-and-last-position-of-element-in-sorted-array/description/" >原题链接<i class="fas fa-external-link-alt"></i></a></p>
+                    <h1 id="在排序数组中查找元素的第一个和最后一个位置"><a href="#在排序数组中查找元素的第一个和最后一个位置" class="headerlink" title="在排序数组中查找元素的第一个和最后一个位置"></a>在排序数组中查找元素的第一个和最后一个位置</h1><p><a class="link" target="_blank" rel="noopener" href="https://leetcode.cn/problems/find-first-and-last-position-of-element-in-sorted-array/description/">原题链接<i class="fas fa-external-link-alt"></i></a></p>
 <p>给你一个按照非递减顺序排列的整数数组 <code>nums</code>，和一个目标值 <code>target</code>。请你找出给定目标值在数组中的开始位置和结束位置。</p>
 <p>如果数组中不存在目标值 <code>target</code>，返回 <code>[-1, -1]</code>。</p>
 <p>你必须设计并实现时间复杂度为 <code>O(log n)</code> 的算法解决此问题。</p>
@@ -291,16 +403,16 @@
 </li>
 <li><p>对于寻找<code>target</code>再数组中的位置，主要有3种情况：</p>
 <ol>
-<li><code>target</code>在数组范围的右边或左边，例如<code>&#123;3, 4, 5&#125;</code>, <code>target=2</code>，或者数组<code>&#123;3, 4, 5&#125;</code>,<code>target=6</code>，应该返回<code>&#123;-1, -1&#125;</code>。</li>
-<li><code>target</code>在数组范围中，且数组中不存在<code>target</code>，应该返回<code>&#123;-1, -1&#125;</code>。</li>
-<li><code>target</code>在数组范围中，且数组中存在<code>target</code>，此时应该返回<code>&#123;第一个位置,最后一个位置&#125;</code></li>
+<li><code>target</code>在数组范围的右边或左边，例如<code>{3, 4, 5}</code>, <code>target=2</code>，或者数组<code>{3, 4, 5}</code>,<code>target=6</code>，应该返回<code>{-1, -1}</code>。</li>
+<li><code>target</code>在数组范围中，且数组中不存在<code>target</code>，应该返回<code>{-1, -1}</code>。</li>
+<li><code>target</code>在数组范围中，且数组中存在<code>target</code>，此时应该返回<code>{第一个位置,最后一个位置}</code></li>
 </ol>
 </li>
 <li><p>我们使用第一种二分来寻找边界</p>
 </li>
 </ol>
 <p>实现代码如下：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span>[] searchRange(<span class="type">int</span>[] nums, <span class="type">int</span> target) &#123;</span><br><span class="line">		<span class="comment">// 获取 target 的右边界且不包含target</span></span><br><span class="line">		<span class="type">int</span> <span class="variable">rightBorder</span> <span class="operator">=</span> getRightBorder(nums, target);</span><br><span class="line">		<span class="comment">// 获取 target 的左边界且不包含target</span></span><br><span class="line">		<span class="type">int</span> <span class="variable">leftBorder</span> <span class="operator">=</span> getLeftBorder(nums, target);</span><br><span class="line"></span><br><span class="line">		<span class="keyword">if</span> (rightBorder == -<span class="number">2</span> || leftBorder == -<span class="number">2</span>) &#123;</span><br><span class="line">			<span class="comment">// 说明target在数组范围的左边或右边</span></span><br><span class="line">			<span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">int</span>[]&#123;-<span class="number">1</span>, -<span class="number">1</span>&#125;;</span><br><span class="line">		&#125;</span><br><span class="line">		rightBorder -= <span class="number">1</span>;</span><br><span class="line">		leftBorder += <span class="number">1</span>;</span><br><span class="line">		<span class="keyword">if</span> (nums[rightBorder] != target || nums[leftBorder] != target) &#123;</span><br><span class="line">			<span class="comment">// 说明target在数组范围内 但不在数组中</span></span><br><span class="line">			<span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">int</span>[]&#123;-<span class="number">1</span>, -<span class="number">1</span>&#125;;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">int</span>[]&#123;leftBorder, rightBorder&#125;;</span><br><span class="line">    &#125;</span><br><span class="line">	<span class="comment">// 二分法寻找target的左边界 且不包含target</span></span><br><span class="line">	<span class="comment">// 使用第一种二分 左闭右闭 [left, right]</span></span><br><span class="line">	<span class="comment">// 若leftBorder没有被赋值 说明target在数组范围的右边</span></span><br><span class="line">	<span class="keyword">private</span> <span class="type">int</span> <span class="title function_">getLeftBorder</span><span class="params">(<span class="type">int</span>[] nums, <span class="type">int</span> target)</span> &#123;</span><br><span class="line">		<span class="type">int</span> <span class="variable">leftBorder</span> <span class="operator">=</span> -<span class="number">2</span>;	<span class="comment">// 记录左边界的值 且检验是否被赋值</span></span><br><span class="line">		<span class="type">int</span> <span class="variable">left</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line">		<span class="type">int</span> <span class="variable">right</span> <span class="operator">=</span> nums.length -<span class="number">1</span>;</span><br><span class="line">		<span class="keyword">while</span> (left &lt;= right) &#123;        <span class="comment">// left == right 有意义</span></span><br><span class="line">			<span class="type">int</span> <span class="variable">mid</span> <span class="operator">=</span> ((right - left) &gt;&gt; <span class="number">1</span>) + left;		<span class="comment">// 防止溢出</span></span><br><span class="line">			<span class="keyword">if</span> (nums[mid] &lt; target) &#123;</span><br><span class="line">				left = mid + <span class="number">1</span>;</span><br><span class="line">			&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">				right = mid - <span class="number">1</span>;</span><br><span class="line">				leftBorder = right;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> leftBorder;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">// 二分查找寻找target的右边界 且不包含target</span></span><br><span class="line">	<span class="comment">// 使用第一种二分 左闭右闭[left, right]</span></span><br><span class="line">	<span class="comment">// 若rightBorder没有被赋值 说明target在数组范围的左边</span></span><br><span class="line">	<span class="keyword">private</span> <span class="type">int</span> <span class="title function_">getRightBorder</span><span class="params">(<span class="type">int</span>[] nums, <span class="type">int</span> target)</span> &#123;</span><br><span class="line">		<span class="type">int</span> <span class="variable">rightBorder</span> <span class="operator">=</span> -<span class="number">2</span>;		<span class="comment">// 记录rightBorder是否被赋值 即是否有搜索到右边界</span></span><br><span class="line">		<span class="type">int</span> <span class="variable">left</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line">		<span class="type">int</span> <span class="variable">right</span> <span class="operator">=</span> nums.length - <span class="number">1</span>;</span><br><span class="line">		<span class="keyword">while</span> (left &lt;= right) &#123;		<span class="comment">// 左闭右闭 left==right 有意义</span></span><br><span class="line">			<span class="type">int</span> <span class="variable">mid</span> <span class="operator">=</span> ((right - left) &gt;&gt; <span class="number">1</span>) + left;		<span class="comment">// 防止溢出</span></span><br><span class="line">			<span class="keyword">if</span> (nums[mid] &gt; target) &#123;</span><br><span class="line">				<span class="comment">// nums[mid] &gt; target 说明目标值在 左区间[left, mid-1]</span></span><br><span class="line">				right = mid - <span class="number">1</span>;</span><br><span class="line">			&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">				<span class="comment">// nums[mid] &lt;= target 说明右边界在右区间</span></span><br><span class="line">				<span class="comment">// 当 nums[mid] == target 时 对右边界进行更新 得到不包含target的右边界</span></span><br><span class="line">				left = mid + <span class="number">1</span>;</span><br><span class="line">				rightBorder = left;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> rightBorder;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> {</span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span>[] searchRange(<span class="type">int</span>[] nums, <span class="type">int</span> target) {</span><br><span class="line">		<span class="comment">// 获取 target 的右边界且不包含target</span></span><br><span class="line">		<span class="type">int</span> <span class="variable">rightBorder</span> <span class="operator">=</span> getRightBorder(nums, target);</span><br><span class="line">		<span class="comment">// 获取 target 的左边界且不包含target</span></span><br><span class="line">		<span class="type">int</span> <span class="variable">leftBorder</span> <span class="operator">=</span> getLeftBorder(nums, target);</span><br><span class="line"></span><br><span class="line">		<span class="keyword">if</span> (rightBorder == -<span class="number">2</span> || leftBorder == -<span class="number">2</span>) {</span><br><span class="line">			<span class="comment">// 说明target在数组范围的左边或右边</span></span><br><span class="line">			<span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">int</span>[]{-<span class="number">1</span>, -<span class="number">1</span>};</span><br><span class="line">		}</span><br><span class="line">		rightBorder -= <span class="number">1</span>;</span><br><span class="line">		leftBorder += <span class="number">1</span>;</span><br><span class="line">		<span class="keyword">if</span> (nums[rightBorder] != target || nums[leftBorder] != target) {</span><br><span class="line">			<span class="comment">// 说明target在数组范围内 但不在数组中</span></span><br><span class="line">			<span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">int</span>[]{-<span class="number">1</span>, -<span class="number">1</span>};</span><br><span class="line">		}</span><br><span class="line">		<span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">int</span>[]{leftBorder, rightBorder};</span><br><span class="line">    }</span><br><span class="line">	<span class="comment">// 二分法寻找target的左边界 且不包含target</span></span><br><span class="line">	<span class="comment">// 使用第一种二分 左闭右闭 [left, right]</span></span><br><span class="line">	<span class="comment">// 若leftBorder没有被赋值 说明target在数组范围的右边</span></span><br><span class="line">	<span class="keyword">private</span> <span class="type">int</span> <span class="title function_">getLeftBorder</span><span class="params">(<span class="type">int</span>[] nums, <span class="type">int</span> target)</span> {</span><br><span class="line">		<span class="type">int</span> <span class="variable">leftBorder</span> <span class="operator">=</span> -<span class="number">2</span>;	<span class="comment">// 记录左边界的值 且检验是否被赋值</span></span><br><span class="line">		<span class="type">int</span> <span class="variable">left</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line">		<span class="type">int</span> <span class="variable">right</span> <span class="operator">=</span> nums.length -<span class="number">1</span>;</span><br><span class="line">		<span class="keyword">while</span> (left &lt;= right) {        <span class="comment">// left == right 有意义</span></span><br><span class="line">			<span class="type">int</span> <span class="variable">mid</span> <span class="operator">=</span> ((right - left) &gt;&gt; <span class="number">1</span>) + left;		<span class="comment">// 防止溢出</span></span><br><span class="line">			<span class="keyword">if</span> (nums[mid] &lt; target) {</span><br><span class="line">				left = mid + <span class="number">1</span>;</span><br><span class="line">			} <span class="keyword">else</span> {</span><br><span class="line">				right = mid - <span class="number">1</span>;</span><br><span class="line">				leftBorder = right;</span><br><span class="line">			}</span><br><span class="line">		}</span><br><span class="line">		<span class="keyword">return</span> leftBorder;</span><br><span class="line">	}</span><br><span class="line">	<span class="comment">// 二分查找寻找target的右边界 且不包含target</span></span><br><span class="line">	<span class="comment">// 使用第一种二分 左闭右闭[left, right]</span></span><br><span class="line">	<span class="comment">// 若rightBorder没有被赋值 说明target在数组范围的左边</span></span><br><span class="line">	<span class="keyword">private</span> <span class="type">int</span> <span class="title function_">getRightBorder</span><span class="params">(<span class="type">int</span>[] nums, <span class="type">int</span> target)</span> {</span><br><span class="line">		<span class="type">int</span> <span class="variable">rightBorder</span> <span class="operator">=</span> -<span class="number">2</span>;		<span class="comment">// 记录rightBorder是否被赋值 即是否有搜索到右边界</span></span><br><span class="line">		<span class="type">int</span> <span class="variable">left</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line">		<span class="type">int</span> <span class="variable">right</span> <span class="operator">=</span> nums.length - <span class="number">1</span>;</span><br><span class="line">		<span class="keyword">while</span> (left &lt;= right) {		<span class="comment">// 左闭右闭 left==right 有意义</span></span><br><span class="line">			<span class="type">int</span> <span class="variable">mid</span> <span class="operator">=</span> ((right - left) &gt;&gt; <span class="number">1</span>) + left;		<span class="comment">// 防止溢出</span></span><br><span class="line">			<span class="keyword">if</span> (nums[mid] &gt; target) {</span><br><span class="line">				<span class="comment">// nums[mid] &gt; target 说明目标值在 左区间[left, mid-1]</span></span><br><span class="line">				right = mid - <span class="number">1</span>;</span><br><span class="line">			} <span class="keyword">else</span> {</span><br><span class="line">				<span class="comment">// nums[mid] &lt;= target 说明右边界在右区间</span></span><br><span class="line">				<span class="comment">// 当 nums[mid] == target 时 对右边界进行更新 得到不包含target的右边界</span></span><br><span class="line">				left = mid + <span class="number">1</span>;</span><br><span class="line">				rightBorder = left;</span><br><span class="line">			}</span><br><span class="line">		}</span><br><span class="line">		<span class="keyword">return</span> rightBorder;</span><br><span class="line">	}</span><br><span class="line">}</span><br></pre></td></tr></table></figure>
 
 <p>提交结果如下：</p>
 <figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">解答成功:</span><br><span class="line">	执行耗时:0 ms,击败了100.00% 的Java用户</span><br><span class="line">	内存消耗:43.7 MB,击败了8.19% 的Java用户</span><br></pre></td></tr></table></figure>
@@ -315,11 +427,11 @@
 <h2 id="解法二"><a href="#解法二" class="headerlink" title="解法二"></a>解法二</h2><p>思路分析：</p>
 <ol>
 <li>对于target是否存在数组中的情况，我们可以先用二分查找确认数组是否在数组中</li>
-<li>若数组不在数组中，直接返回<code>&#123;-1, -1&#125;</code>即可</li>
+<li>若数组不在数组中，直接返回<code>{-1, -1}</code>即可</li>
 <li>若数组在数组中，可以通过指针循环来查找对应位置</li>
 </ol>
 <p>实现代码如下：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span>[] searchRange(<span class="type">int</span>[] nums, <span class="type">int</span> target) &#123;</span><br><span class="line">       <span class="comment">// 解法二</span></span><br><span class="line">       <span class="comment">// 二分查找 数组中是否存在目标值</span></span><br><span class="line">       <span class="type">int</span> <span class="variable">flag</span> <span class="operator">=</span> searchBinary(nums, target);</span><br><span class="line">       <span class="keyword">if</span> (flag == -<span class="number">1</span>) &#123;</span><br><span class="line">          <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">int</span>[]&#123;-<span class="number">1</span>, -<span class="number">1</span>&#125;;</span><br><span class="line">       &#125;</span><br><span class="line">       <span class="comment">// 如果存在 则滑动指针来寻找</span></span><br><span class="line">       <span class="type">int</span> <span class="variable">right</span> <span class="operator">=</span> flag;     <span class="comment">// 根据查找到的位置来寻找右边界</span></span><br><span class="line">       <span class="keyword">while</span> (right + <span class="number">1</span> &lt; nums.length &amp;&amp; nums[right + <span class="number">1</span>] == target)</span><br><span class="line">          ++ right;</span><br><span class="line">       <span class="type">int</span> <span class="variable">left</span> <span class="operator">=</span> flag;      <span class="comment">// 根据查找到的位置来寻找左边界</span></span><br><span class="line">       <span class="keyword">while</span> (left - <span class="number">1</span> &gt;= <span class="number">0</span> &amp;&amp; nums[left - <span class="number">1</span>] == target)</span><br><span class="line">          -- left;</span><br><span class="line">       <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">int</span>[]&#123;left, right&#125;;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 二分查找</span></span><br><span class="line">    <span class="keyword">private</span> <span class="type">int</span> <span class="title function_">searchBinary</span><span class="params">(<span class="type">int</span>[] nums, <span class="type">int</span> target)</span> &#123;</span><br><span class="line">       <span class="type">int</span> <span class="variable">left</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line">       <span class="type">int</span> <span class="variable">right</span> <span class="operator">=</span> nums.length - <span class="number">1</span>;</span><br><span class="line">       <span class="keyword">while</span> (left &lt;= right) &#123;</span><br><span class="line">          <span class="type">int</span> <span class="variable">mid</span> <span class="operator">=</span> ((right - left) &gt;&gt; <span class="number">1</span>) + left;</span><br><span class="line">          <span class="keyword">if</span> (nums[mid] &gt; target) &#123;</span><br><span class="line">             right = mid - <span class="number">1</span>;</span><br><span class="line">          &#125; <span class="keyword">else</span> <span class="keyword">if</span> (nums[mid] &lt; target) &#123;</span><br><span class="line">             left = mid + <span class="number">1</span>;</span><br><span class="line">          &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">             <span class="keyword">return</span> mid;</span><br><span class="line">          &#125;</span><br><span class="line">       &#125;</span><br><span class="line">       <span class="keyword">return</span> -<span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> {</span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span>[] searchRange(<span class="type">int</span>[] nums, <span class="type">int</span> target) {</span><br><span class="line">       <span class="comment">// 解法二</span></span><br><span class="line">       <span class="comment">// 二分查找 数组中是否存在目标值</span></span><br><span class="line">       <span class="type">int</span> <span class="variable">flag</span> <span class="operator">=</span> searchBinary(nums, target);</span><br><span class="line">       <span class="keyword">if</span> (flag == -<span class="number">1</span>) {</span><br><span class="line">          <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">int</span>[]{-<span class="number">1</span>, -<span class="number">1</span>};</span><br><span class="line">       }</span><br><span class="line">       <span class="comment">// 如果存在 则滑动指针来寻找</span></span><br><span class="line">       <span class="type">int</span> <span class="variable">right</span> <span class="operator">=</span> flag;     <span class="comment">// 根据查找到的位置来寻找右边界</span></span><br><span class="line">       <span class="keyword">while</span> (right + <span class="number">1</span> &lt; nums.length &amp;&amp; nums[right + <span class="number">1</span>] == target)</span><br><span class="line">          ++ right;</span><br><span class="line">       <span class="type">int</span> <span class="variable">left</span> <span class="operator">=</span> flag;      <span class="comment">// 根据查找到的位置来寻找左边界</span></span><br><span class="line">       <span class="keyword">while</span> (left - <span class="number">1</span> &gt;= <span class="number">0</span> &amp;&amp; nums[left - <span class="number">1</span>] == target)</span><br><span class="line">          -- left;</span><br><span class="line">       <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">int</span>[]{left, right};</span><br><span class="line">    }</span><br><span class="line">    <span class="comment">// 二分查找</span></span><br><span class="line">    <span class="keyword">private</span> <span class="type">int</span> <span class="title function_">searchBinary</span><span class="params">(<span class="type">int</span>[] nums, <span class="type">int</span> target)</span> {</span><br><span class="line">       <span class="type">int</span> <span class="variable">left</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line">       <span class="type">int</span> <span class="variable">right</span> <span class="operator">=</span> nums.length - <span class="number">1</span>;</span><br><span class="line">       <span class="keyword">while</span> (left &lt;= right) {</span><br><span class="line">          <span class="type">int</span> <span class="variable">mid</span> <span class="operator">=</span> ((right - left) &gt;&gt; <span class="number">1</span>) + left;</span><br><span class="line">          <span class="keyword">if</span> (nums[mid] &gt; target) {</span><br><span class="line">             right = mid - <span class="number">1</span>;</span><br><span class="line">          } <span class="keyword">else</span> <span class="keyword">if</span> (nums[mid] &lt; target) {</span><br><span class="line">             left = mid + <span class="number">1</span>;</span><br><span class="line">          } <span class="keyword">else</span> {</span><br><span class="line">             <span class="keyword">return</span> mid;</span><br><span class="line">          }</span><br><span class="line">       }</span><br><span class="line">       <span class="keyword">return</span> -<span class="number">1</span>;</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></table></figure>
 
 <p>提交结果如下：</p>
 <figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">解答成功:</span><br><span class="line">	执行耗时:0 ms,击败了100.00% 的Java用户</span><br><span class="line">	内存消耗:43.5 MB,击败了28.63% 的Java用户</span><br></pre></td></tr></table></figure>

@@ -32,7 +32,119 @@
     KEEP.language_code_block = {"copy":"复制代码","copied":"已复制","fold":"折叠代码块","folded":"已折叠"}
     KEEP.language_copy_copyright = {"copy":"复制版权信息","copied":"已复制","title":"原文标题","author":"原文作者","link":"原文链接"}
   </script>
-<meta name="generator" content="Hexo 7.1.1"></head>
+<meta name="generator" content="Hexo 7.1.1"><style>mjx-container[jax="SVG"] {
+  direction: ltr;
+}
+
+mjx-container[jax="SVG"] > svg {
+  overflow: visible;
+}
+
+mjx-container[jax="SVG"][display="true"] {
+  display: block;
+  text-align: center;
+  margin: 1em 0;
+}
+
+mjx-container[jax="SVG"][justify="left"] {
+  text-align: left;
+}
+
+mjx-container[jax="SVG"][justify="right"] {
+  text-align: right;
+}
+
+g[data-mml-node="merror"] > g {
+  fill: red;
+  stroke: red;
+}
+
+g[data-mml-node="merror"] > rect[data-background] {
+  fill: yellow;
+  stroke: none;
+}
+
+g[data-mml-node="mtable"] > line[data-line] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > rect[data-frame] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > .mjx-dashed {
+  stroke-dasharray: 140;
+}
+
+g[data-mml-node="mtable"] > .mjx-dotted {
+  stroke-linecap: round;
+  stroke-dasharray: 0,140;
+}
+
+g[data-mml-node="mtable"] > svg {
+  overflow: visible;
+}
+
+[jax="SVG"] mjx-tool {
+  display: inline-block;
+  position: relative;
+  width: 0;
+  height: 0;
+}
+
+[jax="SVG"] mjx-tool > mjx-tip {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+mjx-tool > mjx-tip {
+  display: inline-block;
+  padding: .2em;
+  border: 1px solid #888;
+  font-size: 70%;
+  background-color: #F8F8F8;
+  color: black;
+  box-shadow: 2px 2px 5px #AAAAAA;
+}
+
+g[data-mml-node="maction"][data-toggle] {
+  cursor: pointer;
+}
+
+mjx-status {
+  display: block;
+  position: fixed;
+  left: 1em;
+  bottom: 1em;
+  min-width: 25%;
+  padding: .2em .4em;
+  border: 1px solid #888;
+  font-size: 90%;
+  background-color: #F8F8F8;
+  color: black;
+}
+
+foreignObject[data-mjx-xml] {
+  font-family: initial;
+  line-height: normal;
+  overflow: visible;
+}
+
+.MathJax path {
+  stroke-width: 3;
+}
+
+mjx-container[display="true"] {
+  overflow: auto hidden;
+}
+
+mjx-container[display="true"] + br {
+  display: none;
+}
+</style></head>
 
 
 <body>
@@ -265,15 +377,15 @@
                 <div class="post-content keep-markdown-body">
                     
 
-                    <h1 id="移除元素"><a href="#移除元素" class="headerlink" title="移除元素"></a>移除元素</h1><p><a class="link"   target="_blank" rel="noopener" href="https://leetcode.cn/problems/remove-element/description/" >27. 移除元素 - 力扣（LeetCode）<i class="fas fa-external-link-alt"></i></a></p>
-<p>给你一个数组 <code>nums</code> 和一个值 <code>val</code>，你需要 <strong><a class="link"   target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E5%8E%9F%E5%9C%B0%E7%AE%97%E6%B3%95" >原地<i class="fas fa-external-link-alt"></i></a></strong> 移除所有数值等于 <code>val</code> 的元素，并返回移除后数组的新长度。</p>
-<p>不要使用额外的数组空间，你必须仅使用 <code>O(1)</code> 额外空间并 <strong><a class="link"   target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E5%8E%9F%E5%9C%B0%E7%AE%97%E6%B3%95" >原地 <i class="fas fa-external-link-alt"></i></a>修改输入数组</strong>。</p>
+                    <h1 id="移除元素"><a href="#移除元素" class="headerlink" title="移除元素"></a>移除元素</h1><p><a class="link" target="_blank" rel="noopener" href="https://leetcode.cn/problems/remove-element/description/">27. 移除元素 - 力扣（LeetCode）<i class="fas fa-external-link-alt"></i></a></p>
+<p>给你一个数组 <code>nums</code> 和一个值 <code>val</code>，你需要 <strong><a class="link" target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E5%8E%9F%E5%9C%B0%E7%AE%97%E6%B3%95">原地<i class="fas fa-external-link-alt"></i></a></strong> 移除所有数值等于 <code>val</code> 的元素，并返回移除后数组的新长度。</p>
+<p>不要使用额外的数组空间，你必须仅使用 <code>O(1)</code> 额外空间并 <strong><a class="link" target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E5%8E%9F%E5%9C%B0%E7%AE%97%E6%B3%95">原地 <i class="fas fa-external-link-alt"></i></a>修改输入数组</strong>。</p>
 <p>元素的顺序可以改变。你不需要考虑数组中超出新长度后面的元素。</p>
 <p><strong>说明:</strong></p>
 <p>为什么返回数值是整数，但输出的答案是数组呢?</p>
 <p>请注意，输入数组是以<strong>「引用」</strong>方式传递的，这意味着在函数里修改输入数组对于调用者是可见的。</p>
 <p>你可以想象内部操作如下:</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">// nums 是以“引用”方式传递的。也就是说，不对实参作任何拷贝</span><br><span class="line">int len = removeElement(nums, val);</span><br><span class="line"></span><br><span class="line">// 在函数里修改输入数组对于调用者是可见的。</span><br><span class="line">// 根据你的函数返回的长度, 它会打印出数组中 该长度范围内 的所有元素。</span><br><span class="line">for (int i = 0; i &lt; len; i++) &#123;</span><br><span class="line">    print(nums[i]);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">// nums 是以“引用”方式传递的。也就是说，不对实参作任何拷贝</span><br><span class="line">int len = removeElement(nums, val);</span><br><span class="line"></span><br><span class="line">// 在函数里修改输入数组对于调用者是可见的。</span><br><span class="line">// 根据你的函数返回的长度, 它会打印出数组中 该长度范围内 的所有元素。</span><br><span class="line">for (int i = 0; i &lt; len; i++) {</span><br><span class="line">    print(nums[i]);</span><br><span class="line">}</span><br></pre></td></tr></table></figure>
 
 <p><strong>示例 1：</strong></p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">输入：nums = [3,2,2,3], val = 3</span><br><span class="line">输出：2, nums = [2,2]</span><br><span class="line">解释：函数应该返回新的长度 2, 并且 nums 中的前两个元素均为 2。你不需要考虑数组中超出新长度后面的元素。例如，函数返回的新长度为 2 ，而 nums = [2,2,3,3] 或 nums = [2,2,0,0]，也会被视作正确答案。</span><br></pre></td></tr></table></figure>
@@ -293,7 +405,7 @@
 <li>对此，可以考虑使用双指针，指针<code>i</code>遍历不等于<code>val</code>的数组元素，指针<code>j</code>遍历等于<code>val</code>的数组元素，然后指针<code>i</code>和指针<code>j</code>对应的数组元素值进行交换，从而实现移除值为<code>val</code>的数组元素</li>
 </ol>
 <p>实现代码如下：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">removeElement</span><span class="params">(<span class="type">int</span>[] nums, <span class="type">int</span> val)</span> &#123;</span><br><span class="line">       <span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> nums.length-<span class="number">1</span>;       <span class="comment">// 用于遍历值不为val的数组元素</span></span><br><span class="line">       <span class="type">int</span> <span class="variable">j</span> <span class="operator">=</span> <span class="number">0</span>;       <span class="comment">// 用于遍历值为val的数组元素</span></span><br><span class="line">       <span class="keyword">while</span> (j &lt;= i) &#123;</span><br><span class="line">          <span class="keyword">while</span> (j &lt; nums.length &amp;&amp; nums[j] != val) &#123;</span><br><span class="line">             j ++;</span><br><span class="line">          &#125;</span><br><span class="line"></span><br><span class="line">          <span class="keyword">while</span> (i &gt;= <span class="number">0</span> &amp;&amp; nums[i] == val) &#123;</span><br><span class="line">             i --;</span><br><span class="line">          &#125;</span><br><span class="line">          <span class="keyword">if</span> (j &gt; i) <span class="keyword">break</span>;     <span class="comment">// 防止最后一次交换 i&lt;j 导致等于val的值重新回到新数组中</span></span><br><span class="line">          <span class="comment">// 进行数组元素交换</span></span><br><span class="line">          <span class="type">int</span> <span class="variable">t</span> <span class="operator">=</span> nums[i];</span><br><span class="line">          nums[i] = nums[j];</span><br><span class="line">          nums[j] = t;</span><br><span class="line">       &#125;</span><br><span class="line">       <span class="comment">// 在循环最后一次j退出循环时 指针j指向了第一个等于val的数组元素的索引处 即为新数组长度</span></span><br><span class="line">       <span class="keyword">return</span> j;  </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> {</span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">removeElement</span><span class="params">(<span class="type">int</span>[] nums, <span class="type">int</span> val)</span> {</span><br><span class="line">       <span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> nums.length-<span class="number">1</span>;       <span class="comment">// 用于遍历值不为val的数组元素</span></span><br><span class="line">       <span class="type">int</span> <span class="variable">j</span> <span class="operator">=</span> <span class="number">0</span>;       <span class="comment">// 用于遍历值为val的数组元素</span></span><br><span class="line">       <span class="keyword">while</span> (j &lt;= i) {</span><br><span class="line">          <span class="keyword">while</span> (j &lt; nums.length &amp;&amp; nums[j] != val) {</span><br><span class="line">             j ++;</span><br><span class="line">          }</span><br><span class="line"></span><br><span class="line">          <span class="keyword">while</span> (i &gt;= <span class="number">0</span> &amp;&amp; nums[i] == val) {</span><br><span class="line">             i --;</span><br><span class="line">          }</span><br><span class="line">          <span class="keyword">if</span> (j &gt; i) <span class="keyword">break</span>;     <span class="comment">// 防止最后一次交换 i&lt;j 导致等于val的值重新回到新数组中</span></span><br><span class="line">          <span class="comment">// 进行数组元素交换</span></span><br><span class="line">          <span class="type">int</span> <span class="variable">t</span> <span class="operator">=</span> nums[i];</span><br><span class="line">          nums[i] = nums[j];</span><br><span class="line">          nums[j] = t;</span><br><span class="line">       }</span><br><span class="line">       <span class="comment">// 在循环最后一次j退出循环时 指针j指向了第一个等于val的数组元素的索引处 即为新数组长度</span></span><br><span class="line">       <span class="keyword">return</span> j;  </span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></table></figure>
 
 <p>提交结果如下：</p>
 <figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">解答成功:</span><br><span class="line">	执行耗时:0 ms,击败了100.00% 的Java用户</span><br><span class="line">	内存消耗:40 MB,击败了30.00% 的Java用户</span><br></pre></td></tr></table></figure>

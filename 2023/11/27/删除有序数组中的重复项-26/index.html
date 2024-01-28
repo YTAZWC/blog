@@ -32,7 +32,119 @@
     KEEP.language_code_block = {"copy":"复制代码","copied":"已复制","fold":"折叠代码块","folded":"已折叠"}
     KEEP.language_copy_copyright = {"copy":"复制版权信息","copied":"已复制","title":"原文标题","author":"原文作者","link":"原文链接"}
   </script>
-<meta name="generator" content="Hexo 7.1.1"></head>
+<meta name="generator" content="Hexo 7.1.1"><style>mjx-container[jax="SVG"] {
+  direction: ltr;
+}
+
+mjx-container[jax="SVG"] > svg {
+  overflow: visible;
+}
+
+mjx-container[jax="SVG"][display="true"] {
+  display: block;
+  text-align: center;
+  margin: 1em 0;
+}
+
+mjx-container[jax="SVG"][justify="left"] {
+  text-align: left;
+}
+
+mjx-container[jax="SVG"][justify="right"] {
+  text-align: right;
+}
+
+g[data-mml-node="merror"] > g {
+  fill: red;
+  stroke: red;
+}
+
+g[data-mml-node="merror"] > rect[data-background] {
+  fill: yellow;
+  stroke: none;
+}
+
+g[data-mml-node="mtable"] > line[data-line] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > rect[data-frame] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > .mjx-dashed {
+  stroke-dasharray: 140;
+}
+
+g[data-mml-node="mtable"] > .mjx-dotted {
+  stroke-linecap: round;
+  stroke-dasharray: 0,140;
+}
+
+g[data-mml-node="mtable"] > svg {
+  overflow: visible;
+}
+
+[jax="SVG"] mjx-tool {
+  display: inline-block;
+  position: relative;
+  width: 0;
+  height: 0;
+}
+
+[jax="SVG"] mjx-tool > mjx-tip {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+mjx-tool > mjx-tip {
+  display: inline-block;
+  padding: .2em;
+  border: 1px solid #888;
+  font-size: 70%;
+  background-color: #F8F8F8;
+  color: black;
+  box-shadow: 2px 2px 5px #AAAAAA;
+}
+
+g[data-mml-node="maction"][data-toggle] {
+  cursor: pointer;
+}
+
+mjx-status {
+  display: block;
+  position: fixed;
+  left: 1em;
+  bottom: 1em;
+  min-width: 25%;
+  padding: .2em .4em;
+  border: 1px solid #888;
+  font-size: 90%;
+  background-color: #F8F8F8;
+  color: black;
+}
+
+foreignObject[data-mjx-xml] {
+  font-family: initial;
+  line-height: normal;
+  overflow: visible;
+}
+
+.MathJax path {
+  stroke-width: 3;
+}
+
+mjx-container[display="true"] {
+  overflow: auto hidden;
+}
+
+mjx-container[display="true"] + br {
+  display: none;
+}
+</style></head>
 
 
 <body>
@@ -265,8 +377,8 @@
                 <div class="post-content keep-markdown-body">
                     
 
-                    <h1 id="删除有序数组中的重复项"><a href="#删除有序数组中的重复项" class="headerlink" title="删除有序数组中的重复项"></a>删除有序数组中的重复项</h1><p><a class="link"   target="_blank" rel="noopener" href="https://leetcode.cn/problems/remove-duplicates-from-sorted-array/description/" >26. 删除有序数组中的重复项 - 力扣（LeetCode）<i class="fas fa-external-link-alt"></i></a></p>
-<p>给你一个 <strong>非严格递增排列</strong> 的数组 <code>nums</code> ，请你**<a class="link"   target="_blank" rel="noopener" href="http://baike.baidu.com/item/%E5%8E%9F%E5%9C%B0%E7%AE%97%E6%B3%95" > 原地<i class="fas fa-external-link-alt"></i></a>** 删除重复出现的元素，使每个元素 <strong>只出现一次</strong> ，返回删除后数组的新长度。元素的 <strong>相对顺序</strong> 应该保持 <strong>一致</strong> 。然后返回 <code>nums</code> 中唯一元素的个数。</p>
+                    <h1 id="删除有序数组中的重复项"><a href="#删除有序数组中的重复项" class="headerlink" title="删除有序数组中的重复项"></a>删除有序数组中的重复项</h1><p><a class="link" target="_blank" rel="noopener" href="https://leetcode.cn/problems/remove-duplicates-from-sorted-array/description/">26. 删除有序数组中的重复项 - 力扣（LeetCode）<i class="fas fa-external-link-alt"></i></a></p>
+<p>给你一个 <strong>非严格递增排列</strong> 的数组 <code>nums</code> ，请你**<a class="link" target="_blank" rel="noopener" href="http://baike.baidu.com/item/%E5%8E%9F%E5%9C%B0%E7%AE%97%E6%B3%95"> 原地<i class="fas fa-external-link-alt"></i></a>** 删除重复出现的元素，使每个元素 <strong>只出现一次</strong> ，返回删除后数组的新长度。元素的 <strong>相对顺序</strong> 应该保持 <strong>一致</strong> 。然后返回 <code>nums</code> 中唯一元素的个数。</p>
 <p>考虑 <code>nums</code> 的唯一元素的数量为 <code>k</code> ，你需要做以下事情确保你的题解可以被通过：</p>
 <ul>
 <li>更改数组 <code>nums</code> ，使 <code>nums</code> 的前 <code>k</code> 个元素包含唯一元素，并按照它们最初在 <code>nums</code> 中出现的顺序排列。<code>nums</code> 的其余元素与 <code>nums</code> 的大小不重要。</li>
@@ -274,7 +386,7 @@
 </ul>
 <p><strong>判题标准:</strong></p>
 <p>系统会用下面的代码来测试你的题解:</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">int[] nums = [...]; // 输入数组</span><br><span class="line">int[] expectedNums = [...]; // 长度正确的期望答案</span><br><span class="line"></span><br><span class="line">int k = removeDuplicates(nums); // 调用</span><br><span class="line"></span><br><span class="line">assert k == expectedNums.length;</span><br><span class="line">for (int i = 0; i &lt; k; i++) &#123;</span><br><span class="line">    assert nums[i] == expectedNums[i];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">int[] nums = [...]; // 输入数组</span><br><span class="line">int[] expectedNums = [...]; // 长度正确的期望答案</span><br><span class="line"></span><br><span class="line">int k = removeDuplicates(nums); // 调用</span><br><span class="line"></span><br><span class="line">assert k == expectedNums.length;</span><br><span class="line">for (int i = 0; i &lt; k; i++) {</span><br><span class="line">    assert nums[i] == expectedNums[i];</span><br><span class="line">}</span><br></pre></td></tr></table></figure>
 
 <p>如果所有断言都通过，那么您的题解将被 <strong>通过</strong>。</p>
 <p><strong>示例 1：</strong></p>
@@ -298,13 +410,13 @@
 <li>且<code>slow</code>指针和<code>fast</code>指针应该从索引为1的地方开始遍历，因为数组的第一个元素不需要考虑是否存在重复项</li>
 </ol>
 <p>实现代码如下：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">removeDuplicates</span><span class="params">(<span class="type">int</span>[] nums)</span> &#123;</span><br><span class="line">       <span class="comment">// 使用快慢指针 保持元素的相对顺序一致</span></span><br><span class="line">       <span class="type">int</span> <span class="variable">slow</span> <span class="operator">=</span> <span class="number">1</span>;  <span class="comment">// 从索引为1开始 新数组肯定包含旧数组的第一个元素</span></span><br><span class="line">       <span class="type">int</span> fast;</span><br><span class="line">       <span class="type">int</span> <span class="variable">val</span> <span class="operator">=</span> nums[<span class="number">0</span>]; <span class="comment">// 保留数组第一个元素的值进行 用于判断是否有重复项</span></span><br><span class="line">       <span class="keyword">for</span> (fast = <span class="number">1</span>; fast &lt; nums.length; ++fast) &#123;</span><br><span class="line">          <span class="keyword">if</span> (nums[fast] != val) &#123;</span><br><span class="line">             <span class="comment">// 出现不重复项 保存到新数组中 并更新重复值</span></span><br><span class="line">             val = nums[fast];</span><br><span class="line">             nums[slow++] = val;</span><br><span class="line">          &#125;</span><br><span class="line">       &#125;</span><br><span class="line">       <span class="comment">// 再保存新数组最后一个元素后 slow指针值刚好为新数组的元素个数</span></span><br><span class="line">       <span class="keyword">return</span> slow;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> {</span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">removeDuplicates</span><span class="params">(<span class="type">int</span>[] nums)</span> {</span><br><span class="line">       <span class="comment">// 使用快慢指针 保持元素的相对顺序一致</span></span><br><span class="line">       <span class="type">int</span> <span class="variable">slow</span> <span class="operator">=</span> <span class="number">1</span>;  <span class="comment">// 从索引为1开始 新数组肯定包含旧数组的第一个元素</span></span><br><span class="line">       <span class="type">int</span> fast;</span><br><span class="line">       <span class="type">int</span> <span class="variable">val</span> <span class="operator">=</span> nums[<span class="number">0</span>]; <span class="comment">// 保留数组第一个元素的值进行 用于判断是否有重复项</span></span><br><span class="line">       <span class="keyword">for</span> (fast = <span class="number">1</span>; fast &lt; nums.length; ++fast) {</span><br><span class="line">          <span class="keyword">if</span> (nums[fast] != val) {</span><br><span class="line">             <span class="comment">// 出现不重复项 保存到新数组中 并更新重复值</span></span><br><span class="line">             val = nums[fast];</span><br><span class="line">             nums[slow++] = val;</span><br><span class="line">          }</span><br><span class="line">       }</span><br><span class="line">       <span class="comment">// 再保存新数组最后一个元素后 slow指针值刚好为新数组的元素个数</span></span><br><span class="line">       <span class="keyword">return</span> slow;</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></table></figure>
 
 <p>提交结果如下：</p>
 <figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">第一次提交结果：</span><br><span class="line">解答成功:</span><br><span class="line">	执行耗时:1 ms,击败了27.24% 的Java用户</span><br><span class="line">	内存消耗:43.3 MB,击败了5.07% 的Java用户</span><br><span class="line">第二次提交结果：</span><br><span class="line">解答成功:</span><br><span class="line">	执行耗时:0 ms,击败了100.00% 的Java用户</span><br><span class="line">	内存消耗:43.1 MB,击败了9.89% 的Java用户</span><br></pre></td></tr></table></figure>
 
 <p>对以上代码再进行优化，如下：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">removeDuplicates</span><span class="params">(<span class="type">int</span>[] nums)</span> &#123;</span><br><span class="line">       <span class="comment">// 使用快慢指针 保持元素的相对顺序一致</span></span><br><span class="line">       <span class="type">int</span> <span class="variable">slow</span> <span class="operator">=</span> <span class="number">1</span>;  <span class="comment">// 从索引为1开始 新数组肯定包含旧数组的第一个元素</span></span><br><span class="line">       <span class="type">int</span> fast;</span><br><span class="line">       <span class="keyword">for</span> (fast = <span class="number">1</span>; fast &lt; nums.length; ++fast) &#123;</span><br><span class="line">          <span class="keyword">if</span> (nums[fast] != nums[fast-<span class="number">1</span>]) &#123;</span><br><span class="line">             <span class="comment">// 前项与后项不一致 则说明找到新数组的元素 将其保存到新数组中</span></span><br><span class="line">             nums[slow++] = nums[fast];</span><br><span class="line">          &#125;</span><br><span class="line">       &#125;</span><br><span class="line">       <span class="comment">// 再保存新数组最后一个元素后 slow指针值刚好为新数组的元素个数</span></span><br><span class="line">       <span class="keyword">return</span> slow;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> {</span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">removeDuplicates</span><span class="params">(<span class="type">int</span>[] nums)</span> {</span><br><span class="line">       <span class="comment">// 使用快慢指针 保持元素的相对顺序一致</span></span><br><span class="line">       <span class="type">int</span> <span class="variable">slow</span> <span class="operator">=</span> <span class="number">1</span>;  <span class="comment">// 从索引为1开始 新数组肯定包含旧数组的第一个元素</span></span><br><span class="line">       <span class="type">int</span> fast;</span><br><span class="line">       <span class="keyword">for</span> (fast = <span class="number">1</span>; fast &lt; nums.length; ++fast) {</span><br><span class="line">          <span class="keyword">if</span> (nums[fast] != nums[fast-<span class="number">1</span>]) {</span><br><span class="line">             <span class="comment">// 前项与后项不一致 则说明找到新数组的元素 将其保存到新数组中</span></span><br><span class="line">             nums[slow++] = nums[fast];</span><br><span class="line">          }</span><br><span class="line">       }</span><br><span class="line">       <span class="comment">// 再保存新数组最后一个元素后 slow指针值刚好为新数组的元素个数</span></span><br><span class="line">       <span class="keyword">return</span> slow;</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></table></figure>
 
 <p>复杂度分析：</p>
 <ul>
@@ -312,7 +424,7 @@
 <li>空间复杂度分析：O(1)</li>
 </ul>
 <p>再对以上双指针代码进行优化，如下：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">removeDuplicates</span><span class="params">(<span class="type">int</span>[] nums)</span> &#123;</span><br><span class="line">       <span class="comment">// 使用快慢指针 保持元素的相对顺序一致</span></span><br><span class="line">       <span class="type">int</span> <span class="variable">slow</span> <span class="operator">=</span> <span class="number">1</span>;  <span class="comment">// 从索引为1开始 新数组肯定包含旧数组的第一个元素</span></span><br><span class="line">       <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">fast</span> <span class="operator">=</span> <span class="number">1</span>; fast &lt; nums.length; ++fast) &#123;</span><br><span class="line">          <span class="keyword">if</span> (nums[fast] != nums[slow-<span class="number">1</span>]) &#123;</span><br><span class="line">              <span class="comment">// 出现与新数组中不重复的项(注意slow-1 才是指向上次添加的新数组元素位置)</span></span><br><span class="line">             <span class="keyword">if</span> (fast-slow &gt; <span class="number">0</span>)		<span class="comment">// 增加一次判断 避免原数组不含有重复项时 重新赋值一遍</span></span><br><span class="line">                nums[slow] = nums[fast];</span><br><span class="line">             slow ++;</span><br><span class="line">          &#125;</span><br><span class="line">       &#125;</span><br><span class="line">       <span class="comment">// 再保存新数组最后一个元素后 slow指针值刚好为新数组的元素个数</span></span><br><span class="line">       <span class="keyword">return</span> slow;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> {</span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">removeDuplicates</span><span class="params">(<span class="type">int</span>[] nums)</span> {</span><br><span class="line">       <span class="comment">// 使用快慢指针 保持元素的相对顺序一致</span></span><br><span class="line">       <span class="type">int</span> <span class="variable">slow</span> <span class="operator">=</span> <span class="number">1</span>;  <span class="comment">// 从索引为1开始 新数组肯定包含旧数组的第一个元素</span></span><br><span class="line">       <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">fast</span> <span class="operator">=</span> <span class="number">1</span>; fast &lt; nums.length; ++fast) {</span><br><span class="line">          <span class="keyword">if</span> (nums[fast] != nums[slow-<span class="number">1</span>]) {</span><br><span class="line">              <span class="comment">// 出现与新数组中不重复的项(注意slow-1 才是指向上次添加的新数组元素位置)</span></span><br><span class="line">             <span class="keyword">if</span> (fast-slow &gt; <span class="number">0</span>)		<span class="comment">// 增加一次判断 避免原数组不含有重复项时 重新赋值一遍</span></span><br><span class="line">                nums[slow] = nums[fast];</span><br><span class="line">             slow ++;</span><br><span class="line">          }</span><br><span class="line">       }</span><br><span class="line">       <span class="comment">// 再保存新数组最后一个元素后 slow指针值刚好为新数组的元素个数</span></span><br><span class="line">       <span class="keyword">return</span> slow;</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></table></figure>
 
 <p>进行以上优化后，<code>if (fast-slow &gt; 0)</code>才进行赋值的判断，减少了 当数组为<code>[1, 2, 3, 4, 5]</code>这样不含重复项的数组时，重新赋值一遍的赋值开销，同时<code>nums[fast] != nums[slow-1]</code>也显得更加清晰简洁。</p>
 

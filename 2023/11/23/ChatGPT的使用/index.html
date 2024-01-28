@@ -32,7 +32,119 @@
     KEEP.language_code_block = {"copy":"复制代码","copied":"已复制","fold":"折叠代码块","folded":"已折叠"}
     KEEP.language_copy_copyright = {"copy":"复制版权信息","copied":"已复制","title":"原文标题","author":"原文作者","link":"原文链接"}
   </script>
-<meta name="generator" content="Hexo 7.1.1"></head>
+<meta name="generator" content="Hexo 7.1.1"><style>mjx-container[jax="SVG"] {
+  direction: ltr;
+}
+
+mjx-container[jax="SVG"] > svg {
+  overflow: visible;
+}
+
+mjx-container[jax="SVG"][display="true"] {
+  display: block;
+  text-align: center;
+  margin: 1em 0;
+}
+
+mjx-container[jax="SVG"][justify="left"] {
+  text-align: left;
+}
+
+mjx-container[jax="SVG"][justify="right"] {
+  text-align: right;
+}
+
+g[data-mml-node="merror"] > g {
+  fill: red;
+  stroke: red;
+}
+
+g[data-mml-node="merror"] > rect[data-background] {
+  fill: yellow;
+  stroke: none;
+}
+
+g[data-mml-node="mtable"] > line[data-line] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > rect[data-frame] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > .mjx-dashed {
+  stroke-dasharray: 140;
+}
+
+g[data-mml-node="mtable"] > .mjx-dotted {
+  stroke-linecap: round;
+  stroke-dasharray: 0,140;
+}
+
+g[data-mml-node="mtable"] > svg {
+  overflow: visible;
+}
+
+[jax="SVG"] mjx-tool {
+  display: inline-block;
+  position: relative;
+  width: 0;
+  height: 0;
+}
+
+[jax="SVG"] mjx-tool > mjx-tip {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+mjx-tool > mjx-tip {
+  display: inline-block;
+  padding: .2em;
+  border: 1px solid #888;
+  font-size: 70%;
+  background-color: #F8F8F8;
+  color: black;
+  box-shadow: 2px 2px 5px #AAAAAA;
+}
+
+g[data-mml-node="maction"][data-toggle] {
+  cursor: pointer;
+}
+
+mjx-status {
+  display: block;
+  position: fixed;
+  left: 1em;
+  bottom: 1em;
+  min-width: 25%;
+  padding: .2em .4em;
+  border: 1px solid #888;
+  font-size: 90%;
+  background-color: #F8F8F8;
+  color: black;
+}
+
+foreignObject[data-mjx-xml] {
+  font-family: initial;
+  line-height: normal;
+  overflow: visible;
+}
+
+.MathJax path {
+  stroke-width: 3;
+}
+
+mjx-container[display="true"] {
+  overflow: auto hidden;
+}
+
+mjx-container[display="true"] + br {
+  display: none;
+}
+</style></head>
 
 
 <body>
@@ -269,47 +381,17 @@
 <p>向AI询问问题，最首先的就是要把问题说清楚。</p>
 <p>因此，我们为了让AI模型输出更准确的答案，所使用的那些提问题的技巧和方法就是提示词工程。合适的提示词，能够引导GPT模型生成有针对性且高质量的回复。</p>
 <h2 id="常用的提示词六大类"><a href="#常用的提示词六大类" class="headerlink" title="常用的提示词六大类"></a>常用的提示词六大类</h2><h3 id="信息检索类Prompt"><a href="#信息检索类Prompt" class="headerlink" title="信息检索类Prompt"></a>信息检索类Prompt</h3><p>向ChatGPT询问某些固有的知识，比如输入：“乔治·华盛顿是哪一年出生的？”</p>
-<p><img  
-                       lazyload
-                       alt="image"
-                       data-src="https://github.com/YTAZWC/picx-images-hosting/raw/master/ChatGPT%E7%9A%84%E4%BD%BF%E7%94%A8/1700745592671.webp"
-                        alt="1700745592671"
-                 ></p>
+<p><img lazyload="" alt="1700745592671" data-src="https://github.com/YTAZWC/picx-images-hosting/raw/master/ChatGPT%E7%9A%84%E4%BD%BF%E7%94%A8/1700745592671.webp"></p>
 <h3 id="文本生成类Prompt"><a href="#文本生成类Prompt" class="headerlink" title="文本生成类Prompt"></a>文本生成类Prompt</h3><p>让ChatGPT根据特定要求来生成文本，比如：“我今天发烧40度，无法去上班，请向我的领导写一封请假信，要求字数在300字以内”</p>
-<p><img  
-                       lazyload
-                       alt="image"
-                       data-src="https://github.com/YTAZWC/picx-images-hosting/raw/master/ChatGPT%E7%9A%84%E4%BD%BF%E7%94%A8/1700745738206.webp"
-                        alt="1700745738206"
-                 ></p>
+<p><img lazyload="" alt="1700745738206" data-src="https://github.com/YTAZWC/picx-images-hosting/raw/master/ChatGPT%E7%9A%84%E4%BD%BF%E7%94%A8/1700745738206.webp"></p>
 <h3 id="机器翻译类Prompt"><a href="#机器翻译类Prompt" class="headerlink" title="机器翻译类Prompt"></a>机器翻译类Prompt</h3><p>给定某种语言的内容，让ChatGPT翻译成另一种语言，比如：“请将‘the secret of a happy old age is nothing else but a decent agreement with loneliness.’从英语翻译成中文”</p>
-<p><img  
-                       lazyload
-                       alt="image"
-                       data-src="https://github.com/YTAZWC/picx-images-hosting/raw/master/ChatGPT%E7%9A%84%E4%BD%BF%E7%94%A8/1700745948657.webp"
-                        alt="1700745948657"
-                 ></p>
+<p><img lazyload="" alt="1700745948657" data-src="https://github.com/YTAZWC/picx-images-hosting/raw/master/ChatGPT%E7%9A%84%E4%BD%BF%E7%94%A8/1700745948657.webp"></p>
 <h3 id="创意写作类Prompt"><a href="#创意写作类Prompt" class="headerlink" title="创意写作类Prompt"></a>创意写作类Prompt</h3><p>提出具有开放性的要求，让ChatGPT创作，比如：“写一个以美国南北战争为历史背景的短篇爱情小说，要求字数2000字以内。”</p>
-<p><img  
-                       lazyload
-                       alt="image"
-                       data-src="https://github.com/YTAZWC/picx-images-hosting/raw/master/ChatGPT%E7%9A%84%E4%BD%BF%E7%94%A8/1700746181201.webp"
-                        alt="1700746181201"
-                 ></p>
+<p><img lazyload="" alt="1700746181201" data-src="https://github.com/YTAZWC/picx-images-hosting/raw/master/ChatGPT%E7%9A%84%E4%BD%BF%E7%94%A8/1700746181201.webp"></p>
 <h3 id="文本摘要类Prompt"><a href="#文本摘要类Prompt" class="headerlink" title="文本摘要类Prompt"></a>文本摘要类Prompt</h3><p>指定一篇文章，让ChatGPT提炼出文章的核心要点，比如以刚刚输出的故事文章进行提炼。</p>
-<p><img  
-                       lazyload
-                       alt="image"
-                       data-src="https://github.com/YTAZWC/picx-images-hosting/raw/master/ChatGPT%E7%9A%84%E4%BD%BF%E7%94%A8/1700746323991.webp"
-                        alt="1700746323991"
-                 ></p>
+<p><img lazyload="" alt="1700746323991" data-src="https://github.com/YTAZWC/picx-images-hosting/raw/master/ChatGPT%E7%9A%84%E4%BD%BF%E7%94%A8/1700746323991.webp"></p>
 <h3 id="咨询建议类Prompt"><a href="#咨询建议类Prompt" class="headerlink" title="咨询建议类Prompt"></a>咨询建议类Prompt</h3><p>列举现实情况，向ChatGPT提供咨询建议，比如：“我是一个21岁的北京女大学生，我喜欢上了同班爱打篮球的男同学，我应该怎样向他表白？”</p>
-<p><img  
-                       lazyload
-                       alt="image"
-                       data-src="https://github.com/YTAZWC/picx-images-hosting/raw/master/ChatGPT%E7%9A%84%E4%BD%BF%E7%94%A8/1700746486978.webp"
-                        alt="1700746486978"
-                 ></p>
+<p><img lazyload="" alt="1700746486978" data-src="https://github.com/YTAZWC/picx-images-hosting/raw/master/ChatGPT%E7%9A%84%E4%BD%BF%E7%94%A8/1700746486978.webp"></p>
 <h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>想要提出好的问题，首先明确提示词的种类，然后对症下药。</p>
 <h2 id="Prompt需要包含的四大组成部分"><a href="#Prompt需要包含的四大组成部分" class="headerlink" title="Prompt需要包含的四大组成部分"></a>Prompt需要包含的四大组成部分</h2><h3 id="任务"><a href="#任务" class="headerlink" title="任务"></a>任务</h3><p>即用户希望模型完成的具体工作，如回答问题、提供建议。</p>
 <h3 id="上下文"><a href="#上下文" class="headerlink" title="上下文"></a>上下文</h3><p>有助于模型理解任务的背景信息，如相关领域知识、具体场景等。</p>
@@ -324,14 +406,9 @@
 <li>角色是“目组的负责人”</li>
 </ul>
 <p>示例结果如下：</p>
-<p><img  
-                       lazyload
-                       alt="image"
-                       data-src="https://github.com/YTAZWC/picx-images-hosting/raw/master/ChatGPT%E7%9A%84%E4%BD%BF%E7%94%A8/1700747362349.webp"
-                        alt="1700747362349"
-                 ></p>
-<h1 id="参考学习文章"><a href="#参考学习文章" class="headerlink" title="参考学习文章"></a>参考学习文章</h1><p><a class="link"   target="_blank" rel="noopener" href="https://xiaobot.net/p/ai666" >每个人的AI学习手册 (xiaobot.net)<i class="fas fa-external-link-alt"></i></a></p>
-<p><a class="link"   target="_blank" rel="noopener" href="https://xiaobot.net/post/a7cc3cc5-d38e-4083-be22-73eef5c95795" >第10讲：如何更好地提问？ (xiaobot.net)<i class="fas fa-external-link-alt"></i></a></p>
+<p><img lazyload="" alt="1700747362349" data-src="https://github.com/YTAZWC/picx-images-hosting/raw/master/ChatGPT%E7%9A%84%E4%BD%BF%E7%94%A8/1700747362349.webp"></p>
+<h1 id="参考学习文章"><a href="#参考学习文章" class="headerlink" title="参考学习文章"></a>参考学习文章</h1><p><a class="link" target="_blank" rel="noopener" href="https://xiaobot.net/p/ai666">每个人的AI学习手册 (xiaobot.net)<i class="fas fa-external-link-alt"></i></a></p>
+<p><a class="link" target="_blank" rel="noopener" href="https://xiaobot.net/post/a7cc3cc5-d38e-4083-be22-73eef5c95795">第10讲：如何更好地提问？ (xiaobot.net)<i class="fas fa-external-link-alt"></i></a></p>
 
                 </div>
 

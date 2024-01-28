@@ -32,7 +32,119 @@
     KEEP.language_code_block = {"copy":"复制代码","copied":"已复制","fold":"折叠代码块","folded":"已折叠"}
     KEEP.language_copy_copyright = {"copy":"复制版权信息","copied":"已复制","title":"原文标题","author":"原文作者","link":"原文链接"}
   </script>
-<meta name="generator" content="Hexo 7.1.1"></head>
+<meta name="generator" content="Hexo 7.1.1"><style>mjx-container[jax="SVG"] {
+  direction: ltr;
+}
+
+mjx-container[jax="SVG"] > svg {
+  overflow: visible;
+}
+
+mjx-container[jax="SVG"][display="true"] {
+  display: block;
+  text-align: center;
+  margin: 1em 0;
+}
+
+mjx-container[jax="SVG"][justify="left"] {
+  text-align: left;
+}
+
+mjx-container[jax="SVG"][justify="right"] {
+  text-align: right;
+}
+
+g[data-mml-node="merror"] > g {
+  fill: red;
+  stroke: red;
+}
+
+g[data-mml-node="merror"] > rect[data-background] {
+  fill: yellow;
+  stroke: none;
+}
+
+g[data-mml-node="mtable"] > line[data-line] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > rect[data-frame] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > .mjx-dashed {
+  stroke-dasharray: 140;
+}
+
+g[data-mml-node="mtable"] > .mjx-dotted {
+  stroke-linecap: round;
+  stroke-dasharray: 0,140;
+}
+
+g[data-mml-node="mtable"] > svg {
+  overflow: visible;
+}
+
+[jax="SVG"] mjx-tool {
+  display: inline-block;
+  position: relative;
+  width: 0;
+  height: 0;
+}
+
+[jax="SVG"] mjx-tool > mjx-tip {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+mjx-tool > mjx-tip {
+  display: inline-block;
+  padding: .2em;
+  border: 1px solid #888;
+  font-size: 70%;
+  background-color: #F8F8F8;
+  color: black;
+  box-shadow: 2px 2px 5px #AAAAAA;
+}
+
+g[data-mml-node="maction"][data-toggle] {
+  cursor: pointer;
+}
+
+mjx-status {
+  display: block;
+  position: fixed;
+  left: 1em;
+  bottom: 1em;
+  min-width: 25%;
+  padding: .2em .4em;
+  border: 1px solid #888;
+  font-size: 90%;
+  background-color: #F8F8F8;
+  color: black;
+}
+
+foreignObject[data-mjx-xml] {
+  font-family: initial;
+  line-height: normal;
+  overflow: visible;
+}
+
+.MathJax path {
+  stroke-width: 3;
+}
+
+mjx-container[display="true"] {
+  overflow: auto hidden;
+}
+
+mjx-container[display="true"] + br {
+  display: none;
+}
+</style></head>
 
 
 <body>
@@ -268,24 +380,14 @@
                 <div class="post-content keep-markdown-body">
                     
 
-                    <h1 id="螺旋矩阵"><a href="#螺旋矩阵" class="headerlink" title="螺旋矩阵"></a>螺旋矩阵</h1><p><a class="link"   target="_blank" rel="noopener" href="https://leetcode.cn/problems/spiral-matrix/" >54. 螺旋矩阵 - 力扣（LeetCode）<i class="fas fa-external-link-alt"></i></a></p>
+                    <h1 id="螺旋矩阵"><a href="#螺旋矩阵" class="headerlink" title="螺旋矩阵"></a>螺旋矩阵</h1><p><a class="link" target="_blank" rel="noopener" href="https://leetcode.cn/problems/spiral-matrix/">54. 螺旋矩阵 - 力扣（LeetCode）<i class="fas fa-external-link-alt"></i></a></p>
 <p>给你一个 <code>m</code> 行 <code>n</code> 列的矩阵 <code>matrix</code> ，请按照 <strong>顺时针螺旋顺序</strong> ，返回矩阵中的所有元素。</p>
 <p><strong>示例 1：</strong></p>
-<p><img  
-                       lazyload
-                       alt="image"
-                       data-src="https://assets.leetcode.com/uploads/2020/11/13/spiral1.jpg"
-                       
-                 ></p>
-<p><strong>输入：</strong> matrix &#x3D; [[1,2,3],[4,5,6],[7,8,9]]<br><strong>输出：</strong>[1,2,3,6,9,8,7,4,5]</p>
+<p><img lazyload="" alt="image" data-src="https://assets.leetcode.com/uploads/2020/11/13/spiral1.jpg"></p>
+<p><strong>输入：</strong> matrix = [[1,2,3],[4,5,6],[7,8,9]]<br><strong>输出：</strong>[1,2,3,6,9,8,7,4,5]</p>
 <p><strong>示例 2：</strong></p>
-<p><img  
-                       lazyload
-                       alt="image"
-                       data-src="https://assets.leetcode.com/uploads/2020/11/13/spiral.jpg"
-                       
-                 ></p>
-<p><strong>输入：</strong> matrix &#x3D; [[1,2,3,4],[5,6,7,8],[9,10,11,12]]<br><strong>输出：</strong>[1,2,3,4,8,12,11,10,9,5,6,7]</p>
+<p><img lazyload="" alt="image" data-src="https://assets.leetcode.com/uploads/2020/11/13/spiral.jpg"></p>
+<p><strong>输入：</strong> matrix = [[1,2,3,4],[5,6,7,8],[9,10,11,12]]<br><strong>输出：</strong>[1,2,3,4,8,12,11,10,9,5,6,7]</p>
 <p><strong>提示：</strong></p>
 <ul>
 <li><code>m == matrix.length</code></li>
@@ -301,7 +403,7 @@
 </li>
 </ol>
 <p>实现代码如下：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> List&lt;Integer&gt; <span class="title function_">spiralOrder</span><span class="params">(<span class="type">int</span>[][] matrix)</span> &#123;</span><br><span class="line">        List&lt;Integer&gt; ans = <span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;&gt;();</span><br><span class="line">        <span class="type">int</span> <span class="variable">t</span> <span class="operator">=</span> <span class="number">0</span>;        <span class="comment">// 上边边界</span></span><br><span class="line">        <span class="type">int</span> <span class="variable">b</span> <span class="operator">=</span> matrix.length - <span class="number">1</span>;    <span class="comment">// 下边边界</span></span><br><span class="line">        <span class="type">int</span> <span class="variable">l</span> <span class="operator">=</span> <span class="number">0</span>;        <span class="comment">// 左边边界</span></span><br><span class="line">        <span class="type">int</span> <span class="variable">r</span> <span class="operator">=</span> matrix[<span class="number">0</span>].length - <span class="number">1</span>;    <span class="comment">// 右边边界</span></span><br><span class="line">        <span class="type">int</span> <span class="variable">s</span> <span class="operator">=</span> (b+<span class="number">1</span>)*(r+<span class="number">1</span>);    <span class="comment">// 矩阵元素总数</span></span><br><span class="line">        <span class="type">int</span> <span class="variable">k</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">while</span> (k &lt; s) &#123;</span><br><span class="line">            <span class="comment">// 上边 从左往右 </span></span><br><span class="line">            <span class="comment">// 当矩阵长宽不等时，会导致多添加元素，用k&lt;s来避免</span></span><br><span class="line">            <span class="comment">// k &lt; s 保证只添加一遍matrix中的元素到ans中</span></span><br><span class="line">            <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">j</span> <span class="operator">=</span> l; j &lt;= r &amp;&amp; k &lt; s; ++j, ++k) &#123;</span><br><span class="line">                ans.add(matrix[t][j]);</span><br><span class="line">            &#125;</span><br><span class="line">            ++ t;</span><br><span class="line">            <span class="comment">// 右边 从上往下</span></span><br><span class="line">            <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> t; i &lt;= b &amp;&amp; k &lt; s; ++i, ++k) &#123;</span><br><span class="line">                ans.add(matrix[i][r]);</span><br><span class="line">            &#125;</span><br><span class="line">            -- r;</span><br><span class="line">            <span class="comment">// 下边 从右往左</span></span><br><span class="line">            <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">j</span> <span class="operator">=</span> r; j &gt;= l &amp;&amp; k &lt; s; --j, ++k) &#123;</span><br><span class="line">                ans.add(matrix[b][j]);</span><br><span class="line">            &#125;</span><br><span class="line">            -- b;</span><br><span class="line">            <span class="comment">// 左边 从下往上</span></span><br><span class="line">            <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> b; i &gt;= t &amp;&amp; k &lt; s; --i, ++k) &#123;</span><br><span class="line">                ans.add(matrix[i][l]);</span><br><span class="line">            &#125;</span><br><span class="line">            ++ l;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> ans;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> {</span><br><span class="line">    <span class="keyword">public</span> List&lt;Integer&gt; <span class="title function_">spiralOrder</span><span class="params">(<span class="type">int</span>[][] matrix)</span> {</span><br><span class="line">        List&lt;Integer&gt; ans = <span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;&gt;();</span><br><span class="line">        <span class="type">int</span> <span class="variable">t</span> <span class="operator">=</span> <span class="number">0</span>;        <span class="comment">// 上边边界</span></span><br><span class="line">        <span class="type">int</span> <span class="variable">b</span> <span class="operator">=</span> matrix.length - <span class="number">1</span>;    <span class="comment">// 下边边界</span></span><br><span class="line">        <span class="type">int</span> <span class="variable">l</span> <span class="operator">=</span> <span class="number">0</span>;        <span class="comment">// 左边边界</span></span><br><span class="line">        <span class="type">int</span> <span class="variable">r</span> <span class="operator">=</span> matrix[<span class="number">0</span>].length - <span class="number">1</span>;    <span class="comment">// 右边边界</span></span><br><span class="line">        <span class="type">int</span> <span class="variable">s</span> <span class="operator">=</span> (b+<span class="number">1</span>)*(r+<span class="number">1</span>);    <span class="comment">// 矩阵元素总数</span></span><br><span class="line">        <span class="type">int</span> <span class="variable">k</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">while</span> (k &lt; s) {</span><br><span class="line">            <span class="comment">// 上边 从左往右 </span></span><br><span class="line">            <span class="comment">// 当矩阵长宽不等时，会导致多添加元素，用k&lt;s来避免</span></span><br><span class="line">            <span class="comment">// k &lt; s 保证只添加一遍matrix中的元素到ans中</span></span><br><span class="line">            <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">j</span> <span class="operator">=</span> l; j &lt;= r &amp;&amp; k &lt; s; ++j, ++k) {</span><br><span class="line">                ans.add(matrix[t][j]);</span><br><span class="line">            }</span><br><span class="line">            ++ t;</span><br><span class="line">            <span class="comment">// 右边 从上往下</span></span><br><span class="line">            <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> t; i &lt;= b &amp;&amp; k &lt; s; ++i, ++k) {</span><br><span class="line">                ans.add(matrix[i][r]);</span><br><span class="line">            }</span><br><span class="line">            -- r;</span><br><span class="line">            <span class="comment">// 下边 从右往左</span></span><br><span class="line">            <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">j</span> <span class="operator">=</span> r; j &gt;= l &amp;&amp; k &lt; s; --j, ++k) {</span><br><span class="line">                ans.add(matrix[b][j]);</span><br><span class="line">            }</span><br><span class="line">            -- b;</span><br><span class="line">            <span class="comment">// 左边 从下往上</span></span><br><span class="line">            <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> b; i &gt;= t &amp;&amp; k &lt; s; --i, ++k) {</span><br><span class="line">                ans.add(matrix[i][l]);</span><br><span class="line">            }</span><br><span class="line">            ++ l;</span><br><span class="line">        }</span><br><span class="line">        <span class="keyword">return</span> ans;</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></table></figure>
 
 <p>提交结果如下：</p>
 <figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">解答成功:</span><br><span class="line">    执行耗时:0 ms,击败了100.00% 的Java用户</span><br><span class="line">    内存消耗:39.4 MB,击败了83.03% 的Java用户</span><br></pre></td></tr></table></figure>
@@ -315,7 +417,7 @@
 </ul>
 <h3 id="优化解法一-减少变量"><a href="#优化解法一-减少变量" class="headerlink" title="优化解法一(减少变量)"></a>优化解法一(减少变量)</h3><p>思路：可以不用再使用变量<code>k</code>来标记遍历的位置，在<code>while</code>中添加判断，若遍历完则退出；也避免了矩阵长和宽不相等时，会出现重复遍历元素的情况。</p>
 <p>实现代码如下：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> List&lt;Integer&gt; <span class="title function_">spiralOrder</span><span class="params">(<span class="type">int</span>[][] matrix)</span> &#123;</span><br><span class="line">        List&lt;Integer&gt; ans = <span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;&gt;();</span><br><span class="line">        <span class="type">int</span> <span class="variable">t</span> <span class="operator">=</span> <span class="number">0</span>;        <span class="comment">// 上边边界</span></span><br><span class="line">        <span class="type">int</span> <span class="variable">b</span> <span class="operator">=</span> matrix.length - <span class="number">1</span>;    <span class="comment">// 下边边界</span></span><br><span class="line">        <span class="type">int</span> <span class="variable">l</span> <span class="operator">=</span> <span class="number">0</span>;        <span class="comment">// 左边边界</span></span><br><span class="line">        <span class="type">int</span> <span class="variable">r</span> <span class="operator">=</span> matrix[<span class="number">0</span>].length - <span class="number">1</span>;    <span class="comment">// 右边边界</span></span><br><span class="line">        <span class="keyword">while</span> (<span class="literal">true</span>) &#123;</span><br><span class="line">            <span class="comment">// 上边 从左往右</span></span><br><span class="line">            <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">j</span> <span class="operator">=</span> l; j &lt;= r; ++j) &#123;</span><br><span class="line">                ans.add(matrix[t][j]);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span> (++ t &gt; b) <span class="keyword">break</span>; <span class="comment">// 已经遍历完则退出循环</span></span><br><span class="line">            <span class="comment">// 右边 从上往下</span></span><br><span class="line">            <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> t; i &lt;= b; ++i) &#123;</span><br><span class="line">                ans.add(matrix[i][r]);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span> (-- r &lt; l) <span class="keyword">break</span>;</span><br><span class="line">            <span class="comment">// 下边 从右往左</span></span><br><span class="line">            <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">j</span> <span class="operator">=</span> r; j &gt;= l; --j) &#123;</span><br><span class="line">                ans.add(matrix[b][j]);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span> (-- b &lt; t) <span class="keyword">break</span>;</span><br><span class="line">            <span class="comment">// 左边 从下往上</span></span><br><span class="line">            <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> b; i &gt;= t; --i) &#123;</span><br><span class="line">                ans.add(matrix[i][l]);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span> (++ l &gt; r) <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> ans;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> {</span><br><span class="line">    <span class="keyword">public</span> List&lt;Integer&gt; <span class="title function_">spiralOrder</span><span class="params">(<span class="type">int</span>[][] matrix)</span> {</span><br><span class="line">        List&lt;Integer&gt; ans = <span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;&gt;();</span><br><span class="line">        <span class="type">int</span> <span class="variable">t</span> <span class="operator">=</span> <span class="number">0</span>;        <span class="comment">// 上边边界</span></span><br><span class="line">        <span class="type">int</span> <span class="variable">b</span> <span class="operator">=</span> matrix.length - <span class="number">1</span>;    <span class="comment">// 下边边界</span></span><br><span class="line">        <span class="type">int</span> <span class="variable">l</span> <span class="operator">=</span> <span class="number">0</span>;        <span class="comment">// 左边边界</span></span><br><span class="line">        <span class="type">int</span> <span class="variable">r</span> <span class="operator">=</span> matrix[<span class="number">0</span>].length - <span class="number">1</span>;    <span class="comment">// 右边边界</span></span><br><span class="line">        <span class="keyword">while</span> (<span class="literal">true</span>) {</span><br><span class="line">            <span class="comment">// 上边 从左往右</span></span><br><span class="line">            <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">j</span> <span class="operator">=</span> l; j &lt;= r; ++j) {</span><br><span class="line">                ans.add(matrix[t][j]);</span><br><span class="line">            }</span><br><span class="line">            <span class="keyword">if</span> (++ t &gt; b) <span class="keyword">break</span>; <span class="comment">// 已经遍历完则退出循环</span></span><br><span class="line">            <span class="comment">// 右边 从上往下</span></span><br><span class="line">            <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> t; i &lt;= b; ++i) {</span><br><span class="line">                ans.add(matrix[i][r]);</span><br><span class="line">            }</span><br><span class="line">            <span class="keyword">if</span> (-- r &lt; l) <span class="keyword">break</span>;</span><br><span class="line">            <span class="comment">// 下边 从右往左</span></span><br><span class="line">            <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">j</span> <span class="operator">=</span> r; j &gt;= l; --j) {</span><br><span class="line">                ans.add(matrix[b][j]);</span><br><span class="line">            }</span><br><span class="line">            <span class="keyword">if</span> (-- b &lt; t) <span class="keyword">break</span>;</span><br><span class="line">            <span class="comment">// 左边 从下往上</span></span><br><span class="line">            <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> b; i &gt;= t; --i) {</span><br><span class="line">                ans.add(matrix[i][l]);</span><br><span class="line">            }</span><br><span class="line">            <span class="keyword">if</span> (++ l &gt; r) <span class="keyword">break</span>;</span><br><span class="line">        }</span><br><span class="line">        <span class="keyword">return</span> ans;</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></table></figure>
 
 <p>提交结果如下：</p>
 <figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">解答成功:</span><br><span class="line">    执行耗时:0 ms,击败了100.00% 的Java用户</span><br><span class="line">    内存消耗:39.9 MB,击败了5.08% 的Java用户</span><br></pre></td></tr></table></figure>

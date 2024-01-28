@@ -32,7 +32,119 @@
     KEEP.language_code_block = {"copy":"复制代码","copied":"已复制","fold":"折叠代码块","folded":"已折叠"}
     KEEP.language_copy_copyright = {"copy":"复制版权信息","copied":"已复制","title":"原文标题","author":"原文作者","link":"原文链接"}
   </script>
-<meta name="generator" content="Hexo 7.1.1"></head>
+<meta name="generator" content="Hexo 7.1.1"><style>mjx-container[jax="SVG"] {
+  direction: ltr;
+}
+
+mjx-container[jax="SVG"] > svg {
+  overflow: visible;
+}
+
+mjx-container[jax="SVG"][display="true"] {
+  display: block;
+  text-align: center;
+  margin: 1em 0;
+}
+
+mjx-container[jax="SVG"][justify="left"] {
+  text-align: left;
+}
+
+mjx-container[jax="SVG"][justify="right"] {
+  text-align: right;
+}
+
+g[data-mml-node="merror"] > g {
+  fill: red;
+  stroke: red;
+}
+
+g[data-mml-node="merror"] > rect[data-background] {
+  fill: yellow;
+  stroke: none;
+}
+
+g[data-mml-node="mtable"] > line[data-line] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > rect[data-frame] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > .mjx-dashed {
+  stroke-dasharray: 140;
+}
+
+g[data-mml-node="mtable"] > .mjx-dotted {
+  stroke-linecap: round;
+  stroke-dasharray: 0,140;
+}
+
+g[data-mml-node="mtable"] > svg {
+  overflow: visible;
+}
+
+[jax="SVG"] mjx-tool {
+  display: inline-block;
+  position: relative;
+  width: 0;
+  height: 0;
+}
+
+[jax="SVG"] mjx-tool > mjx-tip {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+mjx-tool > mjx-tip {
+  display: inline-block;
+  padding: .2em;
+  border: 1px solid #888;
+  font-size: 70%;
+  background-color: #F8F8F8;
+  color: black;
+  box-shadow: 2px 2px 5px #AAAAAA;
+}
+
+g[data-mml-node="maction"][data-toggle] {
+  cursor: pointer;
+}
+
+mjx-status {
+  display: block;
+  position: fixed;
+  left: 1em;
+  bottom: 1em;
+  min-width: 25%;
+  padding: .2em .4em;
+  border: 1px solid #888;
+  font-size: 90%;
+  background-color: #F8F8F8;
+  color: black;
+}
+
+foreignObject[data-mjx-xml] {
+  font-family: initial;
+  line-height: normal;
+  overflow: visible;
+}
+
+.MathJax path {
+  stroke-width: 3;
+}
+
+mjx-container[display="true"] {
+  overflow: auto hidden;
+}
+
+mjx-container[display="true"] + br {
+  display: none;
+}
+</style></head>
 
 
 <body>
@@ -267,23 +379,13 @@
 
                     <h1 id="反转链表"><a href="#反转链表" class="headerlink" title="反转链表"></a>反转链表</h1><p>给你单链表的头节点 <code>head</code> ，请你反转链表，并返回反转后的链表。</p>
 <p><strong>示例 1：</strong></p>
-<p><img  
-                       lazyload
-                       alt="image"
-                       data-src="https://assets.leetcode.com/uploads/2021/02/19/rev1ex1.jpg"
-                       
-                 ></p>
-<p><strong>输入：</strong> head &#x3D; [1,2,3,4,5]<br><strong>输出：</strong>[5,4,3,2,1]</p>
+<p><img lazyload="" alt="image" data-src="https://assets.leetcode.com/uploads/2021/02/19/rev1ex1.jpg"></p>
+<p><strong>输入：</strong> head = [1,2,3,4,5]<br><strong>输出：</strong>[5,4,3,2,1]</p>
 <p><strong>示例 2：</strong></p>
-<p><img  
-                       lazyload
-                       alt="image"
-                       data-src="https://assets.leetcode.com/uploads/2021/02/19/rev1ex2.jpg"
-                       
-                 ></p>
-<p><strong>输入：</strong> head &#x3D; [1,2]<br><strong>输出：</strong>[2,1]</p>
+<p><img lazyload="" alt="image" data-src="https://assets.leetcode.com/uploads/2021/02/19/rev1ex2.jpg"></p>
+<p><strong>输入：</strong> head = [1,2]<br><strong>输出：</strong>[2,1]</p>
 <p><strong>示例 3：</strong></p>
-<p><strong>输入：</strong> head &#x3D; []<br><strong>输出：</strong>[]</p>
+<p><strong>输入：</strong> head = []<br><strong>输出：</strong>[]</p>
 <p><strong>提示：</strong></p>
 <ul>
 <li>链表中节点的数目范围是 <code>[0, 5000]</code></li>
@@ -300,7 +402,7 @@
 </li>
 </ol>
 <p>实现代码如下：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> ListNode <span class="title function_">reverseList</span><span class="params">(ListNode head)</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (head == <span class="literal">null</span>)    <span class="comment">// head为空 直接返回</span></span><br><span class="line">            <span class="keyword">return</span> <span class="literal">null</span>;</span><br><span class="line">        <span class="comment">// p为q的前一个节点</span></span><br><span class="line">        <span class="type">ListNode</span> <span class="variable">p</span> <span class="operator">=</span> head;</span><br><span class="line">        <span class="type">ListNode</span> <span class="variable">q</span> <span class="operator">=</span> head.next;</span><br><span class="line">        <span class="keyword">while</span> (q != <span class="literal">null</span>) &#123;</span><br><span class="line">            <span class="type">ListNode</span> <span class="variable">t</span> <span class="operator">=</span> q.next;    <span class="comment">// 记录下q的下一个节点</span></span><br><span class="line">            q.next = p;        <span class="comment">// 改变节点的指向 将其反转指向前一个节点</span></span><br><span class="line">            p = q;            <span class="comment">// 重新移动p为 未反转节点的前一个节点</span></span><br><span class="line">            q = t;            <span class="comment">// 移动q到还未反转的节点</span></span><br><span class="line">        &#125;</span><br><span class="line">        head.next = <span class="literal">null</span>;    <span class="comment">// 第一个节点的指向需要改为空</span></span><br><span class="line">        <span class="keyword">return</span> p;        <span class="comment">// 返回新的头节点 即原链表的尾节点</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> {</span><br><span class="line">    <span class="keyword">public</span> ListNode <span class="title function_">reverseList</span><span class="params">(ListNode head)</span> {</span><br><span class="line">        <span class="keyword">if</span> (head == <span class="literal">null</span>)    <span class="comment">// head为空 直接返回</span></span><br><span class="line">            <span class="keyword">return</span> <span class="literal">null</span>;</span><br><span class="line">        <span class="comment">// p为q的前一个节点</span></span><br><span class="line">        <span class="type">ListNode</span> <span class="variable">p</span> <span class="operator">=</span> head;</span><br><span class="line">        <span class="type">ListNode</span> <span class="variable">q</span> <span class="operator">=</span> head.next;</span><br><span class="line">        <span class="keyword">while</span> (q != <span class="literal">null</span>) {</span><br><span class="line">            <span class="type">ListNode</span> <span class="variable">t</span> <span class="operator">=</span> q.next;    <span class="comment">// 记录下q的下一个节点</span></span><br><span class="line">            q.next = p;        <span class="comment">// 改变节点的指向 将其反转指向前一个节点</span></span><br><span class="line">            p = q;            <span class="comment">// 重新移动p为 未反转节点的前一个节点</span></span><br><span class="line">            q = t;            <span class="comment">// 移动q到还未反转的节点</span></span><br><span class="line">        }</span><br><span class="line">        head.next = <span class="literal">null</span>;    <span class="comment">// 第一个节点的指向需要改为空</span></span><br><span class="line">        <span class="keyword">return</span> p;        <span class="comment">// 返回新的头节点 即原链表的尾节点</span></span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></table></figure>
 
 <p>提交结果如下：</p>
 <figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">解答成功:</span><br><span class="line">    执行耗时:0 ms,击败了100.00% 的Java用户</span><br><span class="line">    内存消耗:39.9 MB,击败了91.80% 的Java用户</span><br></pre></td></tr></table></figure>
@@ -324,7 +426,7 @@
 </li>
 </ol>
 <p>实现代码如下：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> ListNode <span class="title function_">reverseList</span><span class="params">(ListNode head)</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (head == <span class="literal">null</span> || head.next == <span class="literal">null</span>)    <span class="comment">// head为空 直接返回</span></span><br><span class="line">            <span class="keyword">return</span> head;</span><br><span class="line">        <span class="type">ListNode</span> <span class="variable">p</span> <span class="operator">=</span> reverseList(head.next);</span><br><span class="line">        head.next.next = head;</span><br><span class="line">        head.next = <span class="literal">null</span>;</span><br><span class="line">        <span class="keyword">return</span> p;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> {</span><br><span class="line">    <span class="keyword">public</span> ListNode <span class="title function_">reverseList</span><span class="params">(ListNode head)</span> {</span><br><span class="line">        <span class="keyword">if</span> (head == <span class="literal">null</span> || head.next == <span class="literal">null</span>)    <span class="comment">// head为空 直接返回</span></span><br><span class="line">            <span class="keyword">return</span> head;</span><br><span class="line">        <span class="type">ListNode</span> <span class="variable">p</span> <span class="operator">=</span> reverseList(head.next);</span><br><span class="line">        head.next.next = head;</span><br><span class="line">        head.next = <span class="literal">null</span>;</span><br><span class="line">        <span class="keyword">return</span> p;</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></table></figure>
 
 <p>提交结果如下：</p>
 <figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">解答成功:</span><br><span class="line">    执行耗时:0 ms,击败了100.00% 的Java用户</span><br><span class="line">    内存消耗:40 MB,击败了83.06% 的Java用户</span><br></pre></td></tr></table></figure>

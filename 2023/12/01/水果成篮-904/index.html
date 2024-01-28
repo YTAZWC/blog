@@ -32,7 +32,119 @@
     KEEP.language_code_block = {"copy":"复制代码","copied":"已复制","fold":"折叠代码块","folded":"已折叠"}
     KEEP.language_copy_copyright = {"copy":"复制版权信息","copied":"已复制","title":"原文标题","author":"原文作者","link":"原文链接"}
   </script>
-<meta name="generator" content="Hexo 7.1.1"></head>
+<meta name="generator" content="Hexo 7.1.1"><style>mjx-container[jax="SVG"] {
+  direction: ltr;
+}
+
+mjx-container[jax="SVG"] > svg {
+  overflow: visible;
+}
+
+mjx-container[jax="SVG"][display="true"] {
+  display: block;
+  text-align: center;
+  margin: 1em 0;
+}
+
+mjx-container[jax="SVG"][justify="left"] {
+  text-align: left;
+}
+
+mjx-container[jax="SVG"][justify="right"] {
+  text-align: right;
+}
+
+g[data-mml-node="merror"] > g {
+  fill: red;
+  stroke: red;
+}
+
+g[data-mml-node="merror"] > rect[data-background] {
+  fill: yellow;
+  stroke: none;
+}
+
+g[data-mml-node="mtable"] > line[data-line] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > rect[data-frame] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > .mjx-dashed {
+  stroke-dasharray: 140;
+}
+
+g[data-mml-node="mtable"] > .mjx-dotted {
+  stroke-linecap: round;
+  stroke-dasharray: 0,140;
+}
+
+g[data-mml-node="mtable"] > svg {
+  overflow: visible;
+}
+
+[jax="SVG"] mjx-tool {
+  display: inline-block;
+  position: relative;
+  width: 0;
+  height: 0;
+}
+
+[jax="SVG"] mjx-tool > mjx-tip {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+mjx-tool > mjx-tip {
+  display: inline-block;
+  padding: .2em;
+  border: 1px solid #888;
+  font-size: 70%;
+  background-color: #F8F8F8;
+  color: black;
+  box-shadow: 2px 2px 5px #AAAAAA;
+}
+
+g[data-mml-node="maction"][data-toggle] {
+  cursor: pointer;
+}
+
+mjx-status {
+  display: block;
+  position: fixed;
+  left: 1em;
+  bottom: 1em;
+  min-width: 25%;
+  padding: .2em .4em;
+  border: 1px solid #888;
+  font-size: 90%;
+  background-color: #F8F8F8;
+  color: black;
+}
+
+foreignObject[data-mjx-xml] {
+  font-family: initial;
+  line-height: normal;
+  overflow: visible;
+}
+
+.MathJax path {
+  stroke-width: 3;
+}
+
+mjx-container[display="true"] {
+  overflow: auto hidden;
+}
+
+mjx-container[display="true"] + br {
+  display: none;
+}
+</style></head>
 
 
 <body>
@@ -268,7 +380,7 @@
                 <div class="post-content keep-markdown-body">
                     
 
-                    <h1 id="水果成篮"><a href="#水果成篮" class="headerlink" title="水果成篮"></a>水果成篮</h1><p><a class="link"   target="_blank" rel="noopener" href="https://leetcode.cn/problems/fruit-into-baskets/" >904. 水果成篮 - 力扣（LeetCode）<i class="fas fa-external-link-alt"></i></a></p>
+                    <h1 id="水果成篮"><a href="#水果成篮" class="headerlink" title="水果成篮"></a>水果成篮</h1><p><a class="link" target="_blank" rel="noopener" href="https://leetcode.cn/problems/fruit-into-baskets/">904. 水果成篮 - 力扣（LeetCode）<i class="fas fa-external-link-alt"></i></a></p>
 <p>你正在探访一家农场，农场从左到右种植了一排果树。这些树用一个整数数组 <code>fruits</code> 表示，其中 <code>fruits[i]</code> 是第 <code>i</code> 棵树上的水果 <strong>种类</strong> 。</p>
 <p>你想要尽可能多地收集水果。然而，农场的主人设定了一些严格的规矩，你必须按照要求采摘水果：</p>
 <ul>
@@ -303,7 +415,7 @@
 <li>最后对于如何确认某种类型的果树是否已经采摘过，可以使用哈希表进行存储和确认</li>
 </ol>
 <p>实现代码如下：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">totalFruit</span><span class="params">(<span class="type">int</span>[] fruits)</span> &#123;</span><br><span class="line">       HashMap&lt;Integer, Integer&gt; hashMap = <span class="keyword">new</span> <span class="title class_">HashMap</span>&lt;&gt;();</span><br><span class="line">       <span class="type">int</span> <span class="variable">s</span> <span class="operator">=</span> <span class="number">0</span>; <span class="comment">// 记录装进篮子水果的起始位置</span></span><br><span class="line">       <span class="type">int</span> <span class="variable">maxNum</span> <span class="operator">=</span> -<span class="number">1</span>;   <span class="comment">// 计算收集水果的最大数目</span></span><br><span class="line">       <span class="type">int</span> <span class="variable">sum</span> <span class="operator">=</span> <span class="number">0</span>;      <span class="comment">// 统计装进篮子的水果数目</span></span><br><span class="line">       <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">e</span> <span class="operator">=</span> <span class="number">0</span>; e &lt; fruits.length; ++ e) &#123;</span><br><span class="line">          <span class="comment">// 摘下水果 并记录水果类型 保存水果数量</span></span><br><span class="line">          hashMap.put(fruits[e], hashMap.getOrDefault(fruits[e], <span class="number">0</span>) + <span class="number">1</span>);</span><br><span class="line">          sum ++;</span><br><span class="line">          <span class="keyword">while</span> (hashMap.size() &gt;= <span class="number">3</span>) &#123;</span><br><span class="line">             <span class="comment">// 水果数量种类超过2 则将放弃左边的水果</span></span><br><span class="line">             hashMap.put(fruits[s], hashMap.get(fruits[s]) - <span class="number">1</span>);</span><br><span class="line">             <span class="keyword">if</span> (hashMap.get(fruits[s]) == <span class="number">0</span>) &#123;    <span class="comment">// 不含有该水果类型时 将该水果类型弹出</span></span><br><span class="line">                hashMap.remove(fruits[s]);</span><br><span class="line">             &#125;</span><br><span class="line">             sum --;</span><br><span class="line">             s ++;</span><br><span class="line">          &#125;</span><br><span class="line">          <span class="comment">// 更新收集的水果的最大数目</span></span><br><span class="line">            maxNum = Math.max(maxNum, sum);</span><br><span class="line">        &#125;</span><br><span class="line">       <span class="keyword">return</span> maxNum;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> {</span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">totalFruit</span><span class="params">(<span class="type">int</span>[] fruits)</span> {</span><br><span class="line">       HashMap&lt;Integer, Integer&gt; hashMap = <span class="keyword">new</span> <span class="title class_">HashMap</span>&lt;&gt;();</span><br><span class="line">       <span class="type">int</span> <span class="variable">s</span> <span class="operator">=</span> <span class="number">0</span>; <span class="comment">// 记录装进篮子水果的起始位置</span></span><br><span class="line">       <span class="type">int</span> <span class="variable">maxNum</span> <span class="operator">=</span> -<span class="number">1</span>;   <span class="comment">// 计算收集水果的最大数目</span></span><br><span class="line">       <span class="type">int</span> <span class="variable">sum</span> <span class="operator">=</span> <span class="number">0</span>;      <span class="comment">// 统计装进篮子的水果数目</span></span><br><span class="line">       <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">e</span> <span class="operator">=</span> <span class="number">0</span>; e &lt; fruits.length; ++ e) {</span><br><span class="line">          <span class="comment">// 摘下水果 并记录水果类型 保存水果数量</span></span><br><span class="line">          hashMap.put(fruits[e], hashMap.getOrDefault(fruits[e], <span class="number">0</span>) + <span class="number">1</span>);</span><br><span class="line">          sum ++;</span><br><span class="line">          <span class="keyword">while</span> (hashMap.size() &gt;= <span class="number">3</span>) {</span><br><span class="line">             <span class="comment">// 水果数量种类超过2 则将放弃左边的水果</span></span><br><span class="line">             hashMap.put(fruits[s], hashMap.get(fruits[s]) - <span class="number">1</span>);</span><br><span class="line">             <span class="keyword">if</span> (hashMap.get(fruits[s]) == <span class="number">0</span>) {    <span class="comment">// 不含有该水果类型时 将该水果类型弹出</span></span><br><span class="line">                hashMap.remove(fruits[s]);</span><br><span class="line">             }</span><br><span class="line">             sum --;</span><br><span class="line">             s ++;</span><br><span class="line">          }</span><br><span class="line">          <span class="comment">// 更新收集的水果的最大数目</span></span><br><span class="line">            maxNum = Math.max(maxNum, sum);</span><br><span class="line">        }</span><br><span class="line">       <span class="keyword">return</span> maxNum;</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></table></figure>
 
 <p>提交结果如下：</p>
 <figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">解答成功:</span><br><span class="line">	执行耗时:47 ms,击败了61.65% 的Java用户</span><br><span class="line">	内存消耗:54 MB,击败了44.54% 的Java用户</span><br></pre></td></tr></table></figure>
@@ -314,7 +426,7 @@
 <li>空间复杂度：O(1)，因为哈希表中对多存储3个键值对，可以看成常数级</li>
 </ul>
 <p>优化：对于其中统计装进篮子的果树数目可以通过窗口边界获得，所以使用<code>e-s+1</code>来获得水果的最大数目，实现代码如下：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">totalFruit</span><span class="params">(<span class="type">int</span>[] fruits)</span> &#123;</span><br><span class="line">       HashMap&lt;Integer, Integer&gt; hashMap = <span class="keyword">new</span> <span class="title class_">HashMap</span>&lt;&gt;();</span><br><span class="line">       <span class="type">int</span> <span class="variable">s</span> <span class="operator">=</span> <span class="number">0</span>; <span class="comment">// 记录装进篮子水果的起始位置</span></span><br><span class="line">       <span class="type">int</span> <span class="variable">maxNum</span> <span class="operator">=</span> -<span class="number">1</span>;   <span class="comment">// 计算收集水果的最大数目</span></span><br><span class="line">       <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">e</span> <span class="operator">=</span> <span class="number">0</span>; e &lt; fruits.length; ++ e) &#123;</span><br><span class="line">          <span class="comment">// 摘下水果 并记录水果类型 保存水果数量</span></span><br><span class="line">          hashMap.put(fruits[e], hashMap.getOrDefault(fruits[e], <span class="number">0</span>) + <span class="number">1</span>);</span><br><span class="line">          <span class="keyword">while</span> (hashMap.size() &gt;= <span class="number">3</span>) &#123;</span><br><span class="line">             <span class="comment">// 水果数量种类超过2 则将放弃左边的水果</span></span><br><span class="line">             hashMap.put(fruits[s], hashMap.get(fruits[s]) - <span class="number">1</span>);</span><br><span class="line">             <span class="keyword">if</span> (hashMap.get(fruits[s]) == <span class="number">0</span>) &#123;    <span class="comment">// 不含有该水果类型时 将该水果类型弹出</span></span><br><span class="line">                hashMap.remove(fruits[s]);</span><br><span class="line">             &#125;</span><br><span class="line">             s ++;</span><br><span class="line">          &#125;</span><br><span class="line">          <span class="comment">// 更新收集的水果的最大数目</span></span><br><span class="line">          maxNum = Math.max(maxNum, e-s+<span class="number">1</span>);</span><br><span class="line">        &#125;</span><br><span class="line">       <span class="keyword">return</span> maxNum;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> {</span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">totalFruit</span><span class="params">(<span class="type">int</span>[] fruits)</span> {</span><br><span class="line">       HashMap&lt;Integer, Integer&gt; hashMap = <span class="keyword">new</span> <span class="title class_">HashMap</span>&lt;&gt;();</span><br><span class="line">       <span class="type">int</span> <span class="variable">s</span> <span class="operator">=</span> <span class="number">0</span>; <span class="comment">// 记录装进篮子水果的起始位置</span></span><br><span class="line">       <span class="type">int</span> <span class="variable">maxNum</span> <span class="operator">=</span> -<span class="number">1</span>;   <span class="comment">// 计算收集水果的最大数目</span></span><br><span class="line">       <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">e</span> <span class="operator">=</span> <span class="number">0</span>; e &lt; fruits.length; ++ e) {</span><br><span class="line">          <span class="comment">// 摘下水果 并记录水果类型 保存水果数量</span></span><br><span class="line">          hashMap.put(fruits[e], hashMap.getOrDefault(fruits[e], <span class="number">0</span>) + <span class="number">1</span>);</span><br><span class="line">          <span class="keyword">while</span> (hashMap.size() &gt;= <span class="number">3</span>) {</span><br><span class="line">             <span class="comment">// 水果数量种类超过2 则将放弃左边的水果</span></span><br><span class="line">             hashMap.put(fruits[s], hashMap.get(fruits[s]) - <span class="number">1</span>);</span><br><span class="line">             <span class="keyword">if</span> (hashMap.get(fruits[s]) == <span class="number">0</span>) {    <span class="comment">// 不含有该水果类型时 将该水果类型弹出</span></span><br><span class="line">                hashMap.remove(fruits[s]);</span><br><span class="line">             }</span><br><span class="line">             s ++;</span><br><span class="line">          }</span><br><span class="line">          <span class="comment">// 更新收集的水果的最大数目</span></span><br><span class="line">          maxNum = Math.max(maxNum, e-s+<span class="number">1</span>);</span><br><span class="line">        }</span><br><span class="line">       <span class="keyword">return</span> maxNum;</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></table></figure>
 
                 </div>
 

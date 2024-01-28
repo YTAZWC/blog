@@ -32,7 +32,119 @@
     KEEP.language_code_block = {"copy":"复制代码","copied":"已复制","fold":"折叠代码块","folded":"已折叠"}
     KEEP.language_copy_copyright = {"copy":"复制版权信息","copied":"已复制","title":"原文标题","author":"原文作者","link":"原文链接"}
   </script>
-<meta name="generator" content="Hexo 7.1.1"></head>
+<meta name="generator" content="Hexo 7.1.1"><style>mjx-container[jax="SVG"] {
+  direction: ltr;
+}
+
+mjx-container[jax="SVG"] > svg {
+  overflow: visible;
+}
+
+mjx-container[jax="SVG"][display="true"] {
+  display: block;
+  text-align: center;
+  margin: 1em 0;
+}
+
+mjx-container[jax="SVG"][justify="left"] {
+  text-align: left;
+}
+
+mjx-container[jax="SVG"][justify="right"] {
+  text-align: right;
+}
+
+g[data-mml-node="merror"] > g {
+  fill: red;
+  stroke: red;
+}
+
+g[data-mml-node="merror"] > rect[data-background] {
+  fill: yellow;
+  stroke: none;
+}
+
+g[data-mml-node="mtable"] > line[data-line] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > rect[data-frame] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > .mjx-dashed {
+  stroke-dasharray: 140;
+}
+
+g[data-mml-node="mtable"] > .mjx-dotted {
+  stroke-linecap: round;
+  stroke-dasharray: 0,140;
+}
+
+g[data-mml-node="mtable"] > svg {
+  overflow: visible;
+}
+
+[jax="SVG"] mjx-tool {
+  display: inline-block;
+  position: relative;
+  width: 0;
+  height: 0;
+}
+
+[jax="SVG"] mjx-tool > mjx-tip {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+mjx-tool > mjx-tip {
+  display: inline-block;
+  padding: .2em;
+  border: 1px solid #888;
+  font-size: 70%;
+  background-color: #F8F8F8;
+  color: black;
+  box-shadow: 2px 2px 5px #AAAAAA;
+}
+
+g[data-mml-node="maction"][data-toggle] {
+  cursor: pointer;
+}
+
+mjx-status {
+  display: block;
+  position: fixed;
+  left: 1em;
+  bottom: 1em;
+  min-width: 25%;
+  padding: .2em .4em;
+  border: 1px solid #888;
+  font-size: 90%;
+  background-color: #F8F8F8;
+  color: black;
+}
+
+foreignObject[data-mjx-xml] {
+  font-family: initial;
+  line-height: normal;
+  overflow: visible;
+}
+
+.MathJax path {
+  stroke-width: 3;
+}
+
+mjx-container[display="true"] {
+  overflow: auto hidden;
+}
+
+mjx-container[display="true"] + br {
+  display: none;
+}
+</style></head>
 
 
 <body>
@@ -271,41 +383,21 @@
                 <div class="post-content keep-markdown-body">
                     
 
-                    <h1 id="面试题02-07-链表相交"><a href="#面试题02-07-链表相交" class="headerlink" title="[面试题02.07] 链表相交"></a>[面试题02.07] 链表相交</h1><p><a class="link"   target="_blank" rel="noopener" href="https://leetcode.cn/problems/intersection-of-two-linked-lists-lcci/description/" >面试题 02.07. 链表相交 - 力扣（LeetCode）<i class="fas fa-external-link-alt"></i></a></p>
+                    <h1 id="面试题02-07-链表相交"><a href="#面试题02-07-链表相交" class="headerlink" title="[面试题02.07] 链表相交"></a>[面试题02.07] 链表相交</h1><p><a class="link" target="_blank" rel="noopener" href="https://leetcode.cn/problems/intersection-of-two-linked-lists-lcci/description/">面试题 02.07. 链表相交 - 力扣（LeetCode）<i class="fas fa-external-link-alt"></i></a></p>
 <p>给你两个单链表的头节点 <code>headA</code> 和 <code>headB</code> ，请你找出并返回两个单链表相交的起始节点。如果两个链表没有交点，返回 <code>null</code> 。</p>
 <p>图示两个链表在节点 <code>c1</code> 开始相交 <strong>：</strong></p>
-<p><a target="_blank" rel="noopener" href="https://assets.leetcode-cn.com/aliyun-lc-upload/uploads/2018/12/14/160_statement.png"><img  
-                       lazyload
-                       alt="image"
-                       data-src="https://assets.leetcode-cn.com/aliyun-lc-upload/uploads/2018/12/14/160_statement.png"
-                       
-                 ></a></p>
+<p><a target="_blank" rel="noopener" href="https://assets.leetcode-cn.com/aliyun-lc-upload/uploads/2018/12/14/160_statement.png"><img lazyload="" alt="image" data-src="https://assets.leetcode-cn.com/aliyun-lc-upload/uploads/2018/12/14/160_statement.png"></a></p>
 <p>题目数据 <strong>保证</strong> 整个链式结构中不存在环。</p>
 <p><strong>注意</strong>，函数返回结果后，链表必须 <strong>保持其原始结构</strong> 。</p>
 <p><strong>示例 1：</strong></p>
-<p><a target="_blank" rel="noopener" href="https://assets.leetcode.com/uploads/2018/12/13/160_example_1.png"><img  
-                       lazyload
-                       alt="image"
-                       data-src="https://assets.leetcode-cn.com/aliyun-lc-upload/uploads/2018/12/14/160_example_1.png"
-                       
-                 ></a></p>
-<p><strong>输入：</strong> intersectVal &#x3D; 8, listA &#x3D; [4,1,8,4,5], listB &#x3D; [5,0,1,8,4,5], skipA &#x3D; 2, skipB &#x3D; 3<br><strong>输出：</strong> Intersected at ‘8’<br><strong>解释：</strong> 相交节点的值为 8 （注意，如果两个链表相交则不能为 0）。<br>从各自的表头开始算起，链表 A 为 [4,1,8,4,5]，链表 B 为 [5,0,1,8,4,5]。<br>在 A 中，相交节点前有 2 个节点；在 B 中，相交节点前有 3 个节点。</p>
+<p><a target="_blank" rel="noopener" href="https://assets.leetcode.com/uploads/2018/12/13/160_example_1.png"><img lazyload="" alt="image" data-src="https://assets.leetcode-cn.com/aliyun-lc-upload/uploads/2018/12/14/160_example_1.png"></a></p>
+<p><strong>输入：</strong> intersectVal = 8, listA = [4,1,8,4,5], listB = [5,0,1,8,4,5], skipA = 2, skipB = 3<br><strong>输出：</strong> Intersected at ‘8’<br><strong>解释：</strong> 相交节点的值为 8 （注意，如果两个链表相交则不能为 0）。<br>从各自的表头开始算起，链表 A 为 [4,1,8,4,5]，链表 B 为 [5,0,1,8,4,5]。<br>在 A 中，相交节点前有 2 个节点；在 B 中，相交节点前有 3 个节点。</p>
 <p><strong>示例 2：</strong></p>
-<p><a target="_blank" rel="noopener" href="https://assets.leetcode.com/uploads/2018/12/13/160_example_2.png"><img  
-                       lazyload
-                       alt="image"
-                       data-src="https://assets.leetcode-cn.com/aliyun-lc-upload/uploads/2018/12/14/160_example_2.png"
-                       
-                 ></a></p>
-<p><strong>输入：</strong> intersectVal &#x3D; 2, listA &#x3D; [0,9,1,2,4], listB &#x3D; [3,2,4], skipA &#x3D; 3, skipB &#x3D; 1<br><strong>输出：</strong> Intersected at ‘2’<br><strong>解释：</strong> 相交节点的值为 2 （注意，如果两个链表相交则不能为 0）。<br>从各自的表头开始算起，链表 A 为 [0,9,1,2,4]，链表 B 为 [3,2,4]。<br>在 A 中，相交节点前有 3 个节点；在 B 中，相交节点前有 1 个节点。</p>
+<p><a target="_blank" rel="noopener" href="https://assets.leetcode.com/uploads/2018/12/13/160_example_2.png"><img lazyload="" alt="image" data-src="https://assets.leetcode-cn.com/aliyun-lc-upload/uploads/2018/12/14/160_example_2.png"></a></p>
+<p><strong>输入：</strong> intersectVal = 2, listA = [0,9,1,2,4], listB = [3,2,4], skipA = 3, skipB = 1<br><strong>输出：</strong> Intersected at ‘2’<br><strong>解释：</strong> 相交节点的值为 2 （注意，如果两个链表相交则不能为 0）。<br>从各自的表头开始算起，链表 A 为 [0,9,1,2,4]，链表 B 为 [3,2,4]。<br>在 A 中，相交节点前有 3 个节点；在 B 中，相交节点前有 1 个节点。</p>
 <p><strong>示例 3：</strong></p>
-<p><a target="_blank" rel="noopener" href="https://assets.leetcode.com/uploads/2018/12/13/160_example_3.png"><img  
-                       lazyload
-                       alt="image"
-                       data-src="https://assets.leetcode-cn.com/aliyun-lc-upload/uploads/2018/12/14/160_example_3.png"
-                       
-                 ></a></p>
-<p><strong>输入：</strong> intersectVal &#x3D; 0, listA &#x3D; [2,6,4], listB &#x3D; [1,5], skipA &#x3D; 3, skipB &#x3D; 2<br><strong>输出：</strong> null<br><strong>解释：</strong> 从各自的表头开始算起，链表 A 为 [2,6,4]，链表 B 为 [1,5]。<br>由于这两个链表不相交，所以 intersectVal 必须为 0，而 skipA 和 skipB 可以是任意值。<br>这两个链表不相交，因此返回 null 。</p>
+<p><a target="_blank" rel="noopener" href="https://assets.leetcode.com/uploads/2018/12/13/160_example_3.png"><img lazyload="" alt="image" data-src="https://assets.leetcode-cn.com/aliyun-lc-upload/uploads/2018/12/14/160_example_3.png"></a></p>
+<p><strong>输入：</strong> intersectVal = 0, listA = [2,6,4], listB = [1,5], skipA = 3, skipB = 2<br><strong>输出：</strong> null<br><strong>解释：</strong> 从各自的表头开始算起，链表 A 为 [2,6,4]，链表 B 为 [1,5]。<br>由于这两个链表不相交，所以 intersectVal 必须为 0，而 skipA 和 skipB 可以是任意值。<br>这两个链表不相交，因此返回 null 。</p>
 <p><strong>提示：</strong></p>
 <ul>
 <li><code>listA</code> 中节点数目为 <code>m</code></li>
@@ -328,7 +420,7 @@
 </li>
 </ol>
 <p>实现代码如下：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> ListNode <span class="title function_">getIntersectionNode</span><span class="params">(ListNode headA, ListNode headB)</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (headA == <span class="literal">null</span> || headB == <span class="literal">null</span>)</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">null</span>;    <span class="comment">// 若任意一个链表为空 则说明两个链表没有交点</span></span><br><span class="line">        <span class="comment">// 存储记录 headA 中的节点</span></span><br><span class="line">        HashMap&lt;ListNode, Integer&gt; hashNode = <span class="keyword">new</span> <span class="title class_">HashMap</span>&lt;&gt;();</span><br><span class="line">        <span class="type">ListNode</span> <span class="variable">curA</span> <span class="operator">=</span> headA;</span><br><span class="line">        <span class="keyword">while</span> (curA != <span class="literal">null</span>) &#123;</span><br><span class="line">            <span class="comment">// 将headA的节点保存到哈希表中</span></span><br><span class="line">            hashNode.put(curA, <span class="number">1</span>);</span><br><span class="line">            curA = curA.next;   <span class="comment">// 继续遍历headA</span></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// 判断两个链表是否相交</span></span><br><span class="line">        <span class="type">ListNode</span> <span class="variable">curB</span> <span class="operator">=</span> headB;</span><br><span class="line">        <span class="keyword">while</span> (curB != <span class="literal">null</span>) &#123;</span><br><span class="line">            <span class="keyword">if</span> (hashNode.containsKey(curB)) &#123;   <span class="comment">// 若哈希表中存在节点</span></span><br><span class="line">                <span class="keyword">return</span> curB;    <span class="comment">// 直接返回第一个相交的节点</span></span><br><span class="line">            &#125;</span><br><span class="line">            curB = curB.next;   <span class="comment">// 继续遍历headB</span></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">null</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Solution</span> {</span><br><span class="line">    <span class="keyword">public</span> ListNode <span class="title function_">getIntersectionNode</span><span class="params">(ListNode headA, ListNode headB)</span> {</span><br><span class="line">        <span class="keyword">if</span> (headA == <span class="literal">null</span> || headB == <span class="literal">null</span>)</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">null</span>;    <span class="comment">// 若任意一个链表为空 则说明两个链表没有交点</span></span><br><span class="line">        <span class="comment">// 存储记录 headA 中的节点</span></span><br><span class="line">        HashMap&lt;ListNode, Integer&gt; hashNode = <span class="keyword">new</span> <span class="title class_">HashMap</span>&lt;&gt;();</span><br><span class="line">        <span class="type">ListNode</span> <span class="variable">curA</span> <span class="operator">=</span> headA;</span><br><span class="line">        <span class="keyword">while</span> (curA != <span class="literal">null</span>) {</span><br><span class="line">            <span class="comment">// 将headA的节点保存到哈希表中</span></span><br><span class="line">            hashNode.put(curA, <span class="number">1</span>);</span><br><span class="line">            curA = curA.next;   <span class="comment">// 继续遍历headA</span></span><br><span class="line">        }</span><br><span class="line">        <span class="comment">// 判断两个链表是否相交</span></span><br><span class="line">        <span class="type">ListNode</span> <span class="variable">curB</span> <span class="operator">=</span> headB;</span><br><span class="line">        <span class="keyword">while</span> (curB != <span class="literal">null</span>) {</span><br><span class="line">            <span class="keyword">if</span> (hashNode.containsKey(curB)) {   <span class="comment">// 若哈希表中存在节点</span></span><br><span class="line">                <span class="keyword">return</span> curB;    <span class="comment">// 直接返回第一个相交的节点</span></span><br><span class="line">            }</span><br><span class="line">            curB = curB.next;   <span class="comment">// 继续遍历headB</span></span><br><span class="line">        }</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">null</span>;</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></table></figure>
 
 <p>提交结果如下：</p>
 <figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">解答成功:</span><br><span class="line">    执行耗时:6 ms,击败了9.32% 的Java用户</span><br><span class="line">    内存消耗:45.7 MB,击败了6.07% 的Java用户</span><br></pre></td></tr></table></figure>
@@ -362,7 +454,7 @@
 </li>
 </ol>
 <p>实现代码如下：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="comment">// 双指针</span></span><br><span class="line">    <span class="keyword">public</span> ListNode <span class="title function_">getIntersectionNode</span><span class="params">(ListNode headA, ListNode headB)</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (headA == <span class="literal">null</span> || headB == <span class="literal">null</span>)</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">null</span>;    <span class="comment">// 若任意一个链表为空 则说明两个链表没有交点</span></span><br><span class="line">        <span class="type">ListNode</span> <span class="variable">pA</span> <span class="operator">=</span> headA;</span><br><span class="line">        <span class="type">ListNode</span> <span class="variable">pB</span> <span class="operator">=</span> headB;</span><br><span class="line">        <span class="keyword">while</span> (pA != pB) &#123;  <span class="comment">// 两个指针分别进行遍历 并判断</span></span><br><span class="line">            pA = pA==<span class="literal">null</span>? headB : pA.next;</span><br><span class="line">            pB = pB==<span class="literal">null</span>? headA : pB.next;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> pA;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Solution</span> {</span><br><span class="line">    <span class="comment">// 双指针</span></span><br><span class="line">    <span class="keyword">public</span> ListNode <span class="title function_">getIntersectionNode</span><span class="params">(ListNode headA, ListNode headB)</span> {</span><br><span class="line">        <span class="keyword">if</span> (headA == <span class="literal">null</span> || headB == <span class="literal">null</span>)</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">null</span>;    <span class="comment">// 若任意一个链表为空 则说明两个链表没有交点</span></span><br><span class="line">        <span class="type">ListNode</span> <span class="variable">pA</span> <span class="operator">=</span> headA;</span><br><span class="line">        <span class="type">ListNode</span> <span class="variable">pB</span> <span class="operator">=</span> headB;</span><br><span class="line">        <span class="keyword">while</span> (pA != pB) {  <span class="comment">// 两个指针分别进行遍历 并判断</span></span><br><span class="line">            pA = pA==<span class="literal">null</span>? headB : pA.next;</span><br><span class="line">            pB = pB==<span class="literal">null</span>? headA : pB.next;</span><br><span class="line">        }</span><br><span class="line">        <span class="keyword">return</span> pA;</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></table></figure>
 
 <p>提交结果如下：</p>
 <figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">解答成功:</span><br><span class="line">    执行耗时:1 ms,击败了99.24% 的Java用户</span><br><span class="line">    内存消耗:45.3 MB,击败了55.50% 的Java用户</span><br></pre></td></tr></table></figure>
