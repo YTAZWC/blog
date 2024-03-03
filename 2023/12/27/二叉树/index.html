@@ -323,7 +323,7 @@ mjx-container[display="true"] + br {
 
             <span class="meta-info-item post-update-date">
                 <i class="icon fa-solid fa-file-pen"></i>&nbsp;
-                <span class="datetime" data-updated="Sat Mar 02 2024 12:56:16 GMT+0000">2024-03-02 12:56:16</span>
+                <span class="datetime" data-updated="Sun Mar 03 2024 07:40:01 GMT+0000">2024-03-03 07:40:01</span>
             </span>
         
 
@@ -554,7 +554,7 @@ mjx-container[display="true"] + br {
 <li><p><strong>二叉树节点的高度</strong>：指从该节点到叶子节点的最长简单路径边的条数或节点数(取决于高度从0开始还是从1开始)</p>
 </li>
 </ul>
-<p>而 <strong>跟节点的高度就是二叉树的最大深度，</strong> 即对于该题可以通过后序求得根节点高度来求得二叉树最大深度。</p>
+<p>而 <strong>根节点的高度就是二叉树的最大深度，</strong> 即对于该题可以通过后序求得根节点高度来求得二叉树最大深度。</p>
 <h2 id="递归法求高度"><a href="#递归法求高度" class="headerlink" title="递归法求高度"></a>递归法求高度</h2><p>代码如下：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">solution</span> {</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 递归法</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">maxDepth</span><span class="params">(TreeNode root)</span> {</span><br><span class="line">        <span class="keyword">if</span> (root == <span class="literal">null</span>) {</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        }</span><br><span class="line">        <span class="type">int</span> <span class="variable">leftDepth</span> <span class="operator">=</span> maxDepth(root.left);</span><br><span class="line">        <span class="type">int</span> <span class="variable">rightDepth</span> <span class="operator">=</span> maxDepth(root.right);</span><br><span class="line">        <span class="keyword">return</span> Math.max(leftDepth, rightDepth) + <span class="number">1</span>;</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></table></figure>
 
@@ -713,6 +713,7 @@ mjx-container[display="true"] + br {
 <li>求普通二叉树的属性，一般是后序，一般要通过递归函数的返回值做计算</li>
 <li>求二叉搜索树的属性，一定是中序，利用二叉搜索树左中右顺序遍历的 有序性</li>
 </ul>
+<p><img lazyload="" alt="二叉树总结" data-src="https://github.com/YTAZWC/picx-images-hosting/raw/master/%E4%BB%A3%E7%A0%81%E9%9A%8F%E6%83%B3%E5%BD%95_%E4%BA%8C%E5%8F%89%E6%A0%91/%E4%BA%8C%E5%8F%89%E6%A0%91.1vye3tlr3i.webp"></p>
 <h1 id="学习文章"><a href="#学习文章" class="headerlink" title="学习文章"></a>学习文章</h1><p><a class="link" target="_blank" rel="noopener" href="https://programmercarl.com/%E4%BA%8C%E5%8F%89%E6%A0%91%E7%90%86%E8%AE%BA%E5%9F%BA%E7%A1%80.html#%E7%AE%97%E6%B3%95%E5%85%AC%E5%BC%80%E8%AF%BE">代码随想录 (programmercarl.com)<i class="fas fa-external-link-alt"></i></a></p>
 <h1 id="图片主要来源"><a href="#图片主要来源" class="headerlink" title="图片主要来源"></a>图片主要来源</h1><p><a class="link" target="_blank" rel="noopener" href="https://programmercarl.com/%E4%BA%8C%E5%8F%89%E6%A0%91%E7%90%86%E8%AE%BA%E5%9F%BA%E7%A1%80.html#%E7%AE%97%E6%B3%95%E5%85%AC%E5%BC%80%E8%AF%BE">代码随想录 (programmercarl.com)<i class="fas fa-external-link-alt"></i></a></p>
 
