@@ -323,7 +323,7 @@ mjx-container[display="true"] + br {
 
             <span class="meta-info-item post-update-date">
                 <i class="icon fa-solid fa-file-pen"></i>&nbsp;
-                <span class="datetime" data-updated="Tue Mar 12 2024 09:22:00 GMT+0000">2024-03-12 09:22:00</span>
+                <span class="datetime" data-updated="Tue Mar 12 2024 09:25:23 GMT+0000">2024-03-12 09:25:23</span>
             </span>
         
 
@@ -390,7 +390,7 @@ mjx-container[display="true"] + br {
 <li>求解每一个子问题的最优解</li>
 <li>将局部最优解堆叠成全局最优解</li>
 </ul>
-<h1 id="分发饼干"><a href="#分发饼干" class="headerlink" title="分发饼干"></a>分发饼干</h1><p>此题局部最优就是：</p>
+<h1 id="分发饼干"><a href="#分发饼干" class="headerlink" title="分发饼干"></a><a class="link" target="_blank" rel="noopener" href="https://ytazwc.top/2024/03/12/LC455-%E5%88%86%E5%8F%91%E9%A5%BC%E5%B9%B2/">分发饼干<i class="fas fa-external-link-alt"></i></a></h1><p>此题局部最优就是：</p>
 <p>大饼干喂给胃口大的，充分利用饼干尺寸喂饱一个，全局最优就是喂饱尽可能多的小孩。</p>
 <p>或者换成另外一个思路：小饼干先喂饱小胃口</p>
 <h2 id="思路一"><a href="#思路一" class="headerlink" title="思路一"></a>思路一</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> {</span><br><span class="line">    <span class="comment">// 思路1：优先考虑饼干，小饼干先喂饱小胃口</span></span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">findContentChildren</span><span class="params">(<span class="type">int</span>[] g, <span class="type">int</span>[] s)</span> {</span><br><span class="line">        Arrays.sort(g);</span><br><span class="line">        Arrays.sort(s);</span><br><span class="line">        <span class="type">int</span> <span class="variable">start</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line">        <span class="type">int</span> <span class="variable">count</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; s.length &amp;&amp; start &lt; g.length; i++) {</span><br><span class="line">            <span class="keyword">if</span> (s[i] &gt;= g[start]) {</span><br><span class="line">                start++;</span><br><span class="line">                count++;</span><br><span class="line">            }</span><br><span class="line">        }</span><br><span class="line">        <span class="keyword">return</span> count;</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></table></figure>
