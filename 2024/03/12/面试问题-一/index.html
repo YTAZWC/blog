@@ -323,7 +323,7 @@ mjx-container[display="true"] + br {
 
             <span class="meta-info-item post-update-date">
                 <i class="icon fa-solid fa-file-pen"></i>&nbsp;
-                <span class="datetime" data-updated="Sat Mar 16 2024 04:55:56 GMT+0000">2024-03-16 04:55:56</span>
+                <span class="datetime" data-updated="Sun Mar 17 2024 03:45:21 GMT+0000">2024-03-17 03:45:21</span>
             </span>
         
 
@@ -374,7 +374,8 @@ mjx-container[display="true"] + br {
                 <div class="post-content keep-markdown-body">
                     
 
-                    <h1 id="自我介绍"><a href="#自我介绍" class="headerlink" title="自我介绍"></a>自我介绍</h1><h1 id="JDBC连接数据库怎么实现的-用的哪些类"><a href="#JDBC连接数据库怎么实现的-用的哪些类" class="headerlink" title="JDBC连接数据库怎么实现的(用的哪些类)"></a>JDBC连接数据库怎么实现的(用的哪些类)</h1><ol>
+                    <h1 id="自我介绍"><a href="#自我介绍" class="headerlink" title="自我介绍"></a>自我介绍</h1><p>控制时间、与岗位相关的经历、为什么你能够胜任、为什么要应聘<br>满足岗位的优势和亮点<br>表现对岗位的理解和职业规划</p>
+<h1 id="JDBC连接数据库怎么实现的-用的哪些类"><a href="#JDBC连接数据库怎么实现的-用的哪些类" class="headerlink" title="JDBC连接数据库怎么实现的(用的哪些类)"></a>JDBC连接数据库怎么实现的(用的哪些类)</h1><ol>
 <li><code>DataSource</code>数据源类</li>
 <li><code>Connection</code>数据库连接类</li>
 <li><code>String</code>类，用于写动态<code>sql</code>语句</li>
@@ -388,7 +389,22 @@ mjx-container[display="true"] + br {
 <h1 id="jvm怎么运行的"><a href="#jvm怎么运行的" class="headerlink" title="jvm怎么运行的"></a>jvm怎么运行的</h1><p>首先根据系统版本，加载jvm.cfg配置文件，然后根据配置文件找到jvm.dll文件，并初始化jvm，获取JNI接口，然后找到Java程序字节码文件的main方法并运行。</p>
 <p>JNI接口：<br>是Java本地接口，通过JNI接口才能装载class文件，常用于和操作系统、硬件交互。</p>
 <p><a class="link" target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_43943548/article/details/90721796">参考文章<i class="fas fa-external-link-alt"></i></a></p>
-<h1 id="你是怎么学习Java的"><a href="#你是怎么学习Java的" class="headerlink" title="你是怎么学习Java的"></a>你是怎么学习Java的</h1><h1 id="你觉得作为一名Java程序员需要具备哪些素质"><a href="#你觉得作为一名Java程序员需要具备哪些素质" class="headerlink" title="你觉得作为一名Java程序员需要具备哪些素质"></a>你觉得作为一名Java程序员需要具备哪些素质</h1><h1 id="你是如何理解面向对象的"><a href="#你是如何理解面向对象的" class="headerlink" title="你是如何理解面向对象的"></a>你是如何理解面向对象的</h1><h1 id="你在学校有没有参加过社团和学生会"><a href="#你在学校有没有参加过社团和学生会" class="headerlink" title="你在学校有没有参加过社团和学生会"></a>你在学校有没有参加过社团和学生会</h1><p>有</p>
+<h1 id="你是怎么学习Java的"><a href="#你是怎么学习Java的" class="headerlink" title="你是怎么学习Java的"></a>你是怎么学习Java的</h1><h1 id="你觉得作为一名Java程序员需要具备哪些素质"><a href="#你觉得作为一名Java程序员需要具备哪些素质" class="headerlink" title="你觉得作为一名Java程序员需要具备哪些素质"></a>你觉得作为一名Java程序员需要具备哪些素质</h1><h1 id="你是如何理解面向对象的"><a href="#你是如何理解面向对象的" class="headerlink" title="你是如何理解面向对象的"></a>你是如何理解面向对象的</h1><p>1、面向过程与面向对象对比理解；</p>
+<p>2、举生活案例</p>
+<p>3、讲述面向对象与面向过程的特点</p>
+<ul>
+<li>面向过程；注重于系统的一系列过程或函数，通过调用这些过程来完成任务；强调算法和流程，修改过程的一个地方，可能会影响到其他调用改过程的地方；一般是简单的、线性的任务。</li>
+<li>面向对象；更注重事情的参与者，先抽象出具有状态、行为的对象，然后通过对象执行方法的方式解决问题，强调封装、继承和多态；更易于维护和拓展，因为修改一个对象不会影响到其他对象；适合复杂的系统</li>
+</ul>
+<p>4、介绍面向对象的三个特性；封装、继承、多态</p>
+<p>（1）、封装</p>
+<p>就是通过访问修饰符<code>private</code>将对象内部的字段、属性隐藏起来，并通过定义公共接口来对其进行访问，从而提高代码安全性，隐藏对象的内部细节</p>
+<p>（2）、继承</p>
+<p>在Java中，子类通过<code>extend</code>关键字继承父类，然后子类可以重用父类的代码，并通过添加新的方法或重写已有的方法来扩展或改进功能；提高了代码的重用性和可扩展性</p>
+<p>（3）、多态</p>
+<p>多态是指相同的操作或方法可以在不同的对象上产生不同的行为，通过方法的重写和重载实现，多态允许一致的式处理不同类型的对象，提高了代码的灵活性。</p>
+<p><a class="link" target="_blank" rel="noopener" href="https://blog.csdn.net/qfguan/article/details/121226260">参考文章<i class="fas fa-external-link-alt"></i></a></p>
+<h1 id="你在学校有没有参加过社团和学生会"><a href="#你在学校有没有参加过社团和学生会" class="headerlink" title="你在学校有没有参加过社团和学生会"></a>你在学校有没有参加过社团和学生会</h1><p>有</p>
 <h1 id="你为什么选择Java这个行业"><a href="#你为什么选择Java这个行业" class="headerlink" title="你为什么选择Java这个行业"></a>你为什么选择Java这个行业</h1><p>个人爱好<br>看好前景</p>
 
                 </div>
