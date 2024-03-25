@@ -1,0 +1,850 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="Hexo Theme Keep">
+    <meta name="description" content="Hexo Theme Keep">
+    <meta name="author" content="花木凋零成兰">
+    
+    <title>
+        
+            Elasticsearch入门 |
+        
+        花木凋零成兰
+    </title>
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    
+        <link rel="shortcut icon" href="/images/ok.avif">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.0.6/font/css/fontawesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.0.6/font/css/regular.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.0.6/font/css/solid.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.0.6/font/css/brands.min.css">
+    
+    <script class="keep-theme-configurations">
+    const KEEP = window.KEEP || {}
+    KEEP.hexo_config = {"hostname":"example.com","root":"/","language":"zh-CN","path":"search.json"}
+    KEEP.theme_config = {"base_info":{"primary_color":"#0066cc","title":"花木凋零成兰","author":"花木凋零成兰","avatar":"/images/ok.avif","logo":"/images/ok.avif","favicon":"/images/ok.avif"},"menu":{"Archives":"/archives","Tags":"/tags","Categories":"/categories","About":"/about"},"first_screen":{"enable":true,"background_img":"/images/bg.svg","background_img_dark":"/images/bg.svg","description":"成功始于方法，巩固才能提高。","hitokoto":false},"social_contact":{"enable":true,"links":{"github":"https://github.com/YTAZWC","weixin":null,"qq":null,"weibo":null,"zhihu":null,"twitter":null,"facebook":null,"email":"18570354653@163.com"}},"scroll":{"progress_bar":true,"percent":false,"hide_header":true},"home":{"category":true,"tag":true,"announcement":null},"post":{"author_badge":{"enable":true,"level_badge":true},"word_count":{"wordcount":true,"min2read":true},"datetime_format":"YYYY-MM-DD HH:mm:ss","copyright_info":false,"share":false,"reward":{"enable":false,"img_link":null,"text":null}},"code_block":{"tools":{"enable":true,"style":"mac"},"highlight_theme":"default"},"toc":{"enable":true,"number":true,"expand_all":true,"init_open":true,"layout":"right"},"website_count":{"busuanzi_count":{"enable":true,"site_uv":true,"site_pv":true,"page_pv":true}},"local_search":{"enable":true,"preload":true},"comment":{"enable":false,"use":"valine","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":null,"github_admins":null,"repository":null,"client_id":null,"client_secret":null,"proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.21"},"waline":{"server_url":null,"reaction":false,"version":2},"giscus":{"repo":null,"repo_id":null,"category":"Announcements","category_id":null,"reactions_enabled":false},"artalk":{"server":null},"disqus":{"shortname":null}},"rss":{"enable":false},"lazyload":{"enable":true},"cdn":{"enable":true,"provider":"cdnjs"},"pjax":{"enable":true},"footer":{"since":2023,"word_count":true,"icp":{"enable":false,"record_code":null,"url":"https://beian.miit.gov.cn"},"site_deploy":{"enable":false,"provider":"github","url":null},"shields_style":{"enable":false,"custom":[{"link_url":null,"img_url":null}]}},"inject":{"enable":false,"css":[null],"js":[null]},"root":"","version":"4.0.6"}
+    KEEP.language_ago = {"second":"%s 秒前","minute":"%s 分钟前","hour":"%s 小时前","day":"%s 天前","week":"%s 周前","month":"%s 个月前","year":"%s 年前"}
+    KEEP.language_code_block = {"copy":"复制代码","copied":"已复制","fold":"折叠代码块","folded":"已折叠"}
+    KEEP.language_copy_copyright = {"copy":"复制版权信息","copied":"已复制","title":"原文标题","author":"原文作者","link":"原文链接"}
+  </script>
+<meta name="generator" content="Hexo 7.1.1"><style>mjx-container[jax="SVG"] {
+  direction: ltr;
+}
+
+mjx-container[jax="SVG"] > svg {
+  overflow: visible;
+}
+
+mjx-container[jax="SVG"][display="true"] {
+  display: block;
+  text-align: center;
+  margin: 1em 0;
+}
+
+mjx-container[jax="SVG"][justify="left"] {
+  text-align: left;
+}
+
+mjx-container[jax="SVG"][justify="right"] {
+  text-align: right;
+}
+
+g[data-mml-node="merror"] > g {
+  fill: red;
+  stroke: red;
+}
+
+g[data-mml-node="merror"] > rect[data-background] {
+  fill: yellow;
+  stroke: none;
+}
+
+g[data-mml-node="mtable"] > line[data-line] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > rect[data-frame] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > .mjx-dashed {
+  stroke-dasharray: 140;
+}
+
+g[data-mml-node="mtable"] > .mjx-dotted {
+  stroke-linecap: round;
+  stroke-dasharray: 0,140;
+}
+
+g[data-mml-node="mtable"] > svg {
+  overflow: visible;
+}
+
+[jax="SVG"] mjx-tool {
+  display: inline-block;
+  position: relative;
+  width: 0;
+  height: 0;
+}
+
+[jax="SVG"] mjx-tool > mjx-tip {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+mjx-tool > mjx-tip {
+  display: inline-block;
+  padding: .2em;
+  border: 1px solid #888;
+  font-size: 70%;
+  background-color: #F8F8F8;
+  color: black;
+  box-shadow: 2px 2px 5px #AAAAAA;
+}
+
+g[data-mml-node="maction"][data-toggle] {
+  cursor: pointer;
+}
+
+mjx-status {
+  display: block;
+  position: fixed;
+  left: 1em;
+  bottom: 1em;
+  min-width: 25%;
+  padding: .2em .4em;
+  border: 1px solid #888;
+  font-size: 90%;
+  background-color: #F8F8F8;
+  color: black;
+}
+
+foreignObject[data-mjx-xml] {
+  font-family: initial;
+  line-height: normal;
+  overflow: visible;
+}
+
+.MathJax path {
+  stroke-width: 3;
+}
+
+mjx-container[display="true"] {
+  overflow: auto hidden;
+}
+
+mjx-container[display="true"] + br {
+  display: none;
+}
+</style></head>
+
+
+<body>
+<div class="progress-bar-container">
+    
+        <span class="scroll-progress-bar"></span>
+    
+
+    
+        <span class="pjax-progress-bar"></span>
+        <i class="pjax-progress-icon fas fa-circle-notch fa-spin"></i>
+    
+</div>
+
+
+<main class="page-container border-box">
+
+    <!-- home first screen  -->
+    
+
+    <!-- page content -->
+    <div class="page-main-content border-box">
+        <div class="page-main-content-top">
+            
+<header class="header-wrapper">
+
+    <div class="border-box header-content">
+        <div class="left border-box">
+            
+                <a class="logo-image border-box" href="/">
+                    <img src="/images/ok.avif">
+                </a>
+            
+            <a class="site-name border-box" href="/">
+               花木凋零成兰
+            </a>
+        </div>
+
+        <div class="right border-box">
+            <div class="pc">
+                <ul class="menu-list">
+                    <li class="menu-item">
+                        <a class=""
+                           href="/"
+                        >首页</a>
+                    </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/archives"
+                            >归档</a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/tags"
+                            >标签</a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/categories"
+                            >分类</a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/about"
+                            >关于</a>
+                        </li>
+                    
+                    
+                        <li class="menu-item search search-popup-trigger">
+                            <i class="fas search fa-search"></i>
+                        </li>
+                    
+                </ul>
+            </div>
+            <div class="mobile">
+                
+                    <div class="icon-item search search-popup-trigger"><i class="fas fa-search"></i></div>
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="header-drawer">
+        <ul class="drawer-menu-list">
+            <li class="drawer-menu-item flex-center">
+                <a class=""
+                   href="/"
+                >首页</a>
+            </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/archives"
+                    >归档</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/tags"
+                    >标签</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/categories"
+                    >分类</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/about"
+                    >关于</a>
+                </li>
+            
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle border-box">
+
+            <div class="main-content border-box">
+                
+
+                    
+<div class="fade-in-down-animation">
+    <div class="post-page-container border-box">
+        <div class="post-content-container border-box">
+            
+
+            <div class="post-content-bottom border-box">
+                
+                    <div class="post-title">
+                        Elasticsearch入门
+                    </div>
+                
+
+                
+                    <div class="post-header border-box">
+                        
+                            <div class="avatar-box border-box">
+                                <img src="/images/ok.avif">
+                            </div>
+                        
+                        <div class="info-box">
+                            <div class="author border-box">
+                                <span class="name">花木凋零成兰</span>
+                                
+                                    <span class="author-badge">Lv6</span>
+                                
+                            </div>
+                            <div class="meta-info border-box">
+                                
+
+<div class="post-meta-info-container border-box post">
+    <div class="post-meta-info border-box">
+        
+
+        
+            <span class="meta-info-item post-create-date">
+                <i class="icon fa-solid fa-calendar-plus"></i>&nbsp;
+                <span class="datetime">2024-03-25 15:59:31</span>
+            </span>
+
+            <span class="meta-info-item post-update-date">
+                <i class="icon fa-solid fa-file-pen"></i>&nbsp;
+                <span class="datetime" data-updated="Mon Mar 25 2024 16:12:16 GMT+0000">2024-03-25 16:12:16</span>
+            </span>
+        
+
+        
+            <span class="meta-info-item post-category border-box"><i class="icon fas fa-folder"></i>&nbsp;
+                <ul class="post-category-ul">
+                    
+                            <li class="category-item"><a href="/categories/%E5%BC%80%E5%8F%91%E5%AD%A6%E4%B9%A0/">开发学习</a></li>
+                        
+                    
+                            <li class="category-item">&nbsp;<i class="icon fas fa-angle-right"></i>&nbsp;<a href="/categories/%E5%BC%80%E5%8F%91%E5%AD%A6%E4%B9%A0/Elasticsearch/">Elasticsearch</a></li>
+                        
+                    
+                </ul>
+            </span>
+        
+
+        
+            <span class="post-tag meta-info-item border-box">
+                <i class="icon fas fa-tags"></i>&nbsp;
+                <ul class="post-tag-ul">
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/Spring/">Spring</a></li>
+                        
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/Spring-Boot/">Spring Boot</a></li>
+                        
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/Elasticsearch/">Elasticsearch</a></li>
+                        
+                    
+                </ul>
+            </span>
+        
+
+        
+        
+        
+        
+            <span class="meta-info-item post-pv">
+                <i class="icon fas fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span>
+            </span>
+        
+    </div>
+
+    
+</div>
+
+                            </div>
+                        </div>
+                    </div>
+                
+
+                <div class="post-content keep-markdown-body">
+                    
+
+                    <h1 id="入门"><a href="#入门" class="headerlink" title="入门"></a>入门</h1><p><a class="link" target="_blank" rel="noopener" href="https://www.elastic.co/cn/">官网<i class="fas fa-external-link-alt"></i></a></p>
+<h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><ul>
+<li>一个分布式的、Restful风格的搜索引擎。</li>
+<li>支持对各种类型的数据的检索。</li>
+<li>搜索速度快，可以提供实时的搜索服务。</li>
+<li>便于水平扩展，每秒可以处理PB级海量数据。</li>
+</ul>
+<h2 id="常用术语"><a href="#常用术语" class="headerlink" title="常用术语"></a>常用术语</h2><ul>
+<li>索引：与MySQL数据库中的Database相对应</li>
+<li>类型：与MySQL数据库中的Table相对应</li>
+<li>文档: 相当于MySQL中的一条数据，<strong>采用JSON结构</strong></li>
+<li>字段：对应MySQL数据库中的一列</li>
+</ul>
+<p>在ES6.0之后，前两个术语与MySQL对应逐步发生变化，删除了类型，变成一个索引对应一张表，但是保留了类型这个单词。</p>
+<p>在ES7.0之后，逐步删除类型。</p>
+<ul>
+<li>集群：多台服务器组合在一起，分布式部署，提高整体性能</li>
+<li>节点：集群中的每台服务器，称呼为节点</li>
+<li>分片：一个索引相当于一张表，分片则是对这个索引进行划分，提高并发能力。</li>
+<li>副本：对分片进行备份，一个分片可以有多个备份，提高系统可用性。</li>
+</ul>
+<h2 id="安装与配置"><a href="#安装与配置" class="headerlink" title="安装与配置"></a>安装与配置</h2><p>对于<code>Elasticsearch</code>的下载，最好在对应项目中，找到父级依赖所确定的版本，因为这是经过测试，与当前<code>Spring Boot</code>版本最匹配的版本。</p>
+<p><a class="link" target="_blank" rel="noopener" href="https://www.elastic.co/cn/downloads/past-releases#elasticsearch">往期版本下载地址<i class="fas fa-external-link-alt"></i></a></p>
+<p>下载完成后，解压到不含有中文的目录，目录结果如下图所示：</p>
+<p><img lazyload="" alt="image" data-src="https://github.com/YTAZWC/picx-images-hosting/raw/master/Elasticsearch%E5%85%A5%E9%97%A8/image.8z6aex6tbx.webp"></p>
+<p>版本不一致，目录结构可能会有所区别。</p>
+<h3 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h3><h4 id="配置文件"><a href="#配置文件" class="headerlink" title="配置文件"></a>配置文件</h4><p>配置主要是配置<code>config</code>目录下的<code>elasticsearch.yml</code>文件；配置内容如下所示：</p>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 集群名字</span></span><br><span class="line"><span class="attr">cluster.name:</span> <span class="string">my-application</span></span><br><span class="line"><span class="comment"># 数据存储位置</span></span><br><span class="line"><span class="attr">path.data:</span> <span class="string">E:\Data\elasticsearch\es-7.15.2\data</span></span><br><span class="line"><span class="comment"># 运行时产生日志 存储位置</span></span><br><span class="line"><span class="attr">path.logs:</span> <span class="string">E:\Data\elasticsearch\es-7.15.2\logs</span></span><br></pre></td></tr></table></figure>
+
+<p>配置结果如下图所示：</p>
+<p><img lazyload="" alt="image" data-src="https://github.com/YTAZWC/picx-images-hosting/raw/master/Elasticsearch%E5%85%A5%E9%97%A8/image.54xivyxs53.webp"></p>
+<h4 id="配置环境变量"><a href="#配置环境变量" class="headerlink" title="配置环境变量"></a>配置环境变量</h4><p>进入配置环境变量界面步骤：系统-&gt;系统信息-&gt;高级系统设置-&gt;环境变量</p>
+<p>在系统变量的Path中新建环境变量；如下图所示：</p>
+<p><img lazyload="" alt="image" data-src="https://github.com/YTAZWC/picx-images-hosting/raw/master/Elasticsearch%E5%85%A5%E9%97%A8/image.8hg8qcktpg.webp"></p>
+<h4 id="安装中文分词插件"><a href="#安装中文分词插件" class="headerlink" title="安装中文分词插件"></a>安装中文分词插件</h4><p>ES默认进行英文分词，需要安装中文分词插件来对中文进行分词，即可对中文关键词进行检索。</p>
+<p>对应Elasticsearch版本来下载对应的中文分词插件。</p>
+<p><a class="link" target="_blank" rel="noopener" href="https://github.com/infinilabs/analysis-ik/releases">下载地址<i class="fas fa-external-link-alt"></i></a></p>
+<p>首先在Elasticsearch安装目录下的，plugins目录下，新建一个<code>ik</code>文件夹，然后将分词插件解压到<strong>ik</strong>目录下，如下图所示：</p>
+<p><img lazyload="" alt="image" data-src="https://github.com/YTAZWC/picx-images-hosting/raw/master/Elasticsearch%E5%85%A5%E9%97%A8/image.lu6pnad4.webp"></p>
+<p>在config目录下，有许多<code>dic</code>字典文件，里面包含很多中文词语，除此之外，若需要新增当前流行的”网络词语”，需要在<code>IKAnalyzer.cfg.xml</code>文件中进行配置。</p>
+<h4 id="安装ApiPost"><a href="#安装ApiPost" class="headerlink" title="安装ApiPost"></a>安装ApiPost</h4><p>该工具在操作和界面上与postman类似，但是功能比<code>postman</code>更多，主要用来进行API设计、调试、测试等；且支持中文。</p>
+<ul>
+<li><a class="link" target="_blank" rel="noopener" href="https://www.apipost.cn/">ApiPost官网<i class="fas fa-external-link-alt"></i></a></li>
+<li><a class="link" target="_blank" rel="noopener" href="https://www.postman.com/">Postman官网<i class="fas fa-external-link-alt"></i></a></li>
+</ul>
+<p>因为ES服务器，通过命令行存储某些数据；过长不方便，可以用ApiPost模拟网页，发送HTTP请求，往ES服务器中添加数据更为方便。</p>
+<p>除此之外，当需要查询某些复杂数据时，也可以用ApiPost来简化数据查询。</p>
+<h2 id="运行Elasticsearch"><a href="#运行Elasticsearch" class="headerlink" title="运行Elasticsearch"></a>运行Elasticsearch</h2><p>可以通过双击bin目录下的<code>elasticsearch.bat</code>文件直接启动，也可以在命令行启动。</p>
+<p>若出现如下报错：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[DESKTOP-CO3SKTG] error updating geoip database [GeoLite2-ASN.mmdb]</span><br></pre></td></tr></table></figure>
+<p>则在配置文件中添加如下配置，再重新启动即可。</p>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">ingest.geoip.downloader.enabled:</span> <span class="literal">false</span></span><br></pre></td></tr></table></figure>
+<p>即禁止<code>geoip</code>数据库的更新。</p>
+<p>启动后结果如下：</p>
+<p><img lazyload="" alt="image" data-src="https://github.com/YTAZWC/picx-images-hosting/raw/master/Elasticsearch%E5%85%A5%E9%97%A8/image.5q76ibe1ao.webp"></p>
+<h2 id="常见命令操作"><a href="#常见命令操作" class="headerlink" title="常见命令操作"></a>常见命令操作</h2><p>因为配置过环境变量，所以可以直接在任意位置的命令行中，执行ES命令。</p>
+<h3 id="查询ES健康状况"><a href="#查询ES健康状况" class="headerlink" title="查询ES健康状况"></a>查询ES健康状况</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl -X GET "localhost:9200/_cat/health?v"</span><br></pre></td></tr></table></figure>
+<p>ES默认端口为<code>9200</code>，<code>v</code>表示显示标题，使用<code>GET</code>请求获取数据；执行结果如下所示：</p>
+<p><img lazyload="" alt="image" data-src="https://github.com/YTAZWC/picx-images-hosting/raw/master/Elasticsearch%E5%85%A5%E9%97%A8/image.5q76icumr2.webp"></p>
+<p>第一行是标题，第二行是显示的数据。</p>
+<ol>
+<li>timestamp：表示事件</li>
+<li>cluster：集群名</li>
+<li>status：状态；<code>green</code>表示很健康</li>
+<li>node.total：集群的节点个数</li>
+<li>node.data：集群数据节点个数</li>
+</ol>
+<h3 id="查询节点"><a href="#查询节点" class="headerlink" title="查询节点"></a>查询节点</h3><p>执行如下命令，查看集群节点；</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl -X GET "localhost:9200/_cat/nodes?v"</span><br></pre></td></tr></table></figure>
+<p>结果如下：</p>
+<p><img lazyload="" alt="image" data-src="https://github.com/YTAZWC/picx-images-hosting/raw/master/Elasticsearch%E5%85%A5%E9%97%A8/image.3go5yv983l.webp"></p>
+<h3 id="查看索引"><a href="#查看索引" class="headerlink" title="查看索引"></a>查看索引</h3><p>执行如下命令；</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl -X GET "localhost:9200/_cat/indices?v"</span><br></pre></td></tr></table></figure>
+<p>结果如下：<br><img lazyload="" alt="image" data-src="https://github.com/YTAZWC/picx-images-hosting/raw/master/Elasticsearch%E5%85%A5%E9%97%A8/image.4uap2wpmau.webp"></p>
+<p>结果显示当前并未有索引。</p>
+<h3 id="新建索引"><a href="#新建索引" class="headerlink" title="新建索引"></a>新建索引</h3><p>新建索引采用的是<code>PUT</code>请求，执行命令如下：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl -X PUT "localhost:9200/test"</span><br></pre></td></tr></table></figure>
+<p>表示新建<code>test</code>索引；执行结果如下图：<br><img lazyload="" alt="image" data-src="https://github.com/YTAZWC/picx-images-hosting/raw/master/Elasticsearch%E5%85%A5%E9%97%A8/image.1755fdxf9w.webp"></p>
+<p>返回结果为<strong>JSON</strong>格式。</p>
+<p>此时再次查询索引，则会显示出一条索引，且因为没有给索引进行分片和备份，所以健康状况会显示<code>yellow</code>，结果如下图：</p>
+<p><img lazyload="" alt="image" data-src="https://github.com/YTAZWC/picx-images-hosting/raw/master/Elasticsearch%E5%85%A5%E9%97%A8/image.2yy4aajl3g.webp"></p>
+<h3 id="删除索引"><a href="#删除索引" class="headerlink" title="删除索引"></a>删除索引</h3><p>删除索引，使用<code>DELETE</code>请求，执行命令如下所示：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl -X DELETE "localhost:9200/test"</span><br></pre></td></tr></table></figure>
+<p>删除名为<code>test</code>的索引；执行结果如下图所示：</p>
+<p><img lazyload="" alt="image" data-src="https://github.com/YTAZWC/picx-images-hosting/raw/master/Elasticsearch%E5%85%A5%E9%97%A8/image.54xiw2ffu2.webp"></p>
+<p>此时再次查询索引则不存在名为<code>test</code>的索引，如下图所示：</p>
+<p><img lazyload="" alt="image" data-src="https://github.com/YTAZWC/picx-images-hosting/raw/master/Elasticsearch%E5%85%A5%E9%97%A8/image.9rj5wrfq32.webp"></p>
+<h2 id="使用ApiPost访问ES"><a href="#使用ApiPost访问ES" class="headerlink" title="使用ApiPost访问ES"></a>使用ApiPost访问ES</h2><h3 id="查询索引"><a href="#查询索引" class="headerlink" title="查询索引"></a>查询索引</h3><p>如图所示：<br><img lazyload="" alt="image" data-src="https://github.com/YTAZWC/picx-images-hosting/raw/master/Elasticsearch%E5%85%A5%E9%97%A8/image.3go5yvw3mu.webp"></p>
+<h3 id="新建索引-1"><a href="#新建索引-1" class="headerlink" title="新建索引"></a>新建索引</h3><p>如图所示：</p>
+<p><img lazyload="" alt="image" data-src="https://github.com/YTAZWC/picx-images-hosting/raw/master/Elasticsearch%E5%85%A5%E9%97%A8/image.8kzuo5y8gq.webp"></p>
+<p>再次查询索引即可查到名为<code>test</code>的索引，如下图所示：</p>
+<p><img lazyload="" alt="image" data-src="https://github.com/YTAZWC/picx-images-hosting/raw/master/Elasticsearch%E5%85%A5%E9%97%A8/image.8ad0v0knm6.webp"></p>
+<h3 id="删除索引-1"><a href="#删除索引-1" class="headerlink" title="删除索引"></a>删除索引</h3><p>如图所示：<br><img lazyload="" alt="image" data-src="https://github.com/YTAZWC/picx-images-hosting/raw/master/Elasticsearch%E5%85%A5%E9%97%A8/image.7awxhujl74.webp"></p>
+<h3 id="插入数据"><a href="#插入数据" class="headerlink" title="插入数据"></a>插入数据</h3><p>如下图所示：</p>
+<p><img lazyload="" alt="image" data-src="https://github.com/YTAZWC/picx-images-hosting/raw/master/Elasticsearch%E5%85%A5%E9%97%A8/image.5c0qriljci.webp"></p>
+<p>使用PUT请求，插入数据，<strong>会自动创建索引<code>test</code>，<code>_doc</code>插入数据类型，表示占位，<code>1</code>则是插入数据的<code>id</code>；插入数据格式为JSON</strong>。</p>
+<h3 id="查询数据"><a href="#查询数据" class="headerlink" title="查询数据"></a>查询数据</h3><p>如下图所示：<br><img lazyload="" alt="image" data-src="https://github.com/YTAZWC/picx-images-hosting/raw/master/Elasticsearch%E5%85%A5%E9%97%A8/image.41xtl78fbw.webp"></p>
+<p>查询使用GET请求，表示查询索引为<code>test</code>，占位为<code>_doc</code>下<code>id为1</code>的数据。</p>
+<h3 id="修改数据"><a href="#修改数据" class="headerlink" title="修改数据"></a>修改数据</h3><p>如下图所示：</p>
+<p><img lazyload="" alt="image" data-src="https://github.com/YTAZWC/picx-images-hosting/raw/master/Elasticsearch%E5%85%A5%E9%97%A8/image.1aord4rfez.webp"></p>
+<p>修改数据其实与插入数据一致，在同样的位置修改数据，在底层就是先删除该位置原先存在的数据，并插入新的数据。</p>
+<h3 id="删除数据"><a href="#删除数据" class="headerlink" title="删除数据"></a>删除数据</h3><p>如下图所示：</p>
+<p><img lazyload="" alt="image" data-src="https://github.com/YTAZWC/picx-images-hosting/raw/master/Elasticsearch%E5%85%A5%E9%97%A8/image.4cknecw4na.webp"></p>
+<p>删除数据使用的是DELETE请求，返回结果确认删除；此时再次查询，则数据不存在，如下图所示：</p>
+<p><img lazyload="" alt="image" data-src="https://github.com/YTAZWC/picx-images-hosting/raw/master/Elasticsearch%E5%85%A5%E9%97%A8/image.9gwc3my5td.webp"></p>
+<h3 id="查询索引对应所有数据"><a href="#查询索引对应所有数据" class="headerlink" title="查询索引对应所有数据"></a>查询索引对应所有数据</h3><p>如图所示：</p>
+<p><img lazyload="" alt="image" data-src="https://github.com/YTAZWC/picx-images-hosting/raw/master/Elasticsearch%E5%85%A5%E9%97%A8/image.8ad0v4kp5q.webp"></p>
+<p><code>test</code>表示索引名。</p>
+<h3 id="根据索引的单字段条件查询"><a href="#根据索引的单字段条件查询" class="headerlink" title="根据索引的单字段条件查询"></a>根据索引的单字段条件查询</h3><p>如图所示：</p>
+<p><img lazyload="" alt="image" data-src="https://github.com/YTAZWC/picx-images-hosting/raw/master/Elasticsearch%E5%85%A5%E9%97%A8/image.pf3qxn75b.webp"></p>
+<p><code>q</code>表示查询的条件，<code>title:互联网</code>则表示含有<code>title</code>字段，且字段内容含有<code>互联网</code>的数据。</p>
+<p><strong>且ES在查询时，会先将条件分割为多个词条，然后去查询包含对应字条的数据。</strong></p>
+<h3 id="根据索引的多字段条件查询"><a href="#根据索引的多字段条件查询" class="headerlink" title="根据索引的多字段条件查询"></a>根据索引的多字段条件查询</h3><p>如图所示：</p>
+<p><img lazyload="" alt="image" data-src="https://github.com/YTAZWC/picx-images-hosting/raw/master/Elasticsearch%E5%85%A5%E9%97%A8/image.ibvvi5sx6.webp"></p>
+<p>多字段查询格式如图所示；**<code>query</code>表示条件，<code>multi_match</code>表示多个匹配，<code>fields</code>则表示匹配条件的字段。**</p>
+<h1 id="Spring整合Elasticsearch"><a href="#Spring整合Elasticsearch" class="headerlink" title="Spring整合Elasticsearch"></a>Spring整合Elasticsearch</h1><h2 id="引入依赖"><a href="#引入依赖" class="headerlink" title="引入依赖"></a>引入依赖</h2><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-data-elasticsearch --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter-data-elasticsearch<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="配置Elasticsearch"><a href="#配置Elasticsearch" class="headerlink" title="配置Elasticsearch"></a>配置Elasticsearch</h2><p>在配置文件<code>application.properties</code>中配置如下内容：</p>
+<figure class="highlight properties"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 连接集群节点</span></span><br><span class="line"><span class="attr">spring.elasticsearch.uris</span>=<span class="string">localhost:9200</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="出现Redis与Elasticsearch发生Netty冲突"><a href="#出现Redis与Elasticsearch发生Netty冲突" class="headerlink" title="出现Redis与Elasticsearch发生Netty冲突"></a>出现Redis与Elasticsearch发生Netty冲突</h2><p>主要是Redis与Elasticsearch都调用了NettyRuntime类的setAvailableProcessors方法。</p>
+<h3 id="解决办法"><a href="#解决办法" class="headerlink" title="解决办法"></a>解决办法</h3><p>在Application启动类中，添加如下内容：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@PostConstruct</span>    <span class="comment">// 所注解的方法 会在构造器调用完以后调用</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">init</span><span class="params">()</span> {</span><br><span class="line">        <span class="comment">// 解决Netty启动冲突问题</span></span><br><span class="line">        <span class="comment">// 由Netty4Utils.setAvailableProcessors()得</span></span><br><span class="line">        System.setProperty(<span class="string">"es.set.netty.runtime.available.processors"</span>, <span class="string">"false"</span>);</span><br><span class="line">    }</span><br></pre></td></tr></table></figure>
+
+<h2 id="配置实体"><a href="#配置实体" class="headerlink" title="配置实体"></a>配置实体</h2><p>即配置项目实体与ElasticSearch相对应；即可自动生成与某实体相对应的索引；具体实体类配置如下所示：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> 花木凋零成兰</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@date</span> 2024/3/4 20:16</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@Document(indexName = "discusspost")</span>    <span class="comment">// 与Elasticsearch关联 设置索引 注意不能出现大写字母</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">DiscussPost</span> {</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Id</span> <span class="comment">// 与ES索引对应字段</span></span><br><span class="line">    <span class="keyword">private</span> <span class="type">int</span> id;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Field(type = FieldType.Integer)</span>    <span class="comment">// type字段类型</span></span><br><span class="line">    <span class="keyword">private</span> <span class="type">int</span> userId;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * analyzer时候的解析器   ik_max_word 尽可能的拆分</span></span><br><span class="line"><span class="comment">     * searchAnalyzer搜索时候的解析器   ik_smart 灵活的拆分</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@Field(type = FieldType.Text, analyzer = "ik_max_word", searchAnalyzer = "ik_smart")</span></span><br><span class="line">    <span class="keyword">private</span> String title;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Field(type = FieldType.Text, analyzer = "ik_max_word", searchAnalyzer = "ik_smart")</span></span><br><span class="line">    <span class="keyword">private</span> String content;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Field(type = FieldType.Integer)</span></span><br><span class="line">    <span class="keyword">private</span> <span class="type">int</span> type;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Field(type = FieldType.Integer)</span></span><br><span class="line">    <span class="keyword">private</span> <span class="type">int</span> status;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Field(type = FieldType.Date)</span></span><br><span class="line">    <span class="keyword">private</span> Date createTime;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Field(type = FieldType.Integer)</span></span><br><span class="line">    <span class="keyword">private</span> <span class="type">int</span> commentCount;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Field(type = FieldType.Double)</span></span><br><span class="line">    <span class="keyword">private</span> <span class="type">double</span> score;</span><br><span class="line"></span><br><span class="line">}</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h2 id="配置接口"><a href="#配置接口" class="headerlink" title="配置接口"></a>配置接口</h2><p>配置完实体类后，还需要配置对ES操作接口，即接口内自动包含了与ES有关的API；接口配置如下所示：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * ES操作接口</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> 花木凋零成兰</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@date</span> 2024/3/25 21:14</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@Repository</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">interface</span> <span class="title class_">DiscussPostRepository</span> <span class="keyword">extends</span> <span class="title class_">ElasticsearchRepository</span>&lt;DiscussPost, Integer&gt; {</span><br><span class="line">}</span><br></pre></td></tr></table></figure>
+
+<p>自定义接口继承<code>ElasticsearchRepository&lt;K, V&gt;</code>类，自定义接口内即有关于ES操作的API，<code>K</code>指操作的数据实体类型，<code>V</code>指数据实体类型的id类型。</p>
+<h2 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h2><p>在ES7中，<code>ElasticsearchRepository</code>主要用来实现简单的对数据增删改查，即主要用于实现简单操作；<code>ElasticsearchRestTemplate</code>类则主要用来实现对数据的复杂查询等；即主要用户复杂的数据操作。</p>
+<p>测试代码如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> 花木凋零成兰</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@date</span> 2024/3/25 21:15</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@SpringBootTest</span></span><br><span class="line"><span class="meta">@ContextConfiguration(classes = Application.class)</span>        <span class="comment">// 使用Application类的配置</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">ElasticsearchTests</span> {</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    <span class="keyword">private</span> DiscussPostMapper discussPostMapper;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Autowired()</span></span><br><span class="line">    <span class="keyword">private</span> DiscussPostRepository discussPostRepository;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    <span class="keyword">private</span> ElasticsearchRestTemplate elasticsearchRestTemplate; <span class="comment">// 多用于复杂查询</span></span><br><span class="line"></span><br><span class="line">    <span class="meta">@Test</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">insertTest</span><span class="params">()</span> {</span><br><span class="line">        <span class="comment">// 测试插入数据 若不存在索引 会自动创建</span></span><br><span class="line">        discussPostRepository.save(discussPostMapper.selectDiscussPostById(<span class="number">241</span>));   <span class="comment">// 每次插入一条数据</span></span><br><span class="line">        discussPostRepository.save(discussPostMapper.selectDiscussPostById(<span class="number">242</span>));</span><br><span class="line">        discussPostRepository.save(discussPostMapper.selectDiscussPostById(<span class="number">243</span>));</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Test</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">insertListTest</span><span class="params">()</span> {</span><br><span class="line">        discussPostRepository.saveAll(discussPostMapper.selectDiscussPosts(<span class="number">101</span>, <span class="number">0</span>, <span class="number">100</span>));   <span class="comment">// 一次性插入多条数据</span></span><br><span class="line">        discussPostRepository.saveAll(discussPostMapper.selectDiscussPosts(<span class="number">102</span>, <span class="number">0</span>, <span class="number">100</span>));   <span class="comment">// 一次性插入多条数据</span></span><br><span class="line">        discussPostRepository.saveAll(discussPostMapper.selectDiscussPosts(<span class="number">103</span>, <span class="number">0</span>, <span class="number">100</span>));   <span class="comment">// 一次性插入多条数据</span></span><br><span class="line">        discussPostRepository.saveAll(discussPostMapper.selectDiscussPosts(<span class="number">111</span>, <span class="number">0</span>, <span class="number">100</span>));   <span class="comment">// 一次性插入多条数据</span></span><br><span class="line">        discussPostRepository.saveAll(discussPostMapper.selectDiscussPosts(<span class="number">112</span>, <span class="number">0</span>, <span class="number">100</span>));   <span class="comment">// 一次性插入多条数据</span></span><br><span class="line">        discussPostRepository.saveAll(discussPostMapper.selectDiscussPosts(<span class="number">131</span>, <span class="number">0</span>, <span class="number">100</span>));   <span class="comment">// 一次性插入多条数据</span></span><br><span class="line">        discussPostRepository.saveAll(discussPostMapper.selectDiscussPosts(<span class="number">132</span>, <span class="number">0</span>, <span class="number">100</span>));   <span class="comment">// 一次性插入多条数据</span></span><br><span class="line">        discussPostRepository.saveAll(discussPostMapper.selectDiscussPosts(<span class="number">133</span>, <span class="number">0</span>, <span class="number">100</span>));   <span class="comment">// 一次性插入多条数据</span></span><br><span class="line">        discussPostRepository.saveAll(discussPostMapper.selectDiscussPosts(<span class="number">134</span>, <span class="number">0</span>, <span class="number">100</span>));   <span class="comment">// 一次性插入多条数据</span></span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Test</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">updateTest</span><span class="params">()</span> {</span><br><span class="line">        <span class="type">DiscussPost</span> <span class="variable">discussPost</span> <span class="operator">=</span> discussPostMapper.selectDiscussPostById(<span class="number">231</span>);</span><br><span class="line">        discussPost.setContent(<span class="string">"我是Java程序员，我要好好学Java!"</span>);</span><br><span class="line">        discussPostRepository.save(discussPost);    <span class="comment">// 在同样id处重新插入数据 覆盖原先数据</span></span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Test</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">deleteTest</span><span class="params">()</span> {</span><br><span class="line">        discussPostRepository.deleteById(<span class="number">231</span>);  <span class="comment">// 根据id删除数据</span></span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Test</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">deleteAllTest</span><span class="params">()</span> {</span><br><span class="line">        discussPostRepository.deleteAll();  <span class="comment">// 一次性删除所有数据</span></span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Test</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">testSearch</span><span class="params">()</span> {</span><br><span class="line">        <span class="comment">// 构造搜索条件</span></span><br><span class="line">        <span class="type">NativeSearchQuery</span> <span class="variable">searchQuery</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">NativeSearchQueryBuilder</span>()</span><br><span class="line">                .withQuery(QueryBuilders.multiMatchQuery(<span class="string">"互联网寒冬"</span>, <span class="string">"title"</span>, <span class="string">"content"</span>))    <span class="comment">// 构建搜索条件 多字段查询内容</span></span><br><span class="line">                .withSorts(</span><br><span class="line">                        SortBuilders.fieldSort(<span class="string">"type"</span>).order(SortOrder.DESC), <span class="comment">// 构建排序顺序 先按照type倒序排</span></span><br><span class="line">                        SortBuilders.fieldSort(<span class="string">"score"</span>).order(SortOrder.DESC), <span class="comment">// 再按score倒序排</span></span><br><span class="line">                        SortBuilders.fieldSort(<span class="string">"createTime"</span>).order(SortOrder.DESC)  <span class="comment">// 再按创建时间 倒序排</span></span><br><span class="line">                )</span><br><span class="line">                .withPageable(PageRequest.of(<span class="number">0</span>, <span class="number">10</span>))    <span class="comment">// 分页查询 第几页, 该页显示数据数量</span></span><br><span class="line">                .withHighlightFields(   <span class="comment">// 配置字段高亮显示</span></span><br><span class="line">                        <span class="keyword">new</span> <span class="title class_">HighlightBuilder</span>.Field(<span class="string">"title"</span>).preTags(<span class="string">"&lt;em&gt;"</span>).postTags(<span class="string">"&lt;/em&gt;"</span>),</span><br><span class="line">                        <span class="keyword">new</span> <span class="title class_">HighlightBuilder</span>.Field(<span class="string">"content"</span>).preTags(<span class="string">"&lt;em&gt;"</span>).postTags(<span class="string">"&lt;/em&gt;"</span>)</span><br><span class="line">                )</span><br><span class="line">                .build();</span><br><span class="line">        SearchHits&lt;DiscussPost&gt; searchHits = elasticsearchRestTemplate.search(searchQuery, DiscussPost.class);</span><br><span class="line">        <span class="keyword">if</span> (searchHits.getTotalHits() &lt;= <span class="number">0</span>) {      <span class="comment">// 若查询无数据</span></span><br><span class="line">            <span class="keyword">new</span> <span class="title class_">PageImpl</span>&lt;DiscussPost&gt;(<span class="literal">null</span>, PageRequest.of(<span class="number">0</span>, <span class="number">20</span>), <span class="number">0</span>);</span><br><span class="line">        }</span><br><span class="line">        List&lt;DiscussPost&gt; discussPostList = searchHits.stream().map(SearchHit::getContent).collect(Collectors.toList());    <span class="comment">// 将查询的数据转化为List集合</span></span><br><span class="line">        Page&lt;DiscussPost&gt; page = <span class="keyword">new</span> <span class="title class_">PageImpl</span>&lt;&gt;(discussPostList, searchQuery.getPageable(), searchHits.getTotalHits());</span><br><span class="line">        System.out.println(page.getTotalElements());  <span class="comment">// 获取总数</span></span><br><span class="line">        System.out.println(page.getNumber());    <span class="comment">// 获取页码</span></span><br><span class="line">        System.out.println(page.getSize());  <span class="comment">// 获取每页个数</span></span><br><span class="line">        System.out.println(page.getTotalPages());    <span class="comment">// 分页总数</span></span><br><span class="line">        <span class="keyword">for</span> (DiscussPost discussPost : page) {</span><br><span class="line">            System.out.println(discussPost);    <span class="comment">// 输出查询结果</span></span><br><span class="line">        }</span><br><span class="line"></span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Test</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">testSearchByTemplateHighLight</span><span class="params">()</span> {   <span class="comment">// 按条件查询数据 实现高亮</span></span><br><span class="line">        <span class="type">NativeSearchQuery</span> <span class="variable">searchQuery</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">NativeSearchQueryBuilder</span>()</span><br><span class="line">                .withQuery(QueryBuilders.multiMatchQuery(<span class="string">"互联网寒冬"</span>, <span class="string">"title"</span>, <span class="string">"content"</span>))    <span class="comment">// 构建搜索条件 多字段查询内容</span></span><br><span class="line">                .withSorts(</span><br><span class="line">                        SortBuilders.fieldSort(<span class="string">"type"</span>).order(SortOrder.DESC), <span class="comment">// 构建排序顺序 先按照type倒序排</span></span><br><span class="line">                        SortBuilders.fieldSort(<span class="string">"score"</span>).order(SortOrder.DESC), <span class="comment">// 再按score倒序排</span></span><br><span class="line">                        SortBuilders.fieldSort(<span class="string">"createTime"</span>).order(SortOrder.DESC)  <span class="comment">// 再按创建时间 倒序排</span></span><br><span class="line">                )</span><br><span class="line">                .withPageable(PageRequest.of(<span class="number">0</span>, <span class="number">10</span>))    <span class="comment">// 分页查询 第几页, 该页显示数据数量</span></span><br><span class="line">                .withHighlightFields(</span><br><span class="line">                        <span class="keyword">new</span> <span class="title class_">HighlightBuilder</span>.Field(<span class="string">"title"</span>).preTags(<span class="string">"&lt;em&gt;"</span>).postTags(<span class="string">"&lt;/em&gt;"</span>),</span><br><span class="line">                        <span class="keyword">new</span> <span class="title class_">HighlightBuilder</span>.Field(<span class="string">"content"</span>).preTags(<span class="string">"&lt;em&gt;"</span>).postTags(<span class="string">"&lt;/em&gt;"</span>)</span><br><span class="line">                )   <span class="comment">// 配置字段高亮显示</span></span><br><span class="line">                .build();</span><br><span class="line">        SearchHits&lt;DiscussPost&gt; searchHits = elasticsearchRestTemplate.search(searchQuery, DiscussPost.class);</span><br><span class="line">        <span class="comment">// SearchPage&lt;DiscussPost&gt; page = SearchHitSupport.searchPageFor(searchHits, searchQuery.getPageable());</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">// 获取高亮结果集</span></span><br><span class="line">        List&lt;DiscussPost&gt; list = <span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;&gt;();</span><br><span class="line">        <span class="keyword">for</span> (SearchHit&lt;DiscussPost&gt; searchHit : searchHits) {</span><br><span class="line">            <span class="type">DiscussPost</span> <span class="variable">discussPost</span> <span class="operator">=</span> searchHit.getContent();</span><br><span class="line">            <span class="keyword">if</span> (searchHit.getHighlightFields().get(<span class="string">"title"</span>) != <span class="literal">null</span>) {</span><br><span class="line">                discussPost.setTitle(searchHit.getHighlightFields().get(<span class="string">"title"</span>).get(<span class="number">0</span>));</span><br><span class="line">                <span class="comment">// discussPost.setContent(searchHit.getHighlightField("content").toString());</span></span><br><span class="line">            }</span><br><span class="line">            <span class="keyword">if</span> (searchHit.getHighlightFields().get(<span class="string">"content"</span>) != <span class="literal">null</span>) {</span><br><span class="line">                discussPost.setContent(searchHit.getHighlightFields().get(<span class="string">"content"</span>).get(<span class="number">0</span>));</span><br><span class="line">                <span class="comment">// discussPost.setContent(searchHit.getHighlightField("content").toString());</span></span><br><span class="line">            }</span><br><span class="line">            list.add(discussPost);</span><br><span class="line">        }</span><br><span class="line">        <span class="comment">// 组装分页对象</span></span><br><span class="line">        Page&lt;DiscussPost&gt; pageInfo = <span class="keyword">new</span> <span class="title class_">PageImpl</span>&lt;&gt;(list, searchQuery.getPageable(), searchHits.getTotalHits());</span><br><span class="line">        System.out.println(pageInfo.getTotalElements());    <span class="comment">// 获取查询得到数据总数</span></span><br><span class="line">        System.out.println(pageInfo.getTotalPages());   <span class="comment">// 获取总页数</span></span><br><span class="line">        System.out.println(pageInfo.getNumber());   <span class="comment">// 获取当前页码</span></span><br><span class="line">        System.out.println(pageInfo.getSize());     <span class="comment">// 获取当前页面个数</span></span><br><span class="line">        <span class="comment">// 输出分页结果</span></span><br><span class="line">        <span class="keyword">for</span> (DiscussPost discussPost : pageInfo) {</span><br><span class="line">            System.out.println(discussPost);</span><br><span class="line">        }</span><br><span class="line"></span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></table></figure>
+
+<p>因测试数据过多，此处只展示最后一个测试方法执行成功结果；如下所示：</p>
+<p><img lazyload="" alt="image" data-src="https://github.com/YTAZWC/picx-images-hosting/raw/master/Elasticsearch%E5%85%A5%E9%97%A8/image.92pwd3lvss.webp"></p>
+
+                </div>
+
+                
+
+                <div class="post-bottom-tags-and-share border-box">
+                    <div>
+                        
+                            <ul class="post-tags-box border-box">
+                                
+                                    <li class="tag-item border-box">
+                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/Spring/">Spring</a>
+                                    </li>
+                                
+                                    <li class="tag-item border-box">
+                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/Spring-Boot/">Spring Boot</a>
+                                    </li>
+                                
+                                    <li class="tag-item border-box">
+                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/Elasticsearch/">Elasticsearch</a>
+                                    </li>
+                                
+                            </ul>
+                        
+                    </div>
+                    <div>
+                        
+                    </div>
+                </div>
+
+                
+
+                
+                    <div class="post-nav border-box">
+                        
+                        
+                            <div class="next-post">
+                                <a class="next"
+                                   rel="next"
+                                   href="/2024/03/25/LC452-%E7%94%A8%E6%9C%80%E5%B0%91%E6%95%B0%E9%87%8F%E7%9A%84%E7%AE%AD%E5%BC%95%E7%88%86%E6%B0%94%E7%90%83/"
+                                   title="LC452.用最少数量的箭引爆气球"
+                                >
+                                    <span class="title flex-center">
+                                        <span class="post-nav-title-item text-ellipsis">LC452.用最少数量的箭引爆气球</span>
+                                        <span class="post-nav-item">下一篇</span>
+                                    </span>
+                                    <span class="right arrow-icon flex-center">
+                                        <i class="fas fa-chevron-right"></i>
+                                    </span>
+                                </a>
+                            </div>
+                        
+                    </div>
+                
+
+                
+                    
+
+
+
+
+
+
+                
+            </div>
+        </div>
+
+        
+            <div class="pc-post-toc right-toc">
+                <div class="post-toc-wrap border-box">
+    <div class="post-toc border-box">
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%85%A5%E9%97%A8"><span class="nav-number">1.</span> <span class="nav-text">入门</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AE%80%E4%BB%8B"><span class="nav-number">1.1.</span> <span class="nav-text">简介</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B8%B8%E7%94%A8%E6%9C%AF%E8%AF%AD"><span class="nav-number">1.2.</span> <span class="nav-text">常用术语</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%89%E8%A3%85%E4%B8%8E%E9%85%8D%E7%BD%AE"><span class="nav-number">1.3.</span> <span class="nav-text">安装与配置</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%85%8D%E7%BD%AE"><span class="nav-number">1.3.1.</span> <span class="nav-text">配置</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6"><span class="nav-number">1.3.1.1.</span> <span class="nav-text">配置文件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%85%8D%E7%BD%AE%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F"><span class="nav-number">1.3.1.2.</span> <span class="nav-text">配置环境变量</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AE%89%E8%A3%85%E4%B8%AD%E6%96%87%E5%88%86%E8%AF%8D%E6%8F%92%E4%BB%B6"><span class="nav-number">1.3.1.3.</span> <span class="nav-text">安装中文分词插件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AE%89%E8%A3%85ApiPost"><span class="nav-number">1.3.1.4.</span> <span class="nav-text">安装ApiPost</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BF%90%E8%A1%8CElasticsearch"><span class="nav-number">1.4.</span> <span class="nav-text">运行Elasticsearch</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B8%B8%E8%A7%81%E5%91%BD%E4%BB%A4%E6%93%8D%E4%BD%9C"><span class="nav-number">1.5.</span> <span class="nav-text">常见命令操作</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9F%A5%E8%AF%A2ES%E5%81%A5%E5%BA%B7%E7%8A%B6%E5%86%B5"><span class="nav-number">1.5.1.</span> <span class="nav-text">查询ES健康状况</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9F%A5%E8%AF%A2%E8%8A%82%E7%82%B9"><span class="nav-number">1.5.2.</span> <span class="nav-text">查询节点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9F%A5%E7%9C%8B%E7%B4%A2%E5%BC%95"><span class="nav-number">1.5.3.</span> <span class="nav-text">查看索引</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%96%B0%E5%BB%BA%E7%B4%A2%E5%BC%95"><span class="nav-number">1.5.4.</span> <span class="nav-text">新建索引</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%A0%E9%99%A4%E7%B4%A2%E5%BC%95"><span class="nav-number">1.5.5.</span> <span class="nav-text">删除索引</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8ApiPost%E8%AE%BF%E9%97%AEES"><span class="nav-number">1.6.</span> <span class="nav-text">使用ApiPost访问ES</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9F%A5%E8%AF%A2%E7%B4%A2%E5%BC%95"><span class="nav-number">1.6.1.</span> <span class="nav-text">查询索引</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%96%B0%E5%BB%BA%E7%B4%A2%E5%BC%95-1"><span class="nav-number">1.6.2.</span> <span class="nav-text">新建索引</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%A0%E9%99%A4%E7%B4%A2%E5%BC%95-1"><span class="nav-number">1.6.3.</span> <span class="nav-text">删除索引</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8F%92%E5%85%A5%E6%95%B0%E6%8D%AE"><span class="nav-number">1.6.4.</span> <span class="nav-text">插入数据</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9F%A5%E8%AF%A2%E6%95%B0%E6%8D%AE"><span class="nav-number">1.6.5.</span> <span class="nav-text">查询数据</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BF%AE%E6%94%B9%E6%95%B0%E6%8D%AE"><span class="nav-number">1.6.6.</span> <span class="nav-text">修改数据</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%A0%E9%99%A4%E6%95%B0%E6%8D%AE"><span class="nav-number">1.6.7.</span> <span class="nav-text">删除数据</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9F%A5%E8%AF%A2%E7%B4%A2%E5%BC%95%E5%AF%B9%E5%BA%94%E6%89%80%E6%9C%89%E6%95%B0%E6%8D%AE"><span class="nav-number">1.6.8.</span> <span class="nav-text">查询索引对应所有数据</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A0%B9%E6%8D%AE%E7%B4%A2%E5%BC%95%E7%9A%84%E5%8D%95%E5%AD%97%E6%AE%B5%E6%9D%A1%E4%BB%B6%E6%9F%A5%E8%AF%A2"><span class="nav-number">1.6.9.</span> <span class="nav-text">根据索引的单字段条件查询</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A0%B9%E6%8D%AE%E7%B4%A2%E5%BC%95%E7%9A%84%E5%A4%9A%E5%AD%97%E6%AE%B5%E6%9D%A1%E4%BB%B6%E6%9F%A5%E8%AF%A2"><span class="nav-number">1.6.10.</span> <span class="nav-text">根据索引的多字段条件查询</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Spring%E6%95%B4%E5%90%88Elasticsearch"><span class="nav-number">2.</span> <span class="nav-text">Spring整合Elasticsearch</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BC%95%E5%85%A5%E4%BE%9D%E8%B5%96"><span class="nav-number">2.1.</span> <span class="nav-text">引入依赖</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%85%8D%E7%BD%AEElasticsearch"><span class="nav-number">2.2.</span> <span class="nav-text">配置Elasticsearch</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%87%BA%E7%8E%B0Redis%E4%B8%8EElasticsearch%E5%8F%91%E7%94%9FNetty%E5%86%B2%E7%AA%81"><span class="nav-number">2.3.</span> <span class="nav-text">出现Redis与Elasticsearch发生Netty冲突</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95"><span class="nav-number">2.3.1.</span> <span class="nav-text">解决办法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%85%8D%E7%BD%AE%E5%AE%9E%E4%BD%93"><span class="nav-number">2.4.</span> <span class="nav-text">配置实体</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%85%8D%E7%BD%AE%E6%8E%A5%E5%8F%A3"><span class="nav-number">2.5.</span> <span class="nav-text">配置接口</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%B5%8B%E8%AF%95"><span class="nav-number">2.6.</span> <span class="nav-text">测试</span></a></li></ol></li></ol>
+    </div>
+</div>
+
+            </div>
+        
+    </div>
+</div>
+
+
+                
+            </div>
+
+        </div>
+
+        <div class="page-main-content-bottom border-box">
+            
+<footer class="footer border-box">
+    <div class="border-box website-info-box default">
+        
+            <div class="copyright-info info-item default">
+                &copy;&nbsp;<span>2023</span>&nbsp;-&nbsp;2024
+                
+                    &nbsp;<i class="fas fa-heart icon-animate"></i>&nbsp;&nbsp;<a href="/">花木凋零成兰</a>
+                
+            </div>
+
+            <div class="theme-info info-item default">
+                由&nbsp;<a target="_blank" href="https://hexo.io">Hexo</a>&nbsp;驱动&nbsp;&&nbsp;主题&nbsp;<a class="keep-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep</a>
+            </div>
+
+            
+
+            
+        
+
+        <div class="count-item info-item default">
+            
+
+            
+                <span class="count-box border-box uv">
+                    <span class="item-type border-box">访客数</span>
+                    <span class="item-value border-box uv" id="busuanzi_value_site_uv"></span>
+                </span>
+            
+
+            
+                <span class="count-box border-box pv">
+                    <span class="item-type border-box">访问量</span>
+                    <span class="item-value border-box pv" id="busuanzi_value_site_pv"></span>
+                </span>
+            
+        </div>
+    </div>
+</footer>
+
+        </div>
+    </div>
+
+    <!-- post tools -->
+    
+        <div class="post-tools right-toc">
+            <div class="post-tools-container border-box">
+    <ul class="tools-list border-box">
+        <!-- PC TOC show toggle -->
+        
+            <li class="tools-item flex-center toggle-show-toc">
+                <i class="fas fa-list"></i>
+            </li>
+        
+
+        <!-- PC go comment -->
+        
+    </ul>
+</div>
+
+        </div>
+    
+
+    <!-- side tools -->
+    <div class="side-tools">
+        <div class="side-tools-container border-box ">
+    <ul class="side-tools-list side-tools-show-handle border-box">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li>
+
+        <li class="tools-item tool-toggle-theme-mode flex-center">
+            <i class="fas fa-moon"></i>
+        </li>
+
+        <!-- rss -->
+        
+
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list border-box">
+        
+            <li class="tools-item toggle-show-toc-tablet flex-center">
+                <i class="fas fa-list"></i>
+            </li>
+        
+
+        
+
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
+
+        <li class="tools-item tool-scroll-to-top flex-center show-arrow">
+            <i class="arrow fas fa-arrow-up"></i>
+            <span class="percent"></span>
+        </li>
+    </ul>
+</div>
+
+    </div>
+
+    <!-- image mask -->
+    <div class="zoom-in-image-mask">
+    <img class="zoom-in-image">
+</div>
+
+
+    <!-- local search -->
+    
+        <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+          <span class="search-input-field-pre">
+            <i class="fas fa-keyboard"></i>
+          </span>
+            <div class="search-input-container">
+                <input autocomplete="off"
+                       autocorrect="off"
+                       autocapitalize="off"
+                       placeholder="搜索..."
+                       spellcheck="false"
+                       type="search"
+                       class="search-input"
+                >
+            </div>
+            <span class="close-popup-btn">
+                <i class="fas fa-times"></i>
+            </span>
+        </div>
+        <div id="search-result">
+            <div id="no-result">
+                <i class="fas fa-spinner fa-pulse fa-5x fa-fw"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+
+    <!-- tablet toc -->
+    
+        <div class="tablet-post-toc-mask">
+            <div class="tablet-post-toc">
+                <div class="post-toc-wrap border-box">
+    <div class="post-toc border-box">
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%85%A5%E9%97%A8"><span class="nav-number">1.</span> <span class="nav-text">入门</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AE%80%E4%BB%8B"><span class="nav-number">1.1.</span> <span class="nav-text">简介</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B8%B8%E7%94%A8%E6%9C%AF%E8%AF%AD"><span class="nav-number">1.2.</span> <span class="nav-text">常用术语</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%89%E8%A3%85%E4%B8%8E%E9%85%8D%E7%BD%AE"><span class="nav-number">1.3.</span> <span class="nav-text">安装与配置</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%85%8D%E7%BD%AE"><span class="nav-number">1.3.1.</span> <span class="nav-text">配置</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6"><span class="nav-number">1.3.1.1.</span> <span class="nav-text">配置文件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%85%8D%E7%BD%AE%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F"><span class="nav-number">1.3.1.2.</span> <span class="nav-text">配置环境变量</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AE%89%E8%A3%85%E4%B8%AD%E6%96%87%E5%88%86%E8%AF%8D%E6%8F%92%E4%BB%B6"><span class="nav-number">1.3.1.3.</span> <span class="nav-text">安装中文分词插件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AE%89%E8%A3%85ApiPost"><span class="nav-number">1.3.1.4.</span> <span class="nav-text">安装ApiPost</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BF%90%E8%A1%8CElasticsearch"><span class="nav-number">1.4.</span> <span class="nav-text">运行Elasticsearch</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B8%B8%E8%A7%81%E5%91%BD%E4%BB%A4%E6%93%8D%E4%BD%9C"><span class="nav-number">1.5.</span> <span class="nav-text">常见命令操作</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9F%A5%E8%AF%A2ES%E5%81%A5%E5%BA%B7%E7%8A%B6%E5%86%B5"><span class="nav-number">1.5.1.</span> <span class="nav-text">查询ES健康状况</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9F%A5%E8%AF%A2%E8%8A%82%E7%82%B9"><span class="nav-number">1.5.2.</span> <span class="nav-text">查询节点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9F%A5%E7%9C%8B%E7%B4%A2%E5%BC%95"><span class="nav-number">1.5.3.</span> <span class="nav-text">查看索引</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%96%B0%E5%BB%BA%E7%B4%A2%E5%BC%95"><span class="nav-number">1.5.4.</span> <span class="nav-text">新建索引</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%A0%E9%99%A4%E7%B4%A2%E5%BC%95"><span class="nav-number">1.5.5.</span> <span class="nav-text">删除索引</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8ApiPost%E8%AE%BF%E9%97%AEES"><span class="nav-number">1.6.</span> <span class="nav-text">使用ApiPost访问ES</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9F%A5%E8%AF%A2%E7%B4%A2%E5%BC%95"><span class="nav-number">1.6.1.</span> <span class="nav-text">查询索引</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%96%B0%E5%BB%BA%E7%B4%A2%E5%BC%95-1"><span class="nav-number">1.6.2.</span> <span class="nav-text">新建索引</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%A0%E9%99%A4%E7%B4%A2%E5%BC%95-1"><span class="nav-number">1.6.3.</span> <span class="nav-text">删除索引</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8F%92%E5%85%A5%E6%95%B0%E6%8D%AE"><span class="nav-number">1.6.4.</span> <span class="nav-text">插入数据</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9F%A5%E8%AF%A2%E6%95%B0%E6%8D%AE"><span class="nav-number">1.6.5.</span> <span class="nav-text">查询数据</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BF%AE%E6%94%B9%E6%95%B0%E6%8D%AE"><span class="nav-number">1.6.6.</span> <span class="nav-text">修改数据</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%A0%E9%99%A4%E6%95%B0%E6%8D%AE"><span class="nav-number">1.6.7.</span> <span class="nav-text">删除数据</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9F%A5%E8%AF%A2%E7%B4%A2%E5%BC%95%E5%AF%B9%E5%BA%94%E6%89%80%E6%9C%89%E6%95%B0%E6%8D%AE"><span class="nav-number">1.6.8.</span> <span class="nav-text">查询索引对应所有数据</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A0%B9%E6%8D%AE%E7%B4%A2%E5%BC%95%E7%9A%84%E5%8D%95%E5%AD%97%E6%AE%B5%E6%9D%A1%E4%BB%B6%E6%9F%A5%E8%AF%A2"><span class="nav-number">1.6.9.</span> <span class="nav-text">根据索引的单字段条件查询</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A0%B9%E6%8D%AE%E7%B4%A2%E5%BC%95%E7%9A%84%E5%A4%9A%E5%AD%97%E6%AE%B5%E6%9D%A1%E4%BB%B6%E6%9F%A5%E8%AF%A2"><span class="nav-number">1.6.10.</span> <span class="nav-text">根据索引的多字段条件查询</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Spring%E6%95%B4%E5%90%88Elasticsearch"><span class="nav-number">2.</span> <span class="nav-text">Spring整合Elasticsearch</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BC%95%E5%85%A5%E4%BE%9D%E8%B5%96"><span class="nav-number">2.1.</span> <span class="nav-text">引入依赖</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%85%8D%E7%BD%AEElasticsearch"><span class="nav-number">2.2.</span> <span class="nav-text">配置Elasticsearch</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%87%BA%E7%8E%B0Redis%E4%B8%8EElasticsearch%E5%8F%91%E7%94%9FNetty%E5%86%B2%E7%AA%81"><span class="nav-number">2.3.</span> <span class="nav-text">出现Redis与Elasticsearch发生Netty冲突</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95"><span class="nav-number">2.3.1.</span> <span class="nav-text">解决办法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%85%8D%E7%BD%AE%E5%AE%9E%E4%BD%93"><span class="nav-number">2.4.</span> <span class="nav-text">配置实体</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%85%8D%E7%BD%AE%E6%8E%A5%E5%8F%A3"><span class="nav-number">2.5.</span> <span class="nav-text">配置接口</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%B5%8B%E8%AF%95"><span class="nav-number">2.6.</span> <span class="nav-text">测试</span></a></li></ol></li></ol>
+    </div>
+</div>
+
+            </div>
+        </div>
+    
+</main>
+
+
+
+<!-- common -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.0.6/js/utils.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.0.6/js/header-shrink.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.0.6/js/back2top.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.0.6/js/toggle-theme.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.0.6/js/code-block.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.0.6/js/main.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.0.6/js/libs/anime.min.js"></script>
+
+<!-- local-search -->
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.0.6/js/local-search.min.js"></script>
+
+
+<!-- lazyload -->
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.0.6/js/lazyload.min.js"></script>
+
+
+<div class="pjax">
+    
+        <!-- post-helper -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.0.6/js/post/post-helper.min.js"></script>
+
+        <!-- toc -->
+        
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.0.6/js/post/toc.min.js"></script>
+        
+
+        <!-- copyright-info -->
+        
+
+        <!-- share -->
+        
+    
+
+    <!-- category-page -->
+    
+
+    <!-- links-page -->
+    
+
+    <!-- photos-page -->
+    
+</div>
+
+<!-- mermaid -->
+
+
+<!-- pjax -->
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.0.6/js/libs/pjax.min.js"></script>
+<script>
+    window.addEventListener('DOMContentLoaded', () => {
+        window.pjax = new Pjax({
+            selectors: [
+                'head title',
+                '.page-container',
+                '.pjax'
+            ],
+            history: true,
+            debug: false,
+            cacheBust: false,
+            timeout: 0,
+            analytics: false,
+            currentUrlFullReload: false,
+            scrollRestoration: false,
+        });
+
+        document.addEventListener('pjax:send', () => {
+            KEEP.utils.pjaxProgressBarStart()
+        });
+
+        document.addEventListener('pjax:complete', () => {
+            KEEP.utils.pjaxProgressBarEnd()
+            window.pjax.executeScripts(document.querySelectorAll('script[data-pjax], .pjax script'))
+            KEEP.initExecute()
+        });
+    });
+</script>
+
+
+
+
+</body>
+</html>
