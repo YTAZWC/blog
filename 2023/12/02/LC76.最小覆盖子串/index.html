@@ -9,7 +9,7 @@
     
     <title>
         
-            最小覆盖子串_76 |
+            LC76.最小覆盖子串 |
         
         花木凋零成兰
     </title>
@@ -290,7 +290,7 @@ mjx-container[display="true"] + br {
             <div class="post-content-bottom border-box">
                 
                     <div class="post-title">
-                        最小覆盖子串_76
+                        LC76.最小覆盖子串
                     </div>
                 
 
@@ -323,7 +323,7 @@ mjx-container[display="true"] + br {
 
             <span class="meta-info-item post-update-date">
                 <i class="icon fa-solid fa-file-pen"></i>&nbsp;
-                <span class="datetime" data-updated="Wed Apr 10 2024 15:30:57 GMT+0000">2024-04-10 15:30:57</span>
+                <span class="datetime" data-updated="Sun Apr 14 2024 07:27:58 GMT+0000">2024-04-14 07:27:58</span>
             </span>
         
 
@@ -380,8 +380,7 @@ mjx-container[display="true"] + br {
                 <div class="post-content keep-markdown-body">
                     
 
-                    <h1 id="最小覆盖子串"><a href="#最小覆盖子串" class="headerlink" title="最小覆盖子串"></a>最小覆盖子串</h1><p><a class="link" target="_blank" rel="noopener" href="https://leetcode.cn/problems/minimum-window-substring/description/">76. 最小覆盖子串 - 力扣（LeetCode）<i class="fas fa-external-link-alt"></i></a></p>
-<p>给你一个字符串 <code>s</code> 、一个字符串 <code>t</code> 。返回 <code>s</code> 中涵盖 <code>t</code> 所有字符的最小子串。如果 <code>s</code> 中不存在涵盖 <code>t</code> 所有字符的子串，则返回空字符串 <code>""</code> 。</p>
+                    <h1 id="76-最小覆盖子串"><a href="#76-最小覆盖子串" class="headerlink" title="76. 最小覆盖子串"></a><a class="link" target="_blank" rel="noopener" href="https://leetcode.cn/problems/minimum-window-substring/description/">76. 最小覆盖子串<i class="fas fa-external-link-alt"></i></a></h1><p>给你一个字符串 <code>s</code> 、一个字符串 <code>t</code> 。返回 <code>s</code> 中涵盖 <code>t</code> 所有字符的最小子串。如果 <code>s</code> 中不存在涵盖 <code>t</code> 所有字符的子串，则返回空字符串 <code>""</code> 。</p>
 <p><strong>注意：</strong></p>
 <ul>
 <li>对于 <code>t</code> 中重复字符，我们寻找的子字符串中该字符数量必须不少于 <code>t</code> 中该字符数量。</li>
@@ -537,7 +536,7 @@ mjx-container[display="true"] + br {
             <div class="pc-post-toc right-toc">
                 <div class="post-toc-wrap border-box">
     <div class="post-toc border-box">
-        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%9C%80%E5%B0%8F%E8%A6%86%E7%9B%96%E5%AD%90%E4%B8%B2"><span class="nav-number">1.</span> <span class="nav-text">最小覆盖子串</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%A7%A3%E9%A2%98"><span class="nav-number">2.</span> <span class="nav-text">解题</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%A7%A3%E6%B3%95%E4%B8%80-%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3"><span class="nav-number">2.1.</span> <span class="nav-text">解法一(滑动窗口)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BC%98%E5%8C%96-%E5%93%88%E5%B8%8C%E8%A1%A8"><span class="nav-number">2.1.1.</span> <span class="nav-text">优化(+哈希表)</span></a></li></ol></li></ol></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#76-%E6%9C%80%E5%B0%8F%E8%A6%86%E7%9B%96%E5%AD%90%E4%B8%B2"><span class="nav-number">1.</span> <span class="nav-text">76. 最小覆盖子串</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%A7%A3%E9%A2%98"><span class="nav-number">2.</span> <span class="nav-text">解题</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%A7%A3%E6%B3%95%E4%B8%80-%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3"><span class="nav-number">2.1.</span> <span class="nav-text">解法一(滑动窗口)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BC%98%E5%8C%96-%E5%93%88%E5%B8%8C%E8%A1%A8"><span class="nav-number">2.1.1.</span> <span class="nav-text">优化(+哈希表)</span></a></li></ol></li></ol></li></ol>
     </div>
 </div>
 
@@ -706,7 +705,7 @@ mjx-container[display="true"] + br {
             <div class="tablet-post-toc">
                 <div class="post-toc-wrap border-box">
     <div class="post-toc border-box">
-        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%9C%80%E5%B0%8F%E8%A6%86%E7%9B%96%E5%AD%90%E4%B8%B2"><span class="nav-number">1.</span> <span class="nav-text">最小覆盖子串</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%A7%A3%E9%A2%98"><span class="nav-number">2.</span> <span class="nav-text">解题</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%A7%A3%E6%B3%95%E4%B8%80-%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3"><span class="nav-number">2.1.</span> <span class="nav-text">解法一(滑动窗口)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BC%98%E5%8C%96-%E5%93%88%E5%B8%8C%E8%A1%A8"><span class="nav-number">2.1.1.</span> <span class="nav-text">优化(+哈希表)</span></a></li></ol></li></ol></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#76-%E6%9C%80%E5%B0%8F%E8%A6%86%E7%9B%96%E5%AD%90%E4%B8%B2"><span class="nav-number">1.</span> <span class="nav-text">76. 最小覆盖子串</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%A7%A3%E9%A2%98"><span class="nav-number">2.</span> <span class="nav-text">解题</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%A7%A3%E6%B3%95%E4%B8%80-%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3"><span class="nav-number">2.1.</span> <span class="nav-text">解法一(滑动窗口)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BC%98%E5%8C%96-%E5%93%88%E5%B8%8C%E8%A1%A8"><span class="nav-number">2.1.1.</span> <span class="nav-text">优化(+哈希表)</span></a></li></ol></li></ol></li></ol>
     </div>
 </div>
 
