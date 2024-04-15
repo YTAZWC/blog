@@ -25,7 +25,7 @@
     <script class="keep-theme-configurations">
     const KEEP = window.KEEP || {}
     KEEP.hexo_config = {"hostname":"example.com","root":"/","language":"zh-CN","path":"search.json"}
-    KEEP.theme_config = {"base_info":{"primary_color":"#0066cc","title":"花木凋零成兰","author":"花木凋零成兰","avatar":"/images/ok.avif","logo":"/images/ok.avif","favicon":"/images/ok.avif"},"menu":{"Archives":"/archives","Tags":"/tags","Categories":"/categories","About":"/about"},"first_screen":{"enable":true,"background_img":"/images/bg.svg","background_img_dark":"/images/bg.svg","description":"成功始于方法，巩固才能提高。","hitokoto":false},"social_contact":{"enable":true,"links":{"github":"https://github.com/YTAZWC","weixin":null,"qq":null,"weibo":null,"zhihu":null,"twitter":null,"facebook":null,"email":"18570354653@163.com"}},"scroll":{"progress_bar":true,"percent":false,"hide_header":true},"home":{"category":true,"tag":true,"announcement":null},"post":{"author_badge":{"enable":true,"level_badge":true},"word_count":{"wordcount":true,"min2read":true},"datetime_format":"YYYY-MM-DD HH:mm:ss","copyright_info":false,"share":false,"reward":{"enable":false,"img_link":null,"text":null}},"code_block":{"tools":{"enable":true,"style":"mac"},"highlight_theme":"default"},"toc":{"enable":true,"number":true,"expand_all":true,"init_open":true,"layout":"right"},"website_count":{"busuanzi_count":{"enable":true,"site_uv":true,"site_pv":true,"page_pv":true}},"local_search":{"enable":true,"preload":true},"comment":{"enable":false,"use":"valine","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":null,"github_admins":null,"repository":null,"client_id":null,"client_secret":null,"proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.21"},"waline":{"server_url":null,"reaction":false,"version":2},"giscus":{"repo":null,"repo_id":null,"category":"Announcements","category_id":null,"reactions_enabled":false},"artalk":{"server":null},"disqus":{"shortname":null}},"rss":{"enable":false},"lazyload":{"enable":true},"cdn":{"enable":true,"provider":"cdnjs"},"pjax":{"enable":true},"footer":{"since":2023,"word_count":true,"icp":{"enable":false,"record_code":null,"url":"https://beian.miit.gov.cn"},"site_deploy":{"enable":false,"provider":"github","url":null},"shields_style":{"enable":false,"custom":[{"link_url":null,"img_url":null}]}},"inject":{"enable":false,"css":[null],"js":[null]},"root":"","version":"4.0.6"}
+    KEEP.theme_config = {"base_info":{"primary_color":"#0066cc","title":"花木凋零成兰","author":"花木凋零成兰","avatar":"/images/ok.avif","logo":"/images/ok.avif","favicon":"/images/ok.avif"},"menu":{"Archives":"/archives","Tags":"/tags","Categories":"/categories","About":"/about","新博客":"https://ytazwc.top/blogs/"},"first_screen":{"enable":true,"background_img":"/images/bg.svg","background_img_dark":"/images/bg.svg","description":"成功始于方法，巩固才能提高。","hitokoto":false},"social_contact":{"enable":true,"links":{"github":"https://github.com/YTAZWC","weixin":null,"qq":null,"weibo":null,"zhihu":null,"twitter":null,"facebook":null,"email":"18570354653@163.com"}},"scroll":{"progress_bar":true,"percent":false,"hide_header":true},"home":{"category":true,"tag":true,"announcement":null},"post":{"author_badge":{"enable":true,"level_badge":true},"word_count":{"wordcount":true,"min2read":true},"datetime_format":"YYYY-MM-DD HH:mm:ss","copyright_info":false,"share":false,"reward":{"enable":false,"img_link":null,"text":null}},"code_block":{"tools":{"enable":true,"style":"mac"},"highlight_theme":"default"},"toc":{"enable":true,"number":true,"expand_all":true,"init_open":true,"layout":"right"},"website_count":{"busuanzi_count":{"enable":true,"site_uv":true,"site_pv":true,"page_pv":true}},"local_search":{"enable":true,"preload":true},"comment":{"enable":false,"use":"valine","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":null,"github_admins":null,"repository":null,"client_id":null,"client_secret":null,"proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.21"},"waline":{"server_url":null,"reaction":false,"version":2},"giscus":{"repo":null,"repo_id":null,"category":"Announcements","category_id":null,"reactions_enabled":false},"artalk":{"server":null},"disqus":{"shortname":null}},"rss":{"enable":false},"lazyload":{"enable":true},"cdn":{"enable":true,"provider":"cdnjs"},"pjax":{"enable":true},"footer":{"since":2023,"word_count":true,"icp":{"enable":false,"record_code":null,"url":"https://beian.miit.gov.cn"},"site_deploy":{"enable":false,"provider":"github","url":null},"shields_style":{"enable":false,"custom":[{"link_url":null,"img_url":null}]}},"inject":{"enable":false,"css":[null],"js":[null]},"root":"","version":"4.0.6"}
     KEEP.language_ago = {"second":"%s 秒前","minute":"%s 分钟前","hour":"%s 小时前","day":"%s 天前","week":"%s 周前","month":"%s 个月前","year":"%s 年前"}
     KEEP.language_code_block = {"copy":"复制代码","copied":"已复制","fold":"折叠代码块","folded":"已折叠"}
     KEEP.language_copy_copyright = {"copy":"复制版权信息","copied":"已复制","title":"原文标题","author":"原文作者","link":"原文链接"}
@@ -214,6 +214,12 @@ mjx-container[display="true"] + br {
                             >关于</a>
                         </li>
                     
+                        <li class="menu-item">
+                            <a class=""
+                               target="_blank" rel="noopener" href="https://ytazwc.top/blogs/"
+                            >新博客</a>
+                        </li>
+                    
                     
                         <li class="menu-item search search-popup-trigger">
                             <i class="fas search fa-search"></i>
@@ -264,6 +270,12 @@ mjx-container[display="true"] + br {
                     >关于</a>
                 </li>
             
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       target="_blank" rel="noopener" href="https://ytazwc.top/blogs/"
+                    >新博客</a>
+                </li>
+            
         </ul>
     </div>
 
@@ -310,7 +322,7 @@ mjx-container[display="true"] + br {
     <div class="post-meta-info border-box">
         
             <span class="meta-info-item border-box">
-                <i class="icon fas fa-history"></i>&nbsp;<span class="home-post-history" data-updated="Sun Apr 14 2024 07:27:58 GMT+0000">2024-04-14 07:27:58</span>
+                <i class="icon fas fa-history"></i>&nbsp;<span class="home-post-history" data-updated="Mon Apr 15 2024 06:01:12 GMT+0000">2024-04-15 06:01:12</span>
             </span>
         
 
@@ -389,7 +401,7 @@ mjx-container[display="true"] + br {
     <div class="post-meta-info border-box">
         
             <span class="meta-info-item border-box">
-                <i class="icon fas fa-history"></i>&nbsp;<span class="home-post-history" data-updated="Sun Apr 14 2024 07:27:58 GMT+0000">2024-04-14 07:27:58</span>
+                <i class="icon fas fa-history"></i>&nbsp;<span class="home-post-history" data-updated="Mon Apr 15 2024 06:01:12 GMT+0000">2024-04-15 06:01:12</span>
             </span>
         
 
@@ -472,7 +484,7 @@ mjx-container[display="true"] + br {
     <div class="post-meta-info border-box">
         
             <span class="meta-info-item border-box">
-                <i class="icon fas fa-history"></i>&nbsp;<span class="home-post-history" data-updated="Sun Apr 14 2024 07:27:58 GMT+0000">2024-04-14 07:27:58</span>
+                <i class="icon fas fa-history"></i>&nbsp;<span class="home-post-history" data-updated="Mon Apr 15 2024 06:01:12 GMT+0000">2024-04-15 06:01:12</span>
             </span>
         
 
@@ -563,7 +575,7 @@ mjx-container[display="true"] + br {
     <div class="post-meta-info border-box">
         
             <span class="meta-info-item border-box">
-                <i class="icon fas fa-history"></i>&nbsp;<span class="home-post-history" data-updated="Sun Apr 14 2024 07:27:58 GMT+0000">2024-04-14 07:27:58</span>
+                <i class="icon fas fa-history"></i>&nbsp;<span class="home-post-history" data-updated="Mon Apr 15 2024 06:01:12 GMT+0000">2024-04-15 06:01:12</span>
             </span>
         
 
@@ -649,7 +661,7 @@ mjx-container[display="true"] + br {
     <div class="post-meta-info border-box">
         
             <span class="meta-info-item border-box">
-                <i class="icon fas fa-history"></i>&nbsp;<span class="home-post-history" data-updated="Sun Apr 14 2024 07:27:58 GMT+0000">2024-04-14 07:27:58</span>
+                <i class="icon fas fa-history"></i>&nbsp;<span class="home-post-history" data-updated="Mon Apr 15 2024 06:01:12 GMT+0000">2024-04-15 06:01:12</span>
             </span>
         
 
@@ -732,7 +744,7 @@ mjx-container[display="true"] + br {
     <div class="post-meta-info border-box">
         
             <span class="meta-info-item border-box">
-                <i class="icon fas fa-history"></i>&nbsp;<span class="home-post-history" data-updated="Sun Apr 14 2024 07:27:58 GMT+0000">2024-04-14 07:27:58</span>
+                <i class="icon fas fa-history"></i>&nbsp;<span class="home-post-history" data-updated="Mon Apr 15 2024 06:01:13 GMT+0000">2024-04-15 06:01:13</span>
             </span>
         
 
@@ -809,7 +821,7 @@ mjx-container[display="true"] + br {
     <div class="post-meta-info border-box">
         
             <span class="meta-info-item border-box">
-                <i class="icon fas fa-history"></i>&nbsp;<span class="home-post-history" data-updated="Sun Apr 14 2024 07:27:58 GMT+0000">2024-04-14 07:27:58</span>
+                <i class="icon fas fa-history"></i>&nbsp;<span class="home-post-history" data-updated="Mon Apr 15 2024 06:01:13 GMT+0000">2024-04-15 06:01:13</span>
             </span>
         
 
@@ -895,7 +907,7 @@ mjx-container[display="true"] + br {
     <div class="post-meta-info border-box">
         
             <span class="meta-info-item border-box">
-                <i class="icon fas fa-history"></i>&nbsp;<span class="home-post-history" data-updated="Sun Apr 14 2024 07:27:58 GMT+0000">2024-04-14 07:27:58</span>
+                <i class="icon fas fa-history"></i>&nbsp;<span class="home-post-history" data-updated="Mon Apr 15 2024 06:01:13 GMT+0000">2024-04-15 06:01:13</span>
             </span>
         
 
@@ -980,7 +992,7 @@ mjx-container[display="true"] + br {
     <div class="post-meta-info border-box">
         
             <span class="meta-info-item border-box">
-                <i class="icon fas fa-history"></i>&nbsp;<span class="home-post-history" data-updated="Sun Apr 14 2024 07:27:58 GMT+0000">2024-04-14 07:27:58</span>
+                <i class="icon fas fa-history"></i>&nbsp;<span class="home-post-history" data-updated="Mon Apr 15 2024 06:01:13 GMT+0000">2024-04-15 06:01:13</span>
             </span>
         
 
@@ -1060,7 +1072,7 @@ mjx-container[display="true"] + br {
     <div class="post-meta-info border-box">
         
             <span class="meta-info-item border-box">
-                <i class="icon fas fa-history"></i>&nbsp;<span class="home-post-history" data-updated="Sun Apr 14 2024 07:27:58 GMT+0000">2024-04-14 07:27:58</span>
+                <i class="icon fas fa-history"></i>&nbsp;<span class="home-post-history" data-updated="Mon Apr 15 2024 06:01:13 GMT+0000">2024-04-15 06:01:13</span>
             </span>
         
 
