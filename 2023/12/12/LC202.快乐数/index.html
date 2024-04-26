@@ -9,7 +9,7 @@
     
     <title>
         
-            快乐数_202 |
+            LC202.快乐数 |
         
         花木凋零成兰
     </title>
@@ -302,7 +302,7 @@ mjx-container[display="true"] + br {
             <div class="post-content-bottom border-box">
                 
                     <div class="post-title">
-                        快乐数_202
+                        LC202.快乐数
                     </div>
                 
 
@@ -335,7 +335,7 @@ mjx-container[display="true"] + br {
 
             <span class="meta-info-item post-update-date">
                 <i class="icon fa-solid fa-file-pen"></i>&nbsp;
-                <span class="datetime" data-updated="Wed Apr 24 2024 15:01:56 GMT+0000">2024-04-24 15:01:56</span>
+                <span class="datetime" data-updated="Fri Apr 26 2024 11:17:18 GMT+0000">2024-04-26 11:17:18</span>
             </span>
         
 
@@ -392,7 +392,7 @@ mjx-container[display="true"] + br {
                 <div class="post-content keep-markdown-body">
                     
 
-                    <h1 id="快乐数"><a href="#快乐数" class="headerlink" title="快乐数"></a>快乐数</h1><p>编写一个算法来判断一个数 <code>n</code> 是不是快乐数。</p>
+                    <h1 id="202-快乐数"><a href="#202-快乐数" class="headerlink" title="202.快乐数"></a><a class="link" target="_blank" rel="noopener" href="https://leetcode.cn/problems/happy-number/description/">202.快乐数<i class="fas fa-external-link-alt"></i></a></h1><p>编写一个算法来判断一个数 <code>n</code> 是不是快乐数。</p>
 <p><strong>「快乐数」</strong> 定义为：</p>
 <ul>
 <li>对于一个正整数，每一次将该数替换为它每个位置上的数字的平方和。</li>
@@ -410,36 +410,23 @@ mjx-container[display="true"] + br {
 </ul>
 <h1 id="解法一-Set哈希-模拟"><a href="#解法一-Set哈希-模拟" class="headerlink" title="解法一(Set哈希+模拟)"></a>解法一(Set哈希+模拟)</h1><p>思路分析：</p>
 <ol>
-<li><p>对于一个正整数<code>n</code>，判断其是否为快乐数，我们可以模拟对于快乐数的定义，通过定义来判断一个数是否为快乐数</p>
-</li>
-<li><p>同时假设一个数组<code>116</code>，在反复通过平方和计算下一个数字时，会得到<code>58</code>，然后经过一段运算后，<code>58</code>还会再次出现，由于回到了一个已经计算过的数字，因此可以发现这个过程存在一个循环，永远也不会回到1，即返回false</p>
-</li>
-<li><p>所以可以猜测有以下三种可能</p>
-<ol>
-<li><p>最终会得到1</p>
-</li>
-<li><p>进入循环</p>
-</li>
-<li><p>值越来越大，最后接近无穷</p>
-</li>
+<li>对于一个正整数<code>n</code>，判断其是否为快乐数，我们可以模拟对于快乐数的定义，通过定义来判断一个数是否为快乐数</li>
+<li>同时假设一个数组<code>116</code>，在反复通过平方和计算下一个数字时，会得到<code>58</code>，然后经过一段运算后，<code>58</code>还会再次出现，由于回到了一个已经计算过的数字，因此可以发现这个过程存在一个循环，永远也不会回到1，即返回false</li>
+<li>所以可以猜测有以下三种可能<ol>
+<li>最终会得到1</li>
+<li>进入循环</li>
+<li>值越来越大，最后接近无穷</li>
 </ol>
 </li>
-<li><p>第三种情况可以推导不会发生(例举每一位数的最大数字的下一位数)</p>
-</li>
-<li><p>因此对于算法主要分为两部分：</p>
-<ol>
-<li><p>对于一个数字，计算它的下一个数字</p>
-</li>
-<li><p>根据算出来的一系列数字判断是否进入了循环</p>
-</li>
+<li>第三种情况可以推导不会发生(例举每一位数的最大数字的下一位数)</li>
+<li>因此对于算法主要分为两部分：<ol>
+<li>对于一个数字，计算它的下一个数字</li>
+<li>根据算出来的一系列数字判断是否进入了循环</li>
 </ol>
 </li>
-<li><p>对于第一部分，按照定义模拟即可，至于第二部分，使用哈希集合(HashSet)来完成，每生成一个数字，检查它是否在已知的哈希集合中</p>
-<ol>
-<li><p>如果在哈希集合中，则说明处于一个循环，返回<code>false</code></p>
-</li>
-<li><p>如果不在哈希集合中，可以继续推导，并将该数字加入到集合中</p>
-</li>
+<li>对于第一部分，按照定义模拟即可，至于第二部分，使用哈希集合(HashSet)来完成，每生成一个数字，检查它是否在已知的哈希集合中<ol>
+<li>如果在哈希集合中，则说明处于一个循环，返回<code>false</code></li>
+<li>如果不在哈希集合中，可以继续推导，并将该数字加入到集合中</li>
 </ol>
 </li>
 </ol>
@@ -594,7 +581,7 @@ mjx-container[display="true"] + br {
             <div class="pc-post-toc right-toc">
                 <div class="post-toc-wrap border-box">
     <div class="post-toc border-box">
-        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%BF%AB%E4%B9%90%E6%95%B0"><span class="nav-number">1.</span> <span class="nav-text">快乐数</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%A7%A3%E6%B3%95%E4%B8%80-Set%E5%93%88%E5%B8%8C-%E6%A8%A1%E6%8B%9F"><span class="nav-number">2.</span> <span class="nav-text">解法一(Set哈希+模拟)</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%A7%A3%E6%B3%95%E4%BA%8C-%E5%BF%AB%E6%85%A2%E5%8F%8C%E6%8C%87%E9%92%88"><span class="nav-number">3.</span> <span class="nav-text">解法二(快慢双指针)</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%A7%A3%E6%B3%95%E4%B8%89-%E9%9D%A2%E8%AF%95%E4%B8%8D%E6%8E%A8%E8%8D%90-%E6%95%B0%E5%AD%A6-%E6%A8%A1%E6%8B%9F"><span class="nav-number">4.</span> <span class="nav-text">解法三(面试不推荐)(数学+模拟)</span></a></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#202-%E5%BF%AB%E4%B9%90%E6%95%B0"><span class="nav-number">1.</span> <span class="nav-text">202.快乐数</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%A7%A3%E6%B3%95%E4%B8%80-Set%E5%93%88%E5%B8%8C-%E6%A8%A1%E6%8B%9F"><span class="nav-number">2.</span> <span class="nav-text">解法一(Set哈希+模拟)</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%A7%A3%E6%B3%95%E4%BA%8C-%E5%BF%AB%E6%85%A2%E5%8F%8C%E6%8C%87%E9%92%88"><span class="nav-number">3.</span> <span class="nav-text">解法二(快慢双指针)</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%A7%A3%E6%B3%95%E4%B8%89-%E9%9D%A2%E8%AF%95%E4%B8%8D%E6%8E%A8%E8%8D%90-%E6%95%B0%E5%AD%A6-%E6%A8%A1%E6%8B%9F"><span class="nav-number">4.</span> <span class="nav-text">解法三(面试不推荐)(数学+模拟)</span></a></li></ol>
     </div>
 </div>
 
@@ -763,7 +750,7 @@ mjx-container[display="true"] + br {
             <div class="tablet-post-toc">
                 <div class="post-toc-wrap border-box">
     <div class="post-toc border-box">
-        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%BF%AB%E4%B9%90%E6%95%B0"><span class="nav-number">1.</span> <span class="nav-text">快乐数</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%A7%A3%E6%B3%95%E4%B8%80-Set%E5%93%88%E5%B8%8C-%E6%A8%A1%E6%8B%9F"><span class="nav-number">2.</span> <span class="nav-text">解法一(Set哈希+模拟)</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%A7%A3%E6%B3%95%E4%BA%8C-%E5%BF%AB%E6%85%A2%E5%8F%8C%E6%8C%87%E9%92%88"><span class="nav-number">3.</span> <span class="nav-text">解法二(快慢双指针)</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%A7%A3%E6%B3%95%E4%B8%89-%E9%9D%A2%E8%AF%95%E4%B8%8D%E6%8E%A8%E8%8D%90-%E6%95%B0%E5%AD%A6-%E6%A8%A1%E6%8B%9F"><span class="nav-number">4.</span> <span class="nav-text">解法三(面试不推荐)(数学+模拟)</span></a></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#202-%E5%BF%AB%E4%B9%90%E6%95%B0"><span class="nav-number">1.</span> <span class="nav-text">202.快乐数</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%A7%A3%E6%B3%95%E4%B8%80-Set%E5%93%88%E5%B8%8C-%E6%A8%A1%E6%8B%9F"><span class="nav-number">2.</span> <span class="nav-text">解法一(Set哈希+模拟)</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%A7%A3%E6%B3%95%E4%BA%8C-%E5%BF%AB%E6%85%A2%E5%8F%8C%E6%8C%87%E9%92%88"><span class="nav-number">3.</span> <span class="nav-text">解法二(快慢双指针)</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%A7%A3%E6%B3%95%E4%B8%89-%E9%9D%A2%E8%AF%95%E4%B8%8D%E6%8E%A8%E8%8D%90-%E6%95%B0%E5%AD%A6-%E6%A8%A1%E6%8B%9F"><span class="nav-number">4.</span> <span class="nav-text">解法三(面试不推荐)(数学+模拟)</span></a></li></ol>
     </div>
 </div>
 
