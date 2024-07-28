@@ -1,4 +1,38 @@
-<!DOCTYPE html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1"><meta name="keywords" content="Hexo Theme Keep"><meta name="description" content="Hexo Theme Keep"><meta name="author" content="花木凋零成兰"><title>Spring整合Redis | 花木凋零成兰</title><link rel="stylesheet" href="/css/style.css"><link rel="shortcut icon" href="/images/ok.avif"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.0.6/font/css/fontawesome.min.css"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.0.6/font/css/regular.min.css"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.0.6/font/css/solid.min.css"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.0.6/font/css/brands.min.css"><script class="keep-theme-configurations">const KEEP=window.KEEP||{};KEEP.hexo_config={hostname:"example.com",root:"/",language:"zh-CN",path:"search.json"},KEEP.theme_config={base_info:{primary_color:"#0066cc",title:"花木凋零成兰",author:"花木凋零成兰",avatar:"/images/ok.avif",logo:"/images/ok.avif",favicon:"/images/ok.avif"},menu:{Archives:"/archives",Tags:"/tags",Categories:"/categories",About:"/about","新博客":"https://ytazwc.top/blogs/"},first_screen:{enable:!0,background_img:"/images/bg.svg",background_img_dark:"/images/bg.svg",description:"成功始于方法，巩固才能提高。",hitokoto:!1},social_contact:{enable:!0,links:{github:"https://github.com/YTAZWC",weixin:null,qq:null,weibo:null,zhihu:null,twitter:null,facebook:null,email:"18570354653@163.com"}},scroll:{progress_bar:!0,percent:!1,hide_header:!0},home:{category:!0,tag:!0,announcement:null},post:{author_badge:{enable:!0,level_badge:!0},word_count:{wordcount:!0,min2read:!0},datetime_format:"YYYY-MM-DD HH:mm:ss",copyright_info:!1,share:!1,reward:{enable:!1,img_link:null,text:null}},code_block:{tools:{enable:!0,style:"mac"},highlight_theme:"default"},toc:{enable:!0,number:!0,expand_all:!0,init_open:!0,layout:"right"},website_count:{busuanzi_count:{enable:!0,site_uv:!0,site_pv:!0,page_pv:!0}},local_search:{enable:!0,preload:!0},comment:{enable:!1,use:"valine",valine:{appid:null,appkey:null,server_urls:null,placeholder:null},gitalk:{github_id:null,github_admins:null,repository:null,client_id:null,client_secret:null,proxy:null},twikoo:{env_id:null,region:null,version:"1.6.21"},waline:{server_url:null,reaction:!1,version:2},giscus:{repo:null,repo_id:null,category:"Announcements",category_id:null,reactions_enabled:!1},artalk:{server:null},disqus:{shortname:null}},rss:{enable:!1},lazyload:{enable:!0},cdn:{enable:!0,provider:"cdnjs"},pjax:{enable:!0},footer:{since:2023,word_count:!0,icp:{enable:!1,record_code:null,url:"https://beian.miit.gov.cn"},site_deploy:{enable:!1,provider:"github",url:null},shields_style:{enable:!1,custom:[{link_url:null,img_url:null}]}},inject:{enable:!1,css:[null],js:[null]},root:"",version:"4.0.6"},KEEP.language_ago={second:"%s 秒前",minute:"%s 分钟前",hour:"%s 小时前",day:"%s 天前",week:"%s 周前",month:"%s 个月前",year:"%s 年前"},KEEP.language_code_block={copy:"复制代码",copied:"已复制",fold:"折叠代码块",folded:"已折叠"},KEEP.language_copy_copyright={copy:"复制版权信息",copied:"已复制",title:"原文标题",author:"原文作者",link:"原文链接"}</script><meta name="generator" content="Hexo 7.1.1"><style>mjx-container[jax="SVG"] {
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="Hexo Theme Keep">
+    <meta name="description" content="Hexo Theme Keep">
+    <meta name="author" content="花木凋零成兰">
+    
+    <title>
+        
+            Spring整合Redis |
+        
+        花木凋零成兰
+    </title>
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    
+        <link rel="shortcut icon" href="/images/ok.avif">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.0.6/font/css/fontawesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.0.6/font/css/regular.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.0.6/font/css/solid.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.0.6/font/css/brands.min.css">
+    
+    <script class="keep-theme-configurations">
+    const KEEP = window.KEEP || {}
+    KEEP.hexo_config = {"hostname":"example.com","root":"/","language":"zh-CN","path":"search.json"}
+    KEEP.theme_config = {"base_info":{"primary_color":"#0066cc","title":"花木凋零成兰","author":"花木凋零成兰","avatar":"/images/ok.avif","logo":"/images/ok.avif","favicon":"/images/ok.avif"},"menu":{"Archives":"/archives","Tags":"/tags","Categories":"/categories","About":"/about","新博客":"https://ytazwc.top/blog/"},"first_screen":{"enable":true,"background_img":"/images/bg.svg","background_img_dark":"/images/bg.svg","description":"成功始于方法，巩固才能提高。","hitokoto":false},"social_contact":{"enable":true,"links":{"github":"https://github.com/YTAZWC","weixin":null,"qq":null,"weibo":null,"zhihu":null,"twitter":null,"facebook":null,"email":"18570354653@163.com"}},"scroll":{"progress_bar":true,"percent":false,"hide_header":true},"home":{"category":true,"tag":true,"announcement":null},"post":{"author_badge":{"enable":true,"level_badge":true},"word_count":{"wordcount":true,"min2read":true},"datetime_format":"YYYY-MM-DD HH:mm:ss","copyright_info":false,"share":false,"reward":{"enable":false,"img_link":null,"text":null}},"code_block":{"tools":{"enable":true,"style":"mac"},"highlight_theme":"default"},"toc":{"enable":true,"number":true,"expand_all":true,"init_open":true,"layout":"right"},"website_count":{"busuanzi_count":{"enable":true,"site_uv":true,"site_pv":true,"page_pv":true}},"local_search":{"enable":true,"preload":true},"comment":{"enable":false,"use":"valine","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":null,"github_admins":null,"repository":null,"client_id":null,"client_secret":null,"proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.21"},"waline":{"server_url":null,"reaction":false,"version":2},"giscus":{"repo":null,"repo_id":null,"category":"Announcements","category_id":null,"reactions_enabled":false},"artalk":{"server":null},"disqus":{"shortname":null}},"rss":{"enable":false},"lazyload":{"enable":true},"cdn":{"enable":true,"provider":"cdnjs"},"pjax":{"enable":true},"footer":{"since":2023,"word_count":true,"icp":{"enable":false,"record_code":null,"url":"https://beian.miit.gov.cn"},"site_deploy":{"enable":false,"provider":"github","url":null},"shields_style":{"enable":false,"custom":[{"link_url":null,"img_url":null}]}},"inject":{"enable":false,"css":[null],"js":[null]},"root":"","version":"4.0.6"}
+    KEEP.language_ago = {"second":"%s 秒前","minute":"%s 分钟前","hour":"%s 小时前","day":"%s 天前","week":"%s 周前","month":"%s 个月前","year":"%s 年前"}
+    KEEP.language_code_block = {"copy":"复制代码","copied":"已复制","fold":"折叠代码块","folded":"已折叠"}
+    KEEP.language_copy_copyright = {"copy":"复制版权信息","copied":"已复制","title":"原文标题","author":"原文作者","link":"原文链接"}
+  </script>
+<meta name="generator" content="Hexo 7.1.1"><style>mjx-container[jax="SVG"] {
   direction: ltr;
 }
 
@@ -110,4 +144,646 @@ mjx-container[display="true"] {
 mjx-container[display="true"] + br {
   display: none;
 }
-</style></head><body><div class="progress-bar-container"><span class="scroll-progress-bar"></span> <span class="pjax-progress-bar"></span> <i class="pjax-progress-icon fas fa-circle-notch fa-spin"></i></div><main class="page-container border-box"><div class="page-main-content border-box"><div class="page-main-content-top"><header class="header-wrapper"><div class="border-box header-content"><div class="left border-box"><a class="logo-image border-box" href="/"><img src="/images/ok.avif"> </a><a class="site-name border-box" href="/">花木凋零成兰</a></div><div class="right border-box"><div class="pc"><ul class="menu-list"><li class="menu-item"><a href="/">首页</a></li><li class="menu-item"><a href="/archives">归档</a></li><li class="menu-item"><a href="/tags">标签</a></li><li class="menu-item"><a href="/categories">分类</a></li><li class="menu-item"><a href="/about">关于</a></li><li class="menu-item"><a target="_blank" rel="noopener" href="https://ytazwc.top/blogs/">新博客</a></li><li class="menu-item search search-popup-trigger"><i class="fas search fa-search"></i></li></ul></div><div class="mobile"><div class="icon-item search search-popup-trigger"><i class="fas fa-search"></i></div><div class="icon-item menu-bar"><div class="menu-bar-middle"></div></div></div></div></div><div class="header-drawer"><ul class="drawer-menu-list"><li class="drawer-menu-item flex-center"><a href="/">首页</a></li><li class="drawer-menu-item flex-center"><a href="/archives">归档</a></li><li class="drawer-menu-item flex-center"><a href="/tags">标签</a></li><li class="drawer-menu-item flex-center"><a href="/categories">分类</a></li><li class="drawer-menu-item flex-center"><a href="/about">关于</a></li><li class="drawer-menu-item flex-center"><a target="_blank" rel="noopener" href="https://ytazwc.top/blogs/">新博客</a></li></ul></div><div class="window-mask"></div></header></div><div class="page-main-content-middle border-box"><div class="main-content border-box"><div class="fade-in-down-animation"><div class="post-page-container border-box"><div class="post-content-container border-box"><div class="post-content-bottom border-box"><div class="post-title">Spring整合Redis</div><div class="post-header border-box"><div class="avatar-box border-box"><img src="/images/ok.avif"></div><div class="info-box"><div class="author border-box"><span class="name">花木凋零成兰</span> <span class="author-badge">Lv6</span></div><div class="meta-info border-box"><div class="post-meta-info-container border-box post"><div class="post-meta-info border-box"><span class="meta-info-item post-create-date"><i class="icon fa-solid fa-calendar-plus"></i>&nbsp; <span class="datetime">2024-03-17 14:20:16</span> </span><span class="meta-info-item post-update-date"><i class="icon fa-solid fa-file-pen"></i>&nbsp; <span class="datetime" data-updated="Fri Jul 26 2024 16:04:15 GMT+0000">2024-07-26 16:04:15</span> </span><span class="meta-info-item post-category border-box"><i class="icon fas fa-folder"></i>&nbsp;<ul class="post-category-ul"><li class="category-item"><a href="/categories/%E5%BC%80%E5%8F%91%E5%AD%A6%E4%B9%A0/">开发学习</a></li></ul></span><span class="post-tag meta-info-item border-box"><i class="icon fas fa-tags"></i>&nbsp;<ul class="post-tag-ul"><li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/Spring/">Spring</a></li><li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/Spring-Boot/">Spring Boot</a></li><li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/Redis/">Redis</a></li></ul></span><span class="meta-info-item post-wordcount"><i class="icon fas fa-file-word"></i>&nbsp;<span>1.6k 字</span> </span><span class="meta-info-item post-min2read"><i class="icon fas fa-clock"></i>&nbsp;<span>6 分钟</span> </span><span class="meta-info-item post-pv"><i class="icon fas fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span></span></div></div></div></div></div><div class="post-content keep-markdown-body"><h1 id="引入依赖"><a href="#引入依赖" class="headerlink" title="引入依赖"></a>引入依赖</h1><p>在<code>pom.xml</code>文件导入如下依赖：</p><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-data-redis --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter-data-redis<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>2.6.13<span class="tag">&lt;/<span class="name">version</span>&gt;</span>   <span class="comment">&lt;!--可以省略版本 由SpringBoot自动确定适配版本--&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure><h1 id="配置Redis"><a href="#配置Redis" class="headerlink" title="配置Redis"></a>配置Redis</h1><h2 id="配置Redis数据库参数"><a href="#配置Redis数据库参数" class="headerlink" title="配置Redis数据库参数"></a>配置Redis数据库参数</h2><p>在<code>application.properties</code>配置文件中，填写以下配置:</p><figure class="highlight properties"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># RedisProperties</span></span><br><span class="line"><span class="comment"># 确定使用Redis的第11号数据库</span></span><br><span class="line"><span class="attr">spring.redis.database</span>=<span class="string">11</span></span><br><span class="line"><span class="comment"># 配置Redis连接地址</span></span><br><span class="line"><span class="attr">spring.redis.host</span>=<span class="string">localhost</span></span><br><span class="line"><span class="comment"># 配置Redis连接端口</span></span><br><span class="line"><span class="attr">spring.redis.port</span>=<span class="string">6379</span></span><br><span class="line"><span class="comment"># 配置连接Redis的密码  Redis数据库无密码则不需要此配置</span></span><br><span class="line"><span class="attr">spring.redis.password</span>=<span class="string">连接密码</span></span><br></pre></td></tr></table></figure><p>配置结果如下图所示：</p><p><img lazyload="" alt="image" data-src="https://github.com/YTAZWC/picx-images-hosting/raw/master/SpringAndRedis/image.7i051najgd.webp"></p><h2 id="编写配置类，构造RedisTemplate"><a href="#编写配置类，构造RedisTemplate" class="headerlink" title="编写配置类，构造RedisTemplate"></a>编写配置类，构造RedisTemplate</h2><p><code>RedisConfig.class</code>配置类如下，用于获取<code>RedisTemplate</code>类</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> 花木凋零成兰</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@date</span> 2024/3/17 14:58</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@Configuration</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">RedisConfig</span> {</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 获取访问Redis模板类</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> factory Redis连接工厂类 自动装配</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@Bean</span></span><br><span class="line">    <span class="keyword">public</span> RedisTemplate&lt;String, Object&gt; <span class="title function_">redisTemplate</span><span class="params">(RedisConnectionFactory factory)</span> {</span><br><span class="line">        RedisTemplate&lt;String, Object&gt; template = <span class="keyword">new</span> <span class="title class_">RedisTemplate</span>&lt;&gt;();</span><br><span class="line">        template.setConnectionFactory(factory); <span class="comment">// 配置连接工厂</span></span><br><span class="line">        <span class="comment">// 需要配置序列化方式  将Java类型数据存到Redis数据库中</span></span><br><span class="line">        <span class="comment">// 设置 key 的序列化方式</span></span><br><span class="line">        template.setKeySerializer(RedisSerializer.string());    <span class="comment">// RedisSerializer.string()序列字符串的序列化器</span></span><br><span class="line">        <span class="comment">// 设置 value 的序列化方式</span></span><br><span class="line">        template.setValueSerializer(RedisSerializer.json());    <span class="comment">// 序列化为json</span></span><br><span class="line">        <span class="comment">// 设置 hash 的key的序列化方式</span></span><br><span class="line">        template.setHashKeySerializer(RedisSerializer.string());</span><br><span class="line">        <span class="comment">// 设置 hash 的value的序列化方式</span></span><br><span class="line">        template.setHashValueSerializer(RedisSerializer.json());</span><br><span class="line">        </span><br><span class="line">        <span class="comment">// 使配置文件中的配置生效</span></span><br><span class="line">        template.afterPropertiesSet();</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">return</span> template;</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></table></figure><h1 id="Redis操作"><a href="#Redis操作" class="headerlink" title="Redis操作"></a>Redis操作</h1><h2 id="模板类常用方法操作如下："><a href="#模板类常用方法操作如下：" class="headerlink" title="模板类常用方法操作如下："></a>模板类常用方法操作如下：</h2><p>操作字符串：</p><ul><li>redisTemplate.opsForValue()</li></ul><p>操作哈希：</p><ul><li>redisTemplate.opsForHash()</li></ul><p>操作列表：</p><ul><li>redisTemplate.opsForList()</li></ul><p>操作集合(无序):</p><ul><li>redisTemplate.opsForSet()</li></ul><p>操作集合(有序)</p><ul><li>redisTemplate.opsForZSet()</li></ul><h2 id="进行测试"><a href="#进行测试" class="headerlink" title="进行测试"></a>进行测试</h2><p>测试代码如下：</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> 花木凋零成兰</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@date</span> 2024/3/17 15:43</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@SpringBootTest</span></span><br><span class="line"><span class="meta">@ContextConfiguration(classes = Application.class)</span>        <span class="comment">// 使用Application类的配置</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">RedisTest</span> {</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    <span class="keyword">private</span> RedisTemplate redisTemplate;    <span class="comment">// 注入redisTemplate</span></span><br><span class="line"></span><br><span class="line">    <span class="meta">@Test</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">testStrings</span><span class="params">()</span> {</span><br><span class="line">        System.out.println(<span class="string">"测试对字符串的操作..."</span>);</span><br><span class="line">        <span class="type">String</span> <span class="variable">redisKey</span> <span class="operator">=</span> <span class="string">"test:count"</span>;</span><br><span class="line">        redisTemplate.opsForValue().set(redisKey, <span class="number">1</span>);   <span class="comment">// 存字符串数据</span></span><br><span class="line">        System.out.println(redisTemplate.opsForValue().get(redisKey));    <span class="comment">// 获取key对应的value</span></span><br><span class="line"></span><br><span class="line">        System.out.println(redisTemplate.opsForValue().increment(redisKey));    <span class="comment">// 自动增加key对应的value</span></span><br><span class="line">        System.out.println(redisTemplate.opsForValue().decrement(redisKey));    <span class="comment">// 自动减少key对应的value</span></span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Test</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">testHashes</span><span class="params">()</span> {</span><br><span class="line">        System.out.println(<span class="string">"测试对哈希的操作..."</span>);</span><br><span class="line">        <span class="type">String</span> <span class="variable">redisKey</span> <span class="operator">=</span> <span class="string">"test:user"</span>;</span><br><span class="line">        <span class="comment">// 存哈希数据</span></span><br><span class="line">        redisTemplate.opsForHash().put(redisKey, <span class="string">"id"</span>, <span class="number">1</span>);</span><br><span class="line">        redisTemplate.opsForHash().put(redisKey, <span class="string">"username"</span>, <span class="string">"zhangsan"</span>);</span><br><span class="line">        <span class="comment">// 获取哈希数据</span></span><br><span class="line">        System.out.println(redisTemplate.opsForHash().get(redisKey, <span class="string">"id"</span>));</span><br><span class="line">        System.out.println(redisTemplate.opsForHash().get(redisKey, <span class="string">"username"</span>));</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Test</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">testLists</span><span class="params">()</span> {</span><br><span class="line">        System.out.println(<span class="string">"测试对列表的操作..."</span>);</span><br><span class="line">        <span class="type">String</span> <span class="variable">redisKey</span> <span class="operator">=</span> <span class="string">"test:ids"</span>;</span><br><span class="line">        <span class="comment">// 将值 从左边 插入列表</span></span><br><span class="line">        redisTemplate.opsForList().leftPush(redisKey, <span class="number">101</span>);</span><br><span class="line">        redisTemplate.opsForList().leftPush(redisKey, <span class="number">102</span>);</span><br><span class="line">        redisTemplate.opsForList().leftPush(redisKey, <span class="number">103</span>);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 获取当前列表 数据个数</span></span><br><span class="line">        System.out.println(redisTemplate.opsForList().size(redisKey));</span><br><span class="line">        <span class="comment">// 获取列表 索引所对应数据</span></span><br><span class="line">        System.out.println(redisTemplate.opsForList().index(redisKey, <span class="number">0</span>));</span><br><span class="line">        <span class="comment">// 获取列表 索引 在[]范围内的数据</span></span><br><span class="line">        System.out.println(redisTemplate.opsForList().range(redisKey, <span class="number">0</span>, <span class="number">2</span>));</span><br><span class="line">        <span class="comment">// 将值 从左边 弹出列表</span></span><br><span class="line">        System.out.println(redisTemplate.opsForList().leftPop(redisKey));</span><br><span class="line">        System.out.println(redisTemplate.opsForList().leftPop(redisKey));</span><br><span class="line">        System.out.println(redisTemplate.opsForList().leftPop(redisKey));</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Test</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">testSets</span><span class="params">()</span> {</span><br><span class="line">        System.out.println(<span class="string">"测试对(无序)集合的操作..."</span>);</span><br><span class="line">        <span class="type">String</span> <span class="variable">redisKey</span> <span class="operator">=</span> <span class="string">"test:teachers"</span>;</span><br><span class="line">        <span class="comment">// 存set数据 可一次性存多个</span></span><br><span class="line">        redisTemplate.opsForSet().add(redisKey, <span class="string">"刘备"</span>, <span class="string">"关羽"</span>, <span class="string">"张飞"</span>, <span class="string">"赵云"</span>, <span class="string">"诸葛"</span>);</span><br><span class="line">        <span class="comment">// 获取set中数据个数</span></span><br><span class="line">        System.out.println(redisTemplate.opsForSet().size(redisKey));</span><br><span class="line">        <span class="comment">// 随机弹出set中的某个数据</span></span><br><span class="line">        System.out.println(redisTemplate.opsForSet().pop(redisKey));</span><br><span class="line">        <span class="comment">// 展示set中的数据</span></span><br><span class="line">        System.out.println(redisTemplate.opsForSet().members(redisKey));</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Test</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">testSortedSets</span><span class="params">()</span> {</span><br><span class="line">        System.out.println(<span class="string">"测试对(有序)集合的操作..."</span>);</span><br><span class="line">        <span class="type">String</span> <span class="variable">redisKey</span> <span class="operator">=</span> <span class="string">"test:students"</span>;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 插入元素</span></span><br><span class="line">        redisTemplate.opsForZSet().add(redisKey, <span class="string">"唐僧"</span>, <span class="number">80</span>);</span><br><span class="line">        redisTemplate.opsForZSet().add(redisKey, <span class="string">"孙悟空"</span>, <span class="number">90</span>);</span><br><span class="line">        redisTemplate.opsForZSet().add(redisKey, <span class="string">"猪八戒"</span>, <span class="number">70</span>);</span><br><span class="line">        redisTemplate.opsForZSet().add(redisKey, <span class="string">"沙悟净"</span>, <span class="number">75</span>);</span><br><span class="line">        redisTemplate.opsForZSet().add(redisKey, <span class="string">"白龙马"</span>, <span class="number">65</span>);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 统计数据个数</span></span><br><span class="line">        System.out.println(redisTemplate.opsForZSet().size(redisKey));</span><br><span class="line">        <span class="comment">// 获取某个元素 的分数</span></span><br><span class="line">        System.out.println(redisTemplate.opsForZSet().score(redisKey, <span class="string">"猪八戒"</span>));</span><br><span class="line">        <span class="comment">// 获取某个元素 按大到小在集合的排名 的位置索引(从0开始)</span></span><br><span class="line">        System.out.println(redisTemplate.opsForZSet().reverseRank(redisKey, <span class="string">"猪八戒"</span>));</span><br><span class="line">        <span class="comment">// 获取元素 按大到小排名的 0-2个元素</span></span><br><span class="line">        System.out.println(redisTemplate.opsForZSet().reverseRange(redisKey, <span class="number">0</span>, <span class="number">2</span>));</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Test</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">testKeys</span><span class="params">()</span> {</span><br><span class="line">        System.out.println(<span class="string">"测试一些公共方法操作..."</span>);</span><br><span class="line"></span><br><span class="line">        redisTemplate.delete(<span class="string">"test:user"</span>);  <span class="comment">// 删除key所对的数据</span></span><br><span class="line">        <span class="comment">// 判断key是否存在</span></span><br><span class="line">        System.out.println(redisTemplate.hasKey(<span class="string">"test:user"</span>));</span><br><span class="line">        <span class="comment">// 设置某个key的过期时间</span></span><br><span class="line">        redisTemplate.expire(<span class="string">"test:students"</span>, <span class="number">10</span>, TimeUnit.SECONDS);</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">}</span><br></pre></td></tr></table></figure><p>测试结果如下所示：</p><p><img lazyload="" alt="image" data-src="https://github.com/YTAZWC/picx-images-hosting/raw/master/SpringAndRedis/image.32hpwh9k5e.webp"></p><h2 id="优化redis多次访问同一个key"><a href="#优化redis多次访问同一个key" class="headerlink" title="优化redis多次访问同一个key"></a>优化redis多次访问同一个key</h2><p>即将key绑定到一个对象上，不需要在每次对key所对应的value进行操作时，再传入key</p><p>实现代码如下：</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@SpringBootTest</span></span><br><span class="line"><span class="meta">@ContextConfiguration(classes = Application.class)</span>        <span class="comment">// 使用Application类的配置</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">RedisTest</span> {</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    <span class="keyword">private</span> RedisTemplate redisTemplate;    <span class="comment">// 注入redisTemplate</span></span><br><span class="line"></span><br><span class="line">    <span class="meta">@Test</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">testBoundOperations</span><span class="params">()</span> {</span><br><span class="line">        System.out.println(<span class="string">"多此访问同一个key; 将其绑定到一个对象, 即绑定对象..."</span>);</span><br><span class="line">        <span class="type">String</span> <span class="variable">redisKey</span> <span class="operator">=</span> <span class="string">"test:count"</span>;</span><br><span class="line">        <span class="type">BoundValueOperations</span> <span class="variable">operations</span> <span class="operator">=</span> redisTemplate.boundValueOps(redisKey);    <span class="comment">// 绑定key</span></span><br><span class="line">        <span class="comment">// 接下来对同一个key进行操作 不需要再传入key</span></span><br><span class="line"></span><br><span class="line">        System.out.println(operations.get());   <span class="comment">// 获取绑定的key 对应的值</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">// 对key所对应的value进行自增 5 次</span></span><br><span class="line">        operations.increment();</span><br><span class="line">        operations.increment();</span><br><span class="line">        operations.increment();</span><br><span class="line">        operations.increment();</span><br><span class="line">        operations.increment();</span><br><span class="line"></span><br><span class="line">        System.out.println(operations.get());   <span class="comment">// 获取绑定的key 对应的值</span></span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">}</span><br></pre></td></tr></table></figure><p>测试结果如下：</p><p><img lazyload="" alt="image" data-src="https://github.com/YTAZWC/picx-images-hosting/raw/master/SpringAndRedis/image.2a4uer9tpx.webp"></p><h2 id="Redis事务管理"><a href="#Redis事务管理" class="headerlink" title="Redis事务管理"></a>Redis事务管理</h2><p><strong>redis事务机制：</strong></p><p>启用事务后；执行某条redis命令时，不会立刻执行；而是将<strong>命令暂存到队列</strong>中，直到操作结束，提交事务时，再将队列中的所有命令发送给Redis，再执行队列中的命令.</p><h3 id="编程式事务演示"><a href="#编程式事务演示" class="headerlink" title="编程式事务演示"></a>编程式事务演示</h3><p>在某个方法内的某部分代码，启用事务。</p><p>测试代码如下：</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@SpringBootTest</span></span><br><span class="line"><span class="meta">@ContextConfiguration(classes = Application.class)</span>        <span class="comment">// 使用Application类的配置</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">RedisTest</span> {</span><br><span class="line">    <span class="comment">// 编程式事务</span></span><br><span class="line">    <span class="meta">@Test</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">testTransactional</span><span class="params">()</span> {</span><br><span class="line">        <span class="type">Object</span> <span class="variable">obj</span> <span class="operator">=</span>  redisTemplate.execute(<span class="keyword">new</span> <span class="title class_">SessionCallback</span>() {</span><br><span class="line">            <span class="meta">@Override</span></span><br><span class="line">            <span class="keyword">public</span> Object <span class="title function_">execute</span><span class="params">(RedisOperations operations)</span> <span class="keyword">throws</span> DataAccessException {</span><br><span class="line">                <span class="comment">// redisTemplate.execute()方法调用时；底层自动调用该execute方法</span></span><br><span class="line">                <span class="comment">// operations 用于执行操作命令</span></span><br><span class="line"></span><br><span class="line">                <span class="type">String</span> <span class="variable">redisKey</span> <span class="operator">=</span> <span class="string">"test:text"</span>;</span><br><span class="line"></span><br><span class="line">                operations.multi(); <span class="comment">// 启用事务</span></span><br><span class="line"></span><br><span class="line">                <span class="comment">// 添加数据到set</span></span><br><span class="line">                operations.opsForSet().add(redisKey, <span class="string">"zhangsan"</span>, <span class="string">"lisi"</span>, <span class="string">"wangwu"</span>);</span><br><span class="line"></span><br><span class="line">                <span class="comment">// 因为事务还未提交 即上述添加数据命令 还未执行</span></span><br><span class="line">                <span class="comment">// 此时查看对应 set 集合中的数据 应该不存在上述添加数据</span></span><br><span class="line">                System.out.println(operations.opsForSet().members(redisKey));</span><br><span class="line"></span><br><span class="line">                <span class="keyword">return</span> operations.exec();   <span class="comment">// 提交事务 并结束方法调用</span></span><br><span class="line">            }</span><br><span class="line">        });</span><br><span class="line">        System.out.println(<span class="string">"obj: "</span> + obj);    <span class="comment">// 查看事务类型信息等</span></span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">}</span><br></pre></td></tr></table></figure><p>测试结果如下：</p><p><img lazyload="" alt="image" data-src="https://github.com/YTAZWC/picx-images-hosting/raw/master/SpringAndRedis/image.3nrdit7fah.webp"></p><p>即由上述测试结果，证明了，redis事务是等到操作结束后，再执行队列中的命令；且事务得到的对象结果为<code>[操作成功次数(一次添加数据成功数据个数)，操作的数据]</code></p></div><div class="post-bottom-tags-and-share border-box"><div><ul class="post-tags-box border-box"><li class="tag-item border-box"><i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/Spring/">Spring</a></li><li class="tag-item border-box"><i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/Spring-Boot/">Spring Boot</a></li><li class="tag-item border-box"><i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/Redis/">Redis</a></li></ul></div><div></div></div><div class="post-nav border-box"><div class="prev-post"><a class="prev" rel="prev" href="/2024/03/18/LC45-%E8%B7%B3%E8%B7%83%E6%B8%B8%E6%88%8FII/" title="LC45.跳跃游戏II"><span class="left arrow-icon flex-center"><i class="fas fa-chevron-left"></i> </span><span class="title flex-center"><span class="post-nav-title-item text-ellipsis">LC45.跳跃游戏II</span> <span class="post-nav-item">上一篇</span></span></a></div><div class="next-post"><a class="next" rel="next" href="/2024/03/17/LC55-%E8%B7%B3%E8%B7%83%E6%B8%B8%E6%88%8F/" title="LC55.跳跃游戏"><span class="title flex-center"><span class="post-nav-title-item text-ellipsis">LC55.跳跃游戏</span> <span class="post-nav-item">下一篇</span> </span><span class="right arrow-icon flex-center"><i class="fas fa-chevron-right"></i></span></a></div></div></div></div><div class="pc-post-toc right-toc"><div class="post-toc-wrap border-box"><div class="post-toc border-box"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%BC%95%E5%85%A5%E4%BE%9D%E8%B5%96"><span class="nav-number">1.</span> <span class="nav-text">引入依赖</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%85%8D%E7%BD%AERedis"><span class="nav-number">2.</span> <span class="nav-text">配置Redis</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%85%8D%E7%BD%AERedis%E6%95%B0%E6%8D%AE%E5%BA%93%E5%8F%82%E6%95%B0"><span class="nav-number">2.1.</span> <span class="nav-text">配置Redis数据库参数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BC%96%E5%86%99%E9%85%8D%E7%BD%AE%E7%B1%BB%EF%BC%8C%E6%9E%84%E9%80%A0RedisTemplate"><span class="nav-number">2.2.</span> <span class="nav-text">编写配置类，构造RedisTemplate</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Redis%E6%93%8D%E4%BD%9C"><span class="nav-number">3.</span> <span class="nav-text">Redis操作</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A8%A1%E6%9D%BF%E7%B1%BB%E5%B8%B8%E7%94%A8%E6%96%B9%E6%B3%95%E6%93%8D%E4%BD%9C%E5%A6%82%E4%B8%8B%EF%BC%9A"><span class="nav-number">3.1.</span> <span class="nav-text">模板类常用方法操作如下：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BF%9B%E8%A1%8C%E6%B5%8B%E8%AF%95"><span class="nav-number">3.2.</span> <span class="nav-text">进行测试</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BC%98%E5%8C%96redis%E5%A4%9A%E6%AC%A1%E8%AE%BF%E9%97%AE%E5%90%8C%E4%B8%80%E4%B8%AAkey"><span class="nav-number">3.3.</span> <span class="nav-text">优化redis多次访问同一个key</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Redis%E4%BA%8B%E5%8A%A1%E7%AE%A1%E7%90%86"><span class="nav-number">3.4.</span> <span class="nav-text">Redis事务管理</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BC%96%E7%A8%8B%E5%BC%8F%E4%BA%8B%E5%8A%A1%E6%BC%94%E7%A4%BA"><span class="nav-number">3.4.1.</span> <span class="nav-text">编程式事务演示</span></a></li></ol></li></ol></li></ol></div></div></div></div></div></div></div><div class="page-main-content-bottom border-box"><footer class="footer border-box"><div class="border-box website-info-box default"><div class="copyright-info info-item default">&copy;&nbsp;<span>2023</span>&nbsp;-&nbsp;2024 &nbsp;<i class="fas fa-heart icon-animate"></i>&nbsp;&nbsp;<a href="/">花木凋零成兰</a></div><div class="theme-info info-item default">由&nbsp;<a target="_blank" href="https://hexo.io">Hexo</a>&nbsp;驱动&nbsp;&&nbsp;主题&nbsp;<a class="keep-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep</a></div><div class="count-item info-item default"><span class="count-box border-box word"><span class="item-type border-box">总字数</span> <span class="item-value border-box word">174.3k</span> </span><span class="count-box border-box uv"><span class="item-type border-box">访客数</span> <span class="item-value border-box uv" id="busuanzi_value_site_uv"></span> </span><span class="count-box border-box pv"><span class="item-type border-box">访问量</span> <span class="item-value border-box pv" id="busuanzi_value_site_pv"></span></span></div></div></footer></div></div><div class="post-tools right-toc"><div class="post-tools-container border-box"><ul class="tools-list border-box"><li class="tools-item flex-center toggle-show-toc"><i class="fas fa-list"></i></li></ul></div></div><div class="side-tools"><div class="side-tools-container border-box"><ul class="side-tools-list side-tools-show-handle border-box"><li class="tools-item tool-font-adjust-plus flex-center"><i class="fas fa-search-plus"></i></li><li class="tools-item tool-font-adjust-minus flex-center"><i class="fas fa-search-minus"></i></li><li class="tools-item tool-toggle-theme-mode flex-center"><i class="fas fa-moon"></i></li><li class="tools-item tool-scroll-to-bottom flex-center"><i class="fas fa-arrow-down"></i></li></ul><ul class="exposed-tools-list border-box"><li class="tools-item toggle-show-toc-tablet flex-center"><i class="fas fa-list"></i></li><li class="tools-item tool-toggle-show flex-center"><i class="fas fa-cog fa-spin"></i></li><li class="tools-item tool-scroll-to-top flex-center show-arrow"><i class="arrow fas fa-arrow-up"></i> <span class="percent"></span></li></ul></div></div><div class="zoom-in-image-mask"><img class="zoom-in-image"></div><div class="search-pop-overlay"><div class="popup search-popup"><div class="search-header"><span class="search-input-field-pre"><i class="fas fa-keyboard"></i></span><div class="search-input-container"><input autocomplete="off" autocorrect="off" autocapitalize="off" placeholder="搜索..." spellcheck="false" type="search" class="search-input"></div><span class="close-popup-btn"><i class="fas fa-times"></i></span></div><div id="search-result"><div id="no-result"><i class="fas fa-spinner fa-pulse fa-5x fa-fw"></i></div></div></div></div><div class="tablet-post-toc-mask"><div class="tablet-post-toc"><div class="post-toc-wrap border-box"><div class="post-toc border-box"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%BC%95%E5%85%A5%E4%BE%9D%E8%B5%96"><span class="nav-number">1.</span> <span class="nav-text">引入依赖</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%85%8D%E7%BD%AERedis"><span class="nav-number">2.</span> <span class="nav-text">配置Redis</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%85%8D%E7%BD%AERedis%E6%95%B0%E6%8D%AE%E5%BA%93%E5%8F%82%E6%95%B0"><span class="nav-number">2.1.</span> <span class="nav-text">配置Redis数据库参数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BC%96%E5%86%99%E9%85%8D%E7%BD%AE%E7%B1%BB%EF%BC%8C%E6%9E%84%E9%80%A0RedisTemplate"><span class="nav-number">2.2.</span> <span class="nav-text">编写配置类，构造RedisTemplate</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Redis%E6%93%8D%E4%BD%9C"><span class="nav-number">3.</span> <span class="nav-text">Redis操作</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A8%A1%E6%9D%BF%E7%B1%BB%E5%B8%B8%E7%94%A8%E6%96%B9%E6%B3%95%E6%93%8D%E4%BD%9C%E5%A6%82%E4%B8%8B%EF%BC%9A"><span class="nav-number">3.1.</span> <span class="nav-text">模板类常用方法操作如下：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BF%9B%E8%A1%8C%E6%B5%8B%E8%AF%95"><span class="nav-number">3.2.</span> <span class="nav-text">进行测试</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BC%98%E5%8C%96redis%E5%A4%9A%E6%AC%A1%E8%AE%BF%E9%97%AE%E5%90%8C%E4%B8%80%E4%B8%AAkey"><span class="nav-number">3.3.</span> <span class="nav-text">优化redis多次访问同一个key</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Redis%E4%BA%8B%E5%8A%A1%E7%AE%A1%E7%90%86"><span class="nav-number">3.4.</span> <span class="nav-text">Redis事务管理</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BC%96%E7%A8%8B%E5%BC%8F%E4%BA%8B%E5%8A%A1%E6%BC%94%E7%A4%BA"><span class="nav-number">3.4.1.</span> <span class="nav-text">编程式事务演示</span></a></li></ol></li></ol></li></ol></div></div></div></div></main><script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.0.6/js/utils.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.0.6/js/header-shrink.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.0.6/js/back2top.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.0.6/js/toggle-theme.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.0.6/js/code-block.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.0.6/js/main.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.0.6/js/libs/anime.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.0.6/js/local-search.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.0.6/js/lazyload.min.js"></script><div class="pjax"><script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.0.6/js/post/post-helper.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.0.6/js/post/toc.min.js"></script></div><script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.0.6/js/libs/pjax.min.js"></script><script>window.addEventListener("DOMContentLoaded",()=>{window.pjax=new Pjax({selectors:["head title",".page-container",".pjax"],history:!0,debug:!1,cacheBust:!1,timeout:0,analytics:!1,currentUrlFullReload:!1,scrollRestoration:!1}),document.addEventListener("pjax:send",()=>{KEEP.utils.pjaxProgressBarStart()}),document.addEventListener("pjax:complete",()=>{KEEP.utils.pjaxProgressBarEnd(),window.pjax.executeScripts(document.querySelectorAll("script[data-pjax], .pjax script")),KEEP.initExecute()})})</script></body></html>
+</style></head>
+
+
+<body>
+<div class="progress-bar-container">
+    
+        <span class="scroll-progress-bar"></span>
+    
+
+    
+        <span class="pjax-progress-bar"></span>
+        <i class="pjax-progress-icon fas fa-circle-notch fa-spin"></i>
+    
+</div>
+
+
+<main class="page-container border-box">
+
+    <!-- home first screen  -->
+    
+
+    <!-- page content -->
+    <div class="page-main-content border-box">
+        <div class="page-main-content-top">
+            
+<header class="header-wrapper">
+
+    <div class="border-box header-content">
+        <div class="left border-box">
+            
+                <a class="logo-image border-box" href="/">
+                    <img src="/images/ok.avif">
+                </a>
+            
+            <a class="site-name border-box" href="/">
+               花木凋零成兰
+            </a>
+        </div>
+
+        <div class="right border-box">
+            <div class="pc">
+                <ul class="menu-list">
+                    <li class="menu-item">
+                        <a class=""
+                           href="/"
+                        >首页</a>
+                    </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/archives"
+                            >归档</a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/tags"
+                            >标签</a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/categories"
+                            >分类</a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/about"
+                            >关于</a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               target="_blank" rel="noopener" href="https://ytazwc.top/blog/"
+                            >新博客</a>
+                        </li>
+                    
+                    
+                        <li class="menu-item search search-popup-trigger">
+                            <i class="fas search fa-search"></i>
+                        </li>
+                    
+                </ul>
+            </div>
+            <div class="mobile">
+                
+                    <div class="icon-item search search-popup-trigger"><i class="fas fa-search"></i></div>
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="header-drawer">
+        <ul class="drawer-menu-list">
+            <li class="drawer-menu-item flex-center">
+                <a class=""
+                   href="/"
+                >首页</a>
+            </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/archives"
+                    >归档</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/tags"
+                    >标签</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/categories"
+                    >分类</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/about"
+                    >关于</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       target="_blank" rel="noopener" href="https://ytazwc.top/blog/"
+                    >新博客</a>
+                </li>
+            
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle border-box">
+
+            <div class="main-content border-box">
+                
+
+                    
+<div class="fade-in-down-animation">
+    <div class="post-page-container border-box">
+        <div class="post-content-container border-box">
+            
+
+            <div class="post-content-bottom border-box">
+                
+                    <div class="post-title">
+                        Spring整合Redis
+                    </div>
+                
+
+                
+                    <div class="post-header border-box">
+                        
+                            <div class="avatar-box border-box">
+                                <img src="/images/ok.avif">
+                            </div>
+                        
+                        <div class="info-box">
+                            <div class="author border-box">
+                                <span class="name">花木凋零成兰</span>
+                                
+                                    <span class="author-badge">Lv6</span>
+                                
+                            </div>
+                            <div class="meta-info border-box">
+                                
+
+<div class="post-meta-info-container border-box post">
+    <div class="post-meta-info border-box">
+        
+
+        
+            <span class="meta-info-item post-create-date">
+                <i class="icon fa-solid fa-calendar-plus"></i>&nbsp;
+                <span class="datetime">2024-03-17 14:20:16</span>
+            </span>
+
+            <span class="meta-info-item post-update-date">
+                <i class="icon fa-solid fa-file-pen"></i>&nbsp;
+                <span class="datetime" data-updated="Sun Jul 28 2024 15:41:21 GMT+0000">2024-07-28 15:41:21</span>
+            </span>
+        
+
+        
+            <span class="meta-info-item post-category border-box"><i class="icon fas fa-folder"></i>&nbsp;
+                <ul class="post-category-ul">
+                    
+                            <li class="category-item"><a href="/categories/%E5%BC%80%E5%8F%91%E5%AD%A6%E4%B9%A0/">开发学习</a></li>
+                        
+                    
+                </ul>
+            </span>
+        
+
+        
+            <span class="post-tag meta-info-item border-box">
+                <i class="icon fas fa-tags"></i>&nbsp;
+                <ul class="post-tag-ul">
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/Spring/">Spring</a></li>
+                        
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/Spring-Boot/">Spring Boot</a></li>
+                        
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/Redis/">Redis</a></li>
+                        
+                    
+                </ul>
+            </span>
+        
+
+        
+        
+        
+        
+            <span class="meta-info-item post-pv">
+                <i class="icon fas fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span>
+            </span>
+        
+    </div>
+
+    
+</div>
+
+                            </div>
+                        </div>
+                    </div>
+                
+
+                <div class="post-content keep-markdown-body">
+                    
+
+                    <h1 id="引入依赖"><a href="#引入依赖" class="headerlink" title="引入依赖"></a>引入依赖</h1><p>在<code>pom.xml</code>文件导入如下依赖：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-data-redis --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter-data-redis<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>2.6.13<span class="tag">&lt;/<span class="name">version</span>&gt;</span>   <span class="comment">&lt;!--可以省略版本 由SpringBoot自动确定适配版本--&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h1 id="配置Redis"><a href="#配置Redis" class="headerlink" title="配置Redis"></a>配置Redis</h1><h2 id="配置Redis数据库参数"><a href="#配置Redis数据库参数" class="headerlink" title="配置Redis数据库参数"></a>配置Redis数据库参数</h2><p>在<code>application.properties</code>配置文件中，填写以下配置:</p>
+<figure class="highlight properties"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># RedisProperties</span></span><br><span class="line"><span class="comment"># 确定使用Redis的第11号数据库</span></span><br><span class="line"><span class="attr">spring.redis.database</span>=<span class="string">11</span></span><br><span class="line"><span class="comment"># 配置Redis连接地址</span></span><br><span class="line"><span class="attr">spring.redis.host</span>=<span class="string">localhost</span></span><br><span class="line"><span class="comment"># 配置Redis连接端口</span></span><br><span class="line"><span class="attr">spring.redis.port</span>=<span class="string">6379</span></span><br><span class="line"><span class="comment"># 配置连接Redis的密码  Redis数据库无密码则不需要此配置</span></span><br><span class="line"><span class="attr">spring.redis.password</span>=<span class="string">连接密码</span></span><br></pre></td></tr></table></figure>
+
+<p>配置结果如下图所示：</p>
+<p><img lazyload="" alt="image" data-src="https://github.com/YTAZWC/picx-images-hosting/raw/master/SpringAndRedis/image.7i051najgd.webp"></p>
+<h2 id="编写配置类，构造RedisTemplate"><a href="#编写配置类，构造RedisTemplate" class="headerlink" title="编写配置类，构造RedisTemplate"></a>编写配置类，构造RedisTemplate</h2><p><code>RedisConfig.class</code>配置类如下，用于获取<code>RedisTemplate</code>类</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> 花木凋零成兰</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@date</span> 2024/3/17 14:58</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@Configuration</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">RedisConfig</span> {</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 获取访问Redis模板类</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> factory Redis连接工厂类 自动装配</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@Bean</span></span><br><span class="line">    <span class="keyword">public</span> RedisTemplate&lt;String, Object&gt; <span class="title function_">redisTemplate</span><span class="params">(RedisConnectionFactory factory)</span> {</span><br><span class="line">        RedisTemplate&lt;String, Object&gt; template = <span class="keyword">new</span> <span class="title class_">RedisTemplate</span>&lt;&gt;();</span><br><span class="line">        template.setConnectionFactory(factory); <span class="comment">// 配置连接工厂</span></span><br><span class="line">        <span class="comment">// 需要配置序列化方式  将Java类型数据存到Redis数据库中</span></span><br><span class="line">        <span class="comment">// 设置 key 的序列化方式</span></span><br><span class="line">        template.setKeySerializer(RedisSerializer.string());    <span class="comment">// RedisSerializer.string()序列字符串的序列化器</span></span><br><span class="line">        <span class="comment">// 设置 value 的序列化方式</span></span><br><span class="line">        template.setValueSerializer(RedisSerializer.json());    <span class="comment">// 序列化为json</span></span><br><span class="line">        <span class="comment">// 设置 hash 的key的序列化方式</span></span><br><span class="line">        template.setHashKeySerializer(RedisSerializer.string());</span><br><span class="line">        <span class="comment">// 设置 hash 的value的序列化方式</span></span><br><span class="line">        template.setHashValueSerializer(RedisSerializer.json());</span><br><span class="line">        </span><br><span class="line">        <span class="comment">// 使配置文件中的配置生效</span></span><br><span class="line">        template.afterPropertiesSet();</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">return</span> template;</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></table></figure>
+
+<h1 id="Redis操作"><a href="#Redis操作" class="headerlink" title="Redis操作"></a>Redis操作</h1><h2 id="模板类常用方法操作如下："><a href="#模板类常用方法操作如下：" class="headerlink" title="模板类常用方法操作如下："></a>模板类常用方法操作如下：</h2><p>操作字符串：</p>
+<ul>
+<li>redisTemplate.opsForValue()</li>
+</ul>
+<p>操作哈希：</p>
+<ul>
+<li>redisTemplate.opsForHash()</li>
+</ul>
+<p>操作列表：</p>
+<ul>
+<li>redisTemplate.opsForList()</li>
+</ul>
+<p>操作集合(无序):</p>
+<ul>
+<li>redisTemplate.opsForSet()</li>
+</ul>
+<p>操作集合(有序)</p>
+<ul>
+<li>redisTemplate.opsForZSet()</li>
+</ul>
+<h2 id="进行测试"><a href="#进行测试" class="headerlink" title="进行测试"></a>进行测试</h2><p>测试代码如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> 花木凋零成兰</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@date</span> 2024/3/17 15:43</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@SpringBootTest</span></span><br><span class="line"><span class="meta">@ContextConfiguration(classes = Application.class)</span>        <span class="comment">// 使用Application类的配置</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">RedisTest</span> {</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    <span class="keyword">private</span> RedisTemplate redisTemplate;    <span class="comment">// 注入redisTemplate</span></span><br><span class="line"></span><br><span class="line">    <span class="meta">@Test</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">testStrings</span><span class="params">()</span> {</span><br><span class="line">        System.out.println(<span class="string">"测试对字符串的操作..."</span>);</span><br><span class="line">        <span class="type">String</span> <span class="variable">redisKey</span> <span class="operator">=</span> <span class="string">"test:count"</span>;</span><br><span class="line">        redisTemplate.opsForValue().set(redisKey, <span class="number">1</span>);   <span class="comment">// 存字符串数据</span></span><br><span class="line">        System.out.println(redisTemplate.opsForValue().get(redisKey));    <span class="comment">// 获取key对应的value</span></span><br><span class="line"></span><br><span class="line">        System.out.println(redisTemplate.opsForValue().increment(redisKey));    <span class="comment">// 自动增加key对应的value</span></span><br><span class="line">        System.out.println(redisTemplate.opsForValue().decrement(redisKey));    <span class="comment">// 自动减少key对应的value</span></span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Test</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">testHashes</span><span class="params">()</span> {</span><br><span class="line">        System.out.println(<span class="string">"测试对哈希的操作..."</span>);</span><br><span class="line">        <span class="type">String</span> <span class="variable">redisKey</span> <span class="operator">=</span> <span class="string">"test:user"</span>;</span><br><span class="line">        <span class="comment">// 存哈希数据</span></span><br><span class="line">        redisTemplate.opsForHash().put(redisKey, <span class="string">"id"</span>, <span class="number">1</span>);</span><br><span class="line">        redisTemplate.opsForHash().put(redisKey, <span class="string">"username"</span>, <span class="string">"zhangsan"</span>);</span><br><span class="line">        <span class="comment">// 获取哈希数据</span></span><br><span class="line">        System.out.println(redisTemplate.opsForHash().get(redisKey, <span class="string">"id"</span>));</span><br><span class="line">        System.out.println(redisTemplate.opsForHash().get(redisKey, <span class="string">"username"</span>));</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Test</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">testLists</span><span class="params">()</span> {</span><br><span class="line">        System.out.println(<span class="string">"测试对列表的操作..."</span>);</span><br><span class="line">        <span class="type">String</span> <span class="variable">redisKey</span> <span class="operator">=</span> <span class="string">"test:ids"</span>;</span><br><span class="line">        <span class="comment">// 将值 从左边 插入列表</span></span><br><span class="line">        redisTemplate.opsForList().leftPush(redisKey, <span class="number">101</span>);</span><br><span class="line">        redisTemplate.opsForList().leftPush(redisKey, <span class="number">102</span>);</span><br><span class="line">        redisTemplate.opsForList().leftPush(redisKey, <span class="number">103</span>);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 获取当前列表 数据个数</span></span><br><span class="line">        System.out.println(redisTemplate.opsForList().size(redisKey));</span><br><span class="line">        <span class="comment">// 获取列表 索引所对应数据</span></span><br><span class="line">        System.out.println(redisTemplate.opsForList().index(redisKey, <span class="number">0</span>));</span><br><span class="line">        <span class="comment">// 获取列表 索引 在[]范围内的数据</span></span><br><span class="line">        System.out.println(redisTemplate.opsForList().range(redisKey, <span class="number">0</span>, <span class="number">2</span>));</span><br><span class="line">        <span class="comment">// 将值 从左边 弹出列表</span></span><br><span class="line">        System.out.println(redisTemplate.opsForList().leftPop(redisKey));</span><br><span class="line">        System.out.println(redisTemplate.opsForList().leftPop(redisKey));</span><br><span class="line">        System.out.println(redisTemplate.opsForList().leftPop(redisKey));</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Test</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">testSets</span><span class="params">()</span> {</span><br><span class="line">        System.out.println(<span class="string">"测试对(无序)集合的操作..."</span>);</span><br><span class="line">        <span class="type">String</span> <span class="variable">redisKey</span> <span class="operator">=</span> <span class="string">"test:teachers"</span>;</span><br><span class="line">        <span class="comment">// 存set数据 可一次性存多个</span></span><br><span class="line">        redisTemplate.opsForSet().add(redisKey, <span class="string">"刘备"</span>, <span class="string">"关羽"</span>, <span class="string">"张飞"</span>, <span class="string">"赵云"</span>, <span class="string">"诸葛"</span>);</span><br><span class="line">        <span class="comment">// 获取set中数据个数</span></span><br><span class="line">        System.out.println(redisTemplate.opsForSet().size(redisKey));</span><br><span class="line">        <span class="comment">// 随机弹出set中的某个数据</span></span><br><span class="line">        System.out.println(redisTemplate.opsForSet().pop(redisKey));</span><br><span class="line">        <span class="comment">// 展示set中的数据</span></span><br><span class="line">        System.out.println(redisTemplate.opsForSet().members(redisKey));</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Test</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">testSortedSets</span><span class="params">()</span> {</span><br><span class="line">        System.out.println(<span class="string">"测试对(有序)集合的操作..."</span>);</span><br><span class="line">        <span class="type">String</span> <span class="variable">redisKey</span> <span class="operator">=</span> <span class="string">"test:students"</span>;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 插入元素</span></span><br><span class="line">        redisTemplate.opsForZSet().add(redisKey, <span class="string">"唐僧"</span>, <span class="number">80</span>);</span><br><span class="line">        redisTemplate.opsForZSet().add(redisKey, <span class="string">"孙悟空"</span>, <span class="number">90</span>);</span><br><span class="line">        redisTemplate.opsForZSet().add(redisKey, <span class="string">"猪八戒"</span>, <span class="number">70</span>);</span><br><span class="line">        redisTemplate.opsForZSet().add(redisKey, <span class="string">"沙悟净"</span>, <span class="number">75</span>);</span><br><span class="line">        redisTemplate.opsForZSet().add(redisKey, <span class="string">"白龙马"</span>, <span class="number">65</span>);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 统计数据个数</span></span><br><span class="line">        System.out.println(redisTemplate.opsForZSet().size(redisKey));</span><br><span class="line">        <span class="comment">// 获取某个元素 的分数</span></span><br><span class="line">        System.out.println(redisTemplate.opsForZSet().score(redisKey, <span class="string">"猪八戒"</span>));</span><br><span class="line">        <span class="comment">// 获取某个元素 按大到小在集合的排名 的位置索引(从0开始)</span></span><br><span class="line">        System.out.println(redisTemplate.opsForZSet().reverseRank(redisKey, <span class="string">"猪八戒"</span>));</span><br><span class="line">        <span class="comment">// 获取元素 按大到小排名的 0-2个元素</span></span><br><span class="line">        System.out.println(redisTemplate.opsForZSet().reverseRange(redisKey, <span class="number">0</span>, <span class="number">2</span>));</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Test</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">testKeys</span><span class="params">()</span> {</span><br><span class="line">        System.out.println(<span class="string">"测试一些公共方法操作..."</span>);</span><br><span class="line"></span><br><span class="line">        redisTemplate.delete(<span class="string">"test:user"</span>);  <span class="comment">// 删除key所对的数据</span></span><br><span class="line">        <span class="comment">// 判断key是否存在</span></span><br><span class="line">        System.out.println(redisTemplate.hasKey(<span class="string">"test:user"</span>));</span><br><span class="line">        <span class="comment">// 设置某个key的过期时间</span></span><br><span class="line">        redisTemplate.expire(<span class="string">"test:students"</span>, <span class="number">10</span>, TimeUnit.SECONDS);</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">}</span><br></pre></td></tr></table></figure>
+
+<p>测试结果如下所示：</p>
+<p><img lazyload="" alt="image" data-src="https://github.com/YTAZWC/picx-images-hosting/raw/master/SpringAndRedis/image.32hpwh9k5e.webp"></p>
+<h2 id="优化redis多次访问同一个key"><a href="#优化redis多次访问同一个key" class="headerlink" title="优化redis多次访问同一个key"></a>优化redis多次访问同一个key</h2><p>即将key绑定到一个对象上，不需要在每次对key所对应的value进行操作时，再传入key</p>
+<p>实现代码如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@SpringBootTest</span></span><br><span class="line"><span class="meta">@ContextConfiguration(classes = Application.class)</span>        <span class="comment">// 使用Application类的配置</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">RedisTest</span> {</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    <span class="keyword">private</span> RedisTemplate redisTemplate;    <span class="comment">// 注入redisTemplate</span></span><br><span class="line"></span><br><span class="line">    <span class="meta">@Test</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">testBoundOperations</span><span class="params">()</span> {</span><br><span class="line">        System.out.println(<span class="string">"多此访问同一个key; 将其绑定到一个对象, 即绑定对象..."</span>);</span><br><span class="line">        <span class="type">String</span> <span class="variable">redisKey</span> <span class="operator">=</span> <span class="string">"test:count"</span>;</span><br><span class="line">        <span class="type">BoundValueOperations</span> <span class="variable">operations</span> <span class="operator">=</span> redisTemplate.boundValueOps(redisKey);    <span class="comment">// 绑定key</span></span><br><span class="line">        <span class="comment">// 接下来对同一个key进行操作 不需要再传入key</span></span><br><span class="line"></span><br><span class="line">        System.out.println(operations.get());   <span class="comment">// 获取绑定的key 对应的值</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">// 对key所对应的value进行自增 5 次</span></span><br><span class="line">        operations.increment();</span><br><span class="line">        operations.increment();</span><br><span class="line">        operations.increment();</span><br><span class="line">        operations.increment();</span><br><span class="line">        operations.increment();</span><br><span class="line"></span><br><span class="line">        System.out.println(operations.get());   <span class="comment">// 获取绑定的key 对应的值</span></span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">}</span><br></pre></td></tr></table></figure>
+
+<p>测试结果如下：</p>
+<p><img lazyload="" alt="image" data-src="https://github.com/YTAZWC/picx-images-hosting/raw/master/SpringAndRedis/image.2a4uer9tpx.webp"></p>
+<h2 id="Redis事务管理"><a href="#Redis事务管理" class="headerlink" title="Redis事务管理"></a>Redis事务管理</h2><p><strong>redis事务机制：</strong></p>
+<p>启用事务后；执行某条redis命令时，不会立刻执行；而是将<strong>命令暂存到队列</strong>中，直到操作结束，提交事务时，再将队列中的所有命令发送给Redis，再执行队列中的命令.</p>
+<h3 id="编程式事务演示"><a href="#编程式事务演示" class="headerlink" title="编程式事务演示"></a>编程式事务演示</h3><p>在某个方法内的某部分代码，启用事务。</p>
+<p>测试代码如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@SpringBootTest</span></span><br><span class="line"><span class="meta">@ContextConfiguration(classes = Application.class)</span>        <span class="comment">// 使用Application类的配置</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">RedisTest</span> {</span><br><span class="line">    <span class="comment">// 编程式事务</span></span><br><span class="line">    <span class="meta">@Test</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">testTransactional</span><span class="params">()</span> {</span><br><span class="line">        <span class="type">Object</span> <span class="variable">obj</span> <span class="operator">=</span>  redisTemplate.execute(<span class="keyword">new</span> <span class="title class_">SessionCallback</span>() {</span><br><span class="line">            <span class="meta">@Override</span></span><br><span class="line">            <span class="keyword">public</span> Object <span class="title function_">execute</span><span class="params">(RedisOperations operations)</span> <span class="keyword">throws</span> DataAccessException {</span><br><span class="line">                <span class="comment">// redisTemplate.execute()方法调用时；底层自动调用该execute方法</span></span><br><span class="line">                <span class="comment">// operations 用于执行操作命令</span></span><br><span class="line"></span><br><span class="line">                <span class="type">String</span> <span class="variable">redisKey</span> <span class="operator">=</span> <span class="string">"test:text"</span>;</span><br><span class="line"></span><br><span class="line">                operations.multi(); <span class="comment">// 启用事务</span></span><br><span class="line"></span><br><span class="line">                <span class="comment">// 添加数据到set</span></span><br><span class="line">                operations.opsForSet().add(redisKey, <span class="string">"zhangsan"</span>, <span class="string">"lisi"</span>, <span class="string">"wangwu"</span>);</span><br><span class="line"></span><br><span class="line">                <span class="comment">// 因为事务还未提交 即上述添加数据命令 还未执行</span></span><br><span class="line">                <span class="comment">// 此时查看对应 set 集合中的数据 应该不存在上述添加数据</span></span><br><span class="line">                System.out.println(operations.opsForSet().members(redisKey));</span><br><span class="line"></span><br><span class="line">                <span class="keyword">return</span> operations.exec();   <span class="comment">// 提交事务 并结束方法调用</span></span><br><span class="line">            }</span><br><span class="line">        });</span><br><span class="line">        System.out.println(<span class="string">"obj: "</span> + obj);    <span class="comment">// 查看事务类型信息等</span></span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">}</span><br></pre></td></tr></table></figure>
+
+<p>测试结果如下：</p>
+<p><img lazyload="" alt="image" data-src="https://github.com/YTAZWC/picx-images-hosting/raw/master/SpringAndRedis/image.3nrdit7fah.webp"></p>
+<p>即由上述测试结果，证明了，redis事务是等到操作结束后，再执行队列中的命令；且事务得到的对象结果为<code>[操作成功次数(一次添加数据成功数据个数)，操作的数据]</code></p>
+
+                </div>
+
+                
+
+                <div class="post-bottom-tags-and-share border-box">
+                    <div>
+                        
+                            <ul class="post-tags-box border-box">
+                                
+                                    <li class="tag-item border-box">
+                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/Spring/">Spring</a>
+                                    </li>
+                                
+                                    <li class="tag-item border-box">
+                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/Spring-Boot/">Spring Boot</a>
+                                    </li>
+                                
+                                    <li class="tag-item border-box">
+                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/Redis/">Redis</a>
+                                    </li>
+                                
+                            </ul>
+                        
+                    </div>
+                    <div>
+                        
+                    </div>
+                </div>
+
+                
+
+                
+                    <div class="post-nav border-box">
+                        
+                            <div class="prev-post">
+                                <a class="prev"
+                                   rel="prev"
+                                   href="/2024/03/18/LC45-%E8%B7%B3%E8%B7%83%E6%B8%B8%E6%88%8FII/"
+                                   title="LC45.跳跃游戏II"
+                                >
+                                    <span class="left arrow-icon flex-center">
+                                        <i class="fas fa-chevron-left"></i>
+                                    </span>
+                                    <span class="title flex-center">
+                                        <span class="post-nav-title-item text-ellipsis">LC45.跳跃游戏II</span>
+                                        <span class="post-nav-item">上一篇</span>
+                                    </span>
+                                </a>
+                            </div>
+                        
+                        
+                            <div class="next-post">
+                                <a class="next"
+                                   rel="next"
+                                   href="/2024/03/17/LC55-%E8%B7%B3%E8%B7%83%E6%B8%B8%E6%88%8F/"
+                                   title="LC55.跳跃游戏"
+                                >
+                                    <span class="title flex-center">
+                                        <span class="post-nav-title-item text-ellipsis">LC55.跳跃游戏</span>
+                                        <span class="post-nav-item">下一篇</span>
+                                    </span>
+                                    <span class="right arrow-icon flex-center">
+                                        <i class="fas fa-chevron-right"></i>
+                                    </span>
+                                </a>
+                            </div>
+                        
+                    </div>
+                
+
+                
+                    
+
+
+
+
+
+
+                
+            </div>
+        </div>
+
+        
+            <div class="pc-post-toc right-toc">
+                <div class="post-toc-wrap border-box">
+    <div class="post-toc border-box">
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%BC%95%E5%85%A5%E4%BE%9D%E8%B5%96"><span class="nav-number">1.</span> <span class="nav-text">引入依赖</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%85%8D%E7%BD%AERedis"><span class="nav-number">2.</span> <span class="nav-text">配置Redis</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%85%8D%E7%BD%AERedis%E6%95%B0%E6%8D%AE%E5%BA%93%E5%8F%82%E6%95%B0"><span class="nav-number">2.1.</span> <span class="nav-text">配置Redis数据库参数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BC%96%E5%86%99%E9%85%8D%E7%BD%AE%E7%B1%BB%EF%BC%8C%E6%9E%84%E9%80%A0RedisTemplate"><span class="nav-number">2.2.</span> <span class="nav-text">编写配置类，构造RedisTemplate</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Redis%E6%93%8D%E4%BD%9C"><span class="nav-number">3.</span> <span class="nav-text">Redis操作</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A8%A1%E6%9D%BF%E7%B1%BB%E5%B8%B8%E7%94%A8%E6%96%B9%E6%B3%95%E6%93%8D%E4%BD%9C%E5%A6%82%E4%B8%8B%EF%BC%9A"><span class="nav-number">3.1.</span> <span class="nav-text">模板类常用方法操作如下：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BF%9B%E8%A1%8C%E6%B5%8B%E8%AF%95"><span class="nav-number">3.2.</span> <span class="nav-text">进行测试</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BC%98%E5%8C%96redis%E5%A4%9A%E6%AC%A1%E8%AE%BF%E9%97%AE%E5%90%8C%E4%B8%80%E4%B8%AAkey"><span class="nav-number">3.3.</span> <span class="nav-text">优化redis多次访问同一个key</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Redis%E4%BA%8B%E5%8A%A1%E7%AE%A1%E7%90%86"><span class="nav-number">3.4.</span> <span class="nav-text">Redis事务管理</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BC%96%E7%A8%8B%E5%BC%8F%E4%BA%8B%E5%8A%A1%E6%BC%94%E7%A4%BA"><span class="nav-number">3.4.1.</span> <span class="nav-text">编程式事务演示</span></a></li></ol></li></ol></li></ol>
+    </div>
+</div>
+
+            </div>
+        
+    </div>
+</div>
+
+
+                
+            </div>
+
+        </div>
+
+        <div class="page-main-content-bottom border-box">
+            
+<footer class="footer border-box">
+    <div class="border-box website-info-box default">
+        
+            <div class="copyright-info info-item default">
+                &copy;&nbsp;<span>2023</span>&nbsp;-&nbsp;2024
+                
+                    &nbsp;<i class="fas fa-heart icon-animate"></i>&nbsp;&nbsp;<a href="/">花木凋零成兰</a>
+                
+            </div>
+
+            <div class="theme-info info-item default">
+                由&nbsp;<a target="_blank" href="https://hexo.io">Hexo</a>&nbsp;驱动&nbsp;&&nbsp;主题&nbsp;<a class="keep-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep</a>
+            </div>
+
+            
+
+            
+        
+
+        <div class="count-item info-item default">
+            
+
+            
+                <span class="count-box border-box uv">
+                    <span class="item-type border-box">访客数</span>
+                    <span class="item-value border-box uv" id="busuanzi_value_site_uv"></span>
+                </span>
+            
+
+            
+                <span class="count-box border-box pv">
+                    <span class="item-type border-box">访问量</span>
+                    <span class="item-value border-box pv" id="busuanzi_value_site_pv"></span>
+                </span>
+            
+        </div>
+    </div>
+</footer>
+
+        </div>
+    </div>
+
+    <!-- post tools -->
+    
+        <div class="post-tools right-toc">
+            <div class="post-tools-container border-box">
+    <ul class="tools-list border-box">
+        <!-- PC TOC show toggle -->
+        
+            <li class="tools-item flex-center toggle-show-toc">
+                <i class="fas fa-list"></i>
+            </li>
+        
+
+        <!-- PC go comment -->
+        
+    </ul>
+</div>
+
+        </div>
+    
+
+    <!-- side tools -->
+    <div class="side-tools">
+        <div class="side-tools-container border-box ">
+    <ul class="side-tools-list side-tools-show-handle border-box">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li>
+
+        <li class="tools-item tool-toggle-theme-mode flex-center">
+            <i class="fas fa-moon"></i>
+        </li>
+
+        <!-- rss -->
+        
+
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list border-box">
+        
+            <li class="tools-item toggle-show-toc-tablet flex-center">
+                <i class="fas fa-list"></i>
+            </li>
+        
+
+        
+
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
+
+        <li class="tools-item tool-scroll-to-top flex-center show-arrow">
+            <i class="arrow fas fa-arrow-up"></i>
+            <span class="percent"></span>
+        </li>
+    </ul>
+</div>
+
+    </div>
+
+    <!-- image mask -->
+    <div class="zoom-in-image-mask">
+    <img class="zoom-in-image">
+</div>
+
+
+    <!-- local search -->
+    
+        <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+          <span class="search-input-field-pre">
+            <i class="fas fa-keyboard"></i>
+          </span>
+            <div class="search-input-container">
+                <input autocomplete="off"
+                       autocorrect="off"
+                       autocapitalize="off"
+                       placeholder="搜索..."
+                       spellcheck="false"
+                       type="search"
+                       class="search-input"
+                >
+            </div>
+            <span class="close-popup-btn">
+                <i class="fas fa-times"></i>
+            </span>
+        </div>
+        <div id="search-result">
+            <div id="no-result">
+                <i class="fas fa-spinner fa-pulse fa-5x fa-fw"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+
+    <!-- tablet toc -->
+    
+        <div class="tablet-post-toc-mask">
+            <div class="tablet-post-toc">
+                <div class="post-toc-wrap border-box">
+    <div class="post-toc border-box">
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%BC%95%E5%85%A5%E4%BE%9D%E8%B5%96"><span class="nav-number">1.</span> <span class="nav-text">引入依赖</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%85%8D%E7%BD%AERedis"><span class="nav-number">2.</span> <span class="nav-text">配置Redis</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%85%8D%E7%BD%AERedis%E6%95%B0%E6%8D%AE%E5%BA%93%E5%8F%82%E6%95%B0"><span class="nav-number">2.1.</span> <span class="nav-text">配置Redis数据库参数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BC%96%E5%86%99%E9%85%8D%E7%BD%AE%E7%B1%BB%EF%BC%8C%E6%9E%84%E9%80%A0RedisTemplate"><span class="nav-number">2.2.</span> <span class="nav-text">编写配置类，构造RedisTemplate</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Redis%E6%93%8D%E4%BD%9C"><span class="nav-number">3.</span> <span class="nav-text">Redis操作</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A8%A1%E6%9D%BF%E7%B1%BB%E5%B8%B8%E7%94%A8%E6%96%B9%E6%B3%95%E6%93%8D%E4%BD%9C%E5%A6%82%E4%B8%8B%EF%BC%9A"><span class="nav-number">3.1.</span> <span class="nav-text">模板类常用方法操作如下：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BF%9B%E8%A1%8C%E6%B5%8B%E8%AF%95"><span class="nav-number">3.2.</span> <span class="nav-text">进行测试</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BC%98%E5%8C%96redis%E5%A4%9A%E6%AC%A1%E8%AE%BF%E9%97%AE%E5%90%8C%E4%B8%80%E4%B8%AAkey"><span class="nav-number">3.3.</span> <span class="nav-text">优化redis多次访问同一个key</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Redis%E4%BA%8B%E5%8A%A1%E7%AE%A1%E7%90%86"><span class="nav-number">3.4.</span> <span class="nav-text">Redis事务管理</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BC%96%E7%A8%8B%E5%BC%8F%E4%BA%8B%E5%8A%A1%E6%BC%94%E7%A4%BA"><span class="nav-number">3.4.1.</span> <span class="nav-text">编程式事务演示</span></a></li></ol></li></ol></li></ol>
+    </div>
+</div>
+
+            </div>
+        </div>
+    
+</main>
+
+
+
+<!-- common -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.0.6/js/utils.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.0.6/js/header-shrink.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.0.6/js/back2top.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.0.6/js/toggle-theme.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.0.6/js/code-block.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.0.6/js/main.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.0.6/js/libs/anime.min.js"></script>
+
+<!-- local-search -->
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.0.6/js/local-search.min.js"></script>
+
+
+<!-- lazyload -->
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.0.6/js/lazyload.min.js"></script>
+
+
+<div class="pjax">
+    
+        <!-- post-helper -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.0.6/js/post/post-helper.min.js"></script>
+
+        <!-- toc -->
+        
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.0.6/js/post/toc.min.js"></script>
+        
+
+        <!-- copyright-info -->
+        
+
+        <!-- share -->
+        
+    
+
+    <!-- category-page -->
+    
+
+    <!-- links-page -->
+    
+
+    <!-- photos-page -->
+    
+</div>
+
+<!-- mermaid -->
+
+
+<!-- pjax -->
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.0.6/js/libs/pjax.min.js"></script>
+<script>
+    window.addEventListener('DOMContentLoaded', () => {
+        window.pjax = new Pjax({
+            selectors: [
+                'head title',
+                '.page-container',
+                '.pjax'
+            ],
+            history: true,
+            debug: false,
+            cacheBust: false,
+            timeout: 0,
+            analytics: false,
+            currentUrlFullReload: false,
+            scrollRestoration: false,
+        });
+
+        document.addEventListener('pjax:send', () => {
+            KEEP.utils.pjaxProgressBarStart()
+        });
+
+        document.addEventListener('pjax:complete', () => {
+            KEEP.utils.pjaxProgressBarEnd()
+            window.pjax.executeScripts(document.querySelectorAll('script[data-pjax], .pjax script'))
+            KEEP.initExecute()
+        });
+    });
+</script>
+
+
+
+
+</body>
+</html>
